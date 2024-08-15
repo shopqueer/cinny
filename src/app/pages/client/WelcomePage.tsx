@@ -15,12 +15,12 @@ export function WelcomePage() {
         <PageHeroSection>
           <PageHero
             icon={<img width="70" height="70" src={CinnySVG} alt="Cinny Logo" />}
-            title="Welcome to Cinny"
+            title="Welcome to Kiki"
             subTitle={
               <span>
-                Yet another matrix client.{' '}
+                Allstora's fork of Cinny
                 <a
-                  href="https://github.com/cinnyapp/cinny/releases"
+                  href="https://github.com/shopqueer/cinny"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
@@ -40,18 +40,6 @@ export function WelcomePage() {
                 >
                   <Text as="span" size="B400" truncate>
                     Source Code
-                  </Text>
-                </Button>
-                <Button
-                  as="a"
-                  href="https://cinny.in/#sponsor"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  fill="Soft"
-                  before={<Icon size="200" src={Icons.Heart} />}
-                >
-                  <Text as="span" size="B400" truncate>
-                    Support
                   </Text>
                 </Button>
               </Box>

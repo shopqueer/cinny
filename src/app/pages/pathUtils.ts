@@ -22,6 +22,7 @@ import {
   SPACE_PATH,
   SPACE_ROOM_PATH,
   SPACE_SEARCH_PATH,
+  HOME_RULES_PATH,
 } from './paths';
 import { trimLeadingSlash, trimTrailingSlash } from '../utils/common';
 import { HashRouterConfig } from '../hooks/useClientConfig';
@@ -89,6 +90,7 @@ export const getResetPasswordPath = (server?: string): string => {
 export const getHomePath = (): string => HOME_PATH;
 export const getHomeCreatePath = (): string => HOME_CREATE_PATH;
 export const getHomeJoinPath = (): string => HOME_JOIN_PATH;
+export const getHomeRulesPath = (): string => HOME_RULES_PATH;
 export const getHomeSearchPath = (): string => HOME_SEARCH_PATH;
 export const getHomeRoomPath = (roomIdOrAlias: string, eventId?: string): string => {
   const params = {

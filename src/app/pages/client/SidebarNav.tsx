@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
+import React, { MouseEventHandler, useRef } from 'react';
 import { Icon, Icons, Scroll } from 'folds';
+
+import { useNavigate } from 'react-router-dom';
 
 import {
   Sidebar,
@@ -10,19 +12,15 @@ import {
   SidebarItemTooltip,
   SidebarItem,
 } from '../../components/sidebar';
-import {
-  DirectTab,
-  HomeTab,
-  SpaceTabs,
-  InboxTab,
-  ExploreTab,
-  UserTab,
-  UnverifiedTab,
-} from './sidebar';
-import { openCreateRoom, openSearch } from '../../../client/action/navigation';
+import { DirectTab, HomeTab, SpaceTabs, InboxTab, UserTab, UnverifiedTab } from './sidebar';
+import { openSearch } from '../../../client/action/navigation';
+import { _RULES_PATH, HOME_RULES_PATH } from '../paths';
+import { ScreenSize, useScreenSizeContext } from '../../hooks/useScreenSize';
 
 export function SidebarNav() {
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const navigate = useNavigate();
 
   return (
     <Sidebar>
@@ -34,7 +32,7 @@ export function SidebarNav() {
               <DirectTab />
             </SidebarStack>
             <SpaceTabs scrollRef={scrollRef} />
-            <SidebarStackSeparator />
+            {/* Explore + add space tab is confusing for users since we want them to just focus on their book club spaces 
             <SidebarStack>
               <ExploreTab />
               <SidebarItem>
@@ -51,7 +49,7 @@ export function SidebarNav() {
                   )}
                 </SidebarItemTooltip>
               </SidebarItem>
-            </SidebarStack>
+            </SidebarStack> */}
           </Scroll>
         }
         sticky={

@@ -20,7 +20,6 @@ import { useAtom, useAtomValue } from 'jotai';
 import FocusTrap from 'focus-trap-react';
 import { factoryRoomIdByActivity, factoryRoomIdByAtoZ } from '../../../utils/sort';
 import {
-  NavButton,
   NavCategory,
   NavCategoryHeader,
   NavEmptyCenter,
@@ -29,10 +28,15 @@ import {
   NavItemContent,
   NavLink,
 } from '../../../components/nav';
-import { getExplorePath, getHomeRoomPath, getHomeSearchPath } from '../../pathUtils';
+import {
+  getExplorePath,
+  getHomeRoomPath,
+  getHomeRulesPath,
+  getHomeSearchPath,
+} from '../../pathUtils';
 import { getCanonicalAliasOrRoomId } from '../../../utils/matrix';
 import { useSelectedRoom } from '../../../hooks/router/useSelectedRoom';
-import { useHomeSearchSelected } from '../../../hooks/router/useHomeSelected';
+import { useHomeRulesSelected, useHomeSearchSelected } from '../../../hooks/router/useHomeSelected';
 import { useHomeRooms } from './useHomeRooms';
 import { useMatrixClient } from '../../../hooks/useMatrixClient';
 import { VirtualTile } from '../../../components/virtualizer';
@@ -202,6 +206,7 @@ export function Home() {
 
   const selectedRoomId = useSelectedRoom();
   const searchSelected = useHomeSearchSelected();
+  const rulesSelected = useHomeRulesSelected();
   const noRoomToDisplay = rooms.length === 0;
   const [closedCategories, setClosedCategories] = useAtom(useClosedNavCategoriesAtom());
 
@@ -237,37 +242,21 @@ export function Home() {
         <PageNavContent scrollRef={scrollRef}>
           <Box direction="Column" gap="300">
             <NavCategory>
-              <NavItem variant="Background" radii="400">
-                <NavButton onClick={() => openCreateRoom()}>
+              <NavItem variant="Background" radii="400" aria-selected={rulesSelected}>
+                <NavLink to={getHomeRulesPath()}>
                   <NavItemContent>
                     <Box as="span" grow="Yes" alignItems="Center" gap="200">
                       <Avatar size="200" radii="400">
-                        <Icon src={Icons.Plus} size="100" />
+                        <Icon src={Icons.Flag} size="100" filled={rulesSelected} />
                       </Avatar>
                       <Box as="span" grow="Yes">
                         <Text as="span" size="Inherit" truncate>
-                          Create Room
+                          Server Rules
                         </Text>
                       </Box>
                     </Box>
                   </NavItemContent>
-                </NavButton>
-              </NavItem>
-              <NavItem variant="Background" radii="400">
-                <NavButton onClick={() => openJoinAlias()}>
-                  <NavItemContent>
-                    <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                      <Avatar size="200" radii="400">
-                        <Icon src={Icons.Link} size="100" />
-                      </Avatar>
-                      <Box as="span" grow="Yes">
-                        <Text as="span" size="Inherit" truncate>
-                          Join with Address
-                        </Text>
-                      </Box>
-                    </Box>
-                  </NavItemContent>
-                </NavButton>
+                </NavLink>
               </NavItem>
               <NavItem variant="Background" radii="400" aria-selected={searchSelected}>
                 <NavLink to={getHomeSearchPath()}>

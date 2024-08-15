@@ -19,6 +19,7 @@ import {
   REGISTER_PATH,
   RESET_PASSWORD_PATH,
   SPACE_PATH,
+  _RULES_PATH,
   _CREATE_PATH,
   _FEATURED_PATH,
   _INVITES_PATH,
@@ -49,12 +50,14 @@ import { setAfterLoginRedirectPath } from './afterLoginRedirectPath';
 import { Room } from '../features/room';
 import { Lobby } from '../features/lobby';
 import { WelcomePage } from './client/WelcomePage';
+import { RulesPage } from './client/RulesPage';
 import { SidebarNav } from './client/SidebarNav';
 import { PageRoot } from '../components/page';
 import { ScreenSize } from '../hooks/useScreenSize';
 import { MobileFriendlyPageNav, MobileFriendlyClientNav } from './MobileFriendly';
 import { ClientInitStorageAtom } from './client/ClientInitStorageAtom';
 import { ClientNonUIFeatures } from './client/ClientNonUIFeatures';
+import { HomeRules, Rules } from './client/home/Rules';
 
 export const createRouter = (clientConfig: ClientConfig, screenSize: ScreenSize) => {
   const { hashRouter } = clientConfig;
@@ -133,6 +136,7 @@ export const createRouter = (clientConfig: ClientConfig, screenSize: ScreenSize)
           }
         >
           {mobile ? null : <Route index element={<WelcomePage />} />}
+          <Route path={_RULES_PATH} element={<HomeRules />} />
           <Route path={_CREATE_PATH} element={<p>create</p>} />
           <Route path={_JOIN_PATH} element={<p>join</p>} />
           <Route path={_SEARCH_PATH} element={<HomeSearch />} />

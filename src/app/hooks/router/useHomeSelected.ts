@@ -3,6 +3,7 @@ import {
   getHomeCreatePath,
   getHomeJoinPath,
   getHomePath,
+  getHomeRulesPath,
   getHomeSearchPath,
 } from '../../pages/pathUtils';
 
@@ -39,6 +40,16 @@ export const useHomeJoinSelected = (): boolean => {
 export const useHomeSearchSelected = (): boolean => {
   const match = useMatch({
     path: getHomeSearchPath(),
+    caseSensitive: true,
+    end: false,
+  });
+
+  return !!match;
+};
+
+export const useHomeRulesSelected = (): boolean => {
+  const match = useMatch({
+    path: getHomeRulesPath(),
     caseSensitive: true,
     end: false,
   });

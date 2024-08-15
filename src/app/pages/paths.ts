@@ -22,6 +22,8 @@ export const RESET_PASSWORD_PATH = '/reset-password/:server?/';
 export const _CREATE_PATH = 'create/';
 export const _JOIN_PATH = 'join/';
 export const _LOBBY_PATH = 'lobby/';
+export const _RULES_PATH = 'server-rules/';
+
 /**
  * array of rooms and senders mxId assigned
  * to search param as string should be "," separated
@@ -44,6 +46,7 @@ export const _ROOM_PATH = ':roomIdOrAlias/:eventId?/';
 
 export const HOME_PATH = '/home/';
 export const HOME_CREATE_PATH = `/home/${_CREATE_PATH}`;
+export const HOME_RULES_PATH = `/home/${_RULES_PATH}`;
 export const HOME_JOIN_PATH = `/home/${_JOIN_PATH}`;
 export const HOME_SEARCH_PATH = `/home/${_SEARCH_PATH}`;
 export const HOME_ROOM_PATH = `/home/${_ROOM_PATH}`;
