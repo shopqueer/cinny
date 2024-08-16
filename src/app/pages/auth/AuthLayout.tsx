@@ -20,8 +20,7 @@ import {
 } from '../../hooks/useClientConfig';
 import { AsyncStatus, useAsyncCallback } from '../../hooks/useAsyncCallback';
 import { LOGIN_PATH, REGISTER_PATH, RESET_PASSWORD_PATH } from '../paths';
-import CinnySVG from '../../../../public/res/svg/cinny.svg';
-import { ServerPicker } from './ServerPicker';
+import AllstoraSVG from '../../../../public/res/svg/Allstora_White.svg';
 import { AutoDiscoveryAction, autoDiscovery } from '../../cs-api';
 import { SpecVersionsLoader } from '../../components/SpecVersionsLoader';
 import { SpecVersionsProvider } from '../../hooks/useSpecVersions';
@@ -105,20 +104,6 @@ export function AuthLayout() {
     }
   }, [urlEncodedServer, navigate, location, server]);
 
-  const selectServer = useCallback(
-    (newServer: string) => {
-      if (newServer === server) {
-        if (discoveryState.status === AsyncStatus.Loading) return;
-        discoverServer(server);
-        return;
-      }
-      navigate(
-        generatePath(currentAuthPath(location.pathname), { server: encodeURIComponent(newServer) })
-      );
-    },
-    [navigate, location, discoveryState, server, discoverServer]
-  );
-
   const [autoDiscoveryError, autoDiscoveryInfo] =
     discoveryState.status === AsyncStatus.Success ? discoveryState.data.response : [];
 
@@ -134,8 +119,8 @@ export function AuthLayout() {
         <Box direction="Column" className={css.AuthCard}>
           <Header className={css.AuthHeader} size="600" variant="Surface">
             <Box grow="Yes" direction="Row" gap="300" alignItems="Center">
-              <img className={css.AuthLogo} src={CinnySVG} alt="Cinny Logo" />
-              <Text size="H3">Cinny</Text>
+              <img className={css.AuthLogo} src={AllstoraSVG} alt="Allstora Logo" />
+              <Text size="H3">Kiki by Allstora</Text>
             </Box>
           </Header>
           <Box className={css.AuthCardContent} direction="Column">
