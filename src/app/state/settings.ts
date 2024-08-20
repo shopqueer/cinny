@@ -29,8 +29,9 @@ export interface Settings {
 }
 
 const defaultSettings: Settings = {
-  themeIndex: 0,
-  useSystemTheme: true,
+  // Use Silver theme by default
+  themeIndex: 1,
+  useSystemTheme: false,
   isMarkdown: true,
   editorToolbar: false,
   twitterEmoji: false,

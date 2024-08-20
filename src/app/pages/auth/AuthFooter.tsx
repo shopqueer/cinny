@@ -5,8 +5,8 @@ import * as css from './styles.css';
 export function AuthFooter() {
   return (
     <Box className={css.AuthFooter} justifyContent="Center" gap="400" wrap="Wrap">
-      <Text as="a" size="T300" href="https://cinny.in" target="_blank" rel="noreferrer">
-        About
+      <Text as="a" size="T300" href="https://allstora.com" target="_blank" rel="noreferrer">
+        Allstora
       </Text>
       <Text
         as="a"
@@ -15,10 +15,7 @@ export function AuthFooter() {
         target="_blank"
         rel="noreferrer"
       >
-        v4.1.0
-      </Text>
-      <Text as="a" size="T300" href="https://twitter.com/cinnyapp" target="_blank" rel="noreferrer">
-        Twitter
+        Based on Cinny
       </Text>
       <Text as="a" size="T300" href="https://matrix.org" target="_blank" rel="noreferrer">
         Powered by Matrix
