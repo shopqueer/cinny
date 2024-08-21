@@ -19,6 +19,8 @@
   --bg-surface-active: rgba(0, 0, 0, 5%);
   --bg-surface-border: rgba(0, 0, 0, 6%);
 
+  --wordmark-image-url: url('/public/res/svg/Allstora_Wordmark_RGB_Black.svg');
+
   --bg-primary: rgb(18, 69, 168);
   --bg-primary-hover: rgba(18, 69, 168, 80%);
   --bg-primary-active: rgba(18, 69, 168, 70%);
@@ -219,6 +221,8 @@
   --bg-surface-hover: #333333;
   --bg-surface-active: #404040;
   --bg-surface-border: #404040;
+
+  --wordmark-image-url: url('/public/res/svg/Allstora_Wordmark_RGB_White.svg');
 
   --bg-primary: rgb(189, 182, 236);
   --bg-primary-hover: rgba(189, 182, 236, 0.8);

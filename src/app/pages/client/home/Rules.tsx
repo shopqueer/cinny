@@ -29,20 +29,23 @@ export function Rules({ scrollRef }: RulesProps) {
       <div id="rules">
         <p>
           {' '}
-          Welcome to the Official Community Chat [space?] for Allstora! We look forward to seeing
-          you become a regular here! However, please ensure that you are familiar with our Server
-          Guidelines! Your entrance into our server confirms you accept the following rules as well
-          as agree to our Terms of Service{' '}
+          Welcome to Kiki! The community conversation application for Allstora Book Clubs! We look
+          forward to seeing you become a regular here! However, please ensure that you are familiar
+          with our Server Guidelines! Your entrance into our server confirms you accept the
+          following rules as well as agree to our Terms of Service{' '}
         </p>
         <p>
-          Rule 1: Stay on topic! Please visit our Channel Titles to become more familiar with our
-          server. It will help you find the appropriate places for specific discussions. Incorrect
-          and/or inappropriate content are subjected to removal!
+          <b>Rule 1: Stay on topic!</b>
+          Please visit our Channel Titles to become more familiar with our server. It will help you
+          find the appropriate places for specific discussions. Incorrect and/or inappropriate
+          content are subjected to removal!
         </p>
-        Rule 2: Be mindful of others! Do not spam or flood discussions with consecutive separate
-        messages of single letters, words, images, emoticons, or large blocks of text in one or
-        multiple channels. Other Trailblazers are also sharing this server, and we must be
-        considerate of each other. Certain links are blacklisted to help enforce our guidelines.
+        <b>Rule 2: Be mindful of others! </b>
+        <br />
+        Do not spam or flood discussions with consecutive separate messages of single letters,
+        words, images, emoticons, or large blocks of text in one or multiple channels. Other
+        Trailblazers are also sharing this server, and we must be considerate of each other. Certain
+        links are blacklisted to help enforce our guidelines.
         <p>
           2A. Do not send unsolicited DMs to others. <br />
           2B. Advertising under the objective to boost personal growth rather than contribute to our
