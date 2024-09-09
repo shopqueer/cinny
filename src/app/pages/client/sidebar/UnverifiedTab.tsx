@@ -37,13 +37,6 @@ export function UnverifiedTab() {
           </SidebarAvatar>
         )}
       </SidebarItemTooltip>
-      <SidebarItemBadge hasCount>
-        <Badge variant="Critical" size="400" fill="Solid" radii="Pill" outlined={false}>
-          <Text as="span" size="L400">
-            {unverified.length}
-          </Text>
-        </Badge>
-      </SidebarItemBadge>
     </SidebarItem>
   );
 }

@@ -37,6 +37,7 @@ export function Register() {
       <Text size="H2" priority="400">
         Register
       </Text>
+      <Text size="H5">Please use "FirstName-LastName" as the username.</Text>
       {registerFlows.status === RegisterFlowStatus.RegistrationDisabled && !sso && (
         <Text style={{ color: color.Critical.Main }} size="T300">
           Registration has been disabled on this homeserver.

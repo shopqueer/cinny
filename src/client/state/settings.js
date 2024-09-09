@@ -86,6 +86,7 @@ class Settings extends EventEmitter {
     this.themeIndex = themeIndex;
     setSettings('themeIndex', this.themeIndex);
     this.applyTheme();
+    // TODO: We should just reload the welcome page
     window.location.reload();
   }
 

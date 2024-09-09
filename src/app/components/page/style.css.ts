@@ -1,7 +1,6 @@
-import { globalStyle, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { DefaultReset, color, config, toRem } from 'folds';
-import { onLightFontWeight } from '../../../config.css';
 
 export const PageNav = style({
   width: toRem(256),
@@ -79,17 +78,3 @@ export const PageContentCenter = style([
     margin: 'auto',
   },
 ]);
-
-// Define the base style for the theme image
-export const wordmarkImage = style({
-  // This can be empty or contain default styles for the image
-});
-
-// Global styles for when the root has prism-light or prism-dark class
-globalStyle(`.silver-theme .wordmark-image`, {
-  content: 'url("/public/res/svg/Allstora_Wordmark_RGB_Black.svg")',
-});
-
-globalStyle(`.dark-theme .wordmark-image`, {
-  content: 'url("/public/res/svg/Allstora_Wordmark_RGB_White.svg")',
-});

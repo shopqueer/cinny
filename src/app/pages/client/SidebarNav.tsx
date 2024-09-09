@@ -71,7 +71,7 @@ export function SidebarNav() {
                 </SidebarItemTooltip>
               </SidebarItem>
 
-              <UnverifiedTab />
+              {/* <UnverifiedTab /> */}
 
               <InboxTab />
               <UserTab />
