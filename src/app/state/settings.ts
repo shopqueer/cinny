@@ -29,9 +29,8 @@ export interface Settings {
 }
 
 const defaultSettings: Settings = {
-  // Use Silver theme by default
-  themeIndex: 2,
-  useSystemTheme: false,
+  themeIndex: 0,
+  useSystemTheme: true,
   isMarkdown: true,
   editorToolbar: false,
   twitterEmoji: false,
@@ -42,7 +41,7 @@ const defaultSettings: Settings = {
   enterForNewline: false,
   messageLayout: 0,
   messageSpacing: '400',
-  hideMembershipEvents: false,
+  hideMembershipEvents: true,
   hideNickAvatarEvents: true,
   mediaAutoLoad: true,
   urlPreview: true,

@@ -5,6 +5,7 @@ import {
   getHomePath,
   getHomeRulesPath,
   getHomeSearchPath,
+  getHomeWelcomePath,
 } from '../../pages/pathUtils';
 
 export const useHomeSelected = (): boolean => {
@@ -50,6 +51,16 @@ export const useHomeSearchSelected = (): boolean => {
 export const useHomeRulesSelected = (): boolean => {
   const match = useMatch({
     path: getHomeRulesPath(),
+    caseSensitive: true,
+    end: false,
+  });
+
+  return !!match;
+};
+
+export const useHomeWelcomeSelected = (): boolean => {
+  const match = useMatch({
+    path: getHomeWelcomePath(),
     caseSensitive: true,
     end: false,
   });
