@@ -52,7 +52,7 @@ class Settings extends EventEmitter {
 
     const settings = getSettings();
     if (settings === null) return 0;
-    if (typeof settings.themeIndex === 'undefined') return 0;
+    if (typeof settings.themeIndex === 'undefined') return 2;
     // eslint-disable-next-line radix
     return parseInt(settings.themeIndex);
   }

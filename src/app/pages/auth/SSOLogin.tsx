@@ -64,7 +64,7 @@ export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
         }
 
         return (
-          <><div>{redirectUrl}</div><Button
+          <Button
             style={{ width: '100%' }}
             key={id}
             as="a"
@@ -83,7 +83,7 @@ export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
             <Text align="Center" size="B500" truncate>
               {buttonTitle}
             </Text>
-          </Button></>
+          </Button>
         );
       })}
     </Box >

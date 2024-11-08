@@ -34,8 +34,7 @@ export function WelcomePage() {
           >
             <Box justifyContent="Center">
               <Box grow="Yes" style={{ maxWidth: toRem(300) }} direction="Column" gap="300">
-                Welcome to Kiki! As a Beta user, you’re one of the first to join the conversation.
-                Here’s how to get started:
+                If you’re new, here are a few ways to get started:
                 <ol>
                   <li>
                     <Link to={getHomeRulesPath()}>Check out our Community Guidelines.</Link>
@@ -43,23 +42,23 @@ export function WelcomePage() {
                   <li>
                     <Link
                       to={getSpaceRoomPath(
-                        '!XJD4PLdFjSyHBvvKIh:beta-community.allstora.com',
-                        '!Bfo5b9TeyGfT65X76P:beta-community.allstora.com'
+                        '!PXXwRDLBXUcZVPlYjy:kiki-server.allstora.com',
+                        '!wPQBycjzCRnsZjbOuS:kiki-server.allstora.com'
                       )}
                     >
                       Introduce Yourself!
                     </Link>
                   </li>
                   <li>
-                    <Link to={getSpaceLobbyPath('!XJD4PLdFjSyHBvvKIh:beta-community.allstora.com')}>
-                      Browse our Discussion Rooms.
+                    <Link to={getSpaceRoomPath(
+                      '!PXXwRDLBXUcZVPlYjy:kiki-server.allstora.com',
+                      '!JvpqSiSSyYmZCgEAoY:kiki-server.allstora.com'
+                    )}>
+                      Answer today’s Discussion Prompt.
                     </Link>
                   </li>
                 </ol>
-                Once you’ve gotten to know Kiki a little bit, we might reach out to ask you for some
-                feedback on your experience through a survey or a video chat. If you’re willing to
-                spill a little tea for us, we’ll thank you with a $20 gift card. And if you’ve got
-                feedback already, please let us know in the Kiki Feedback room.
+                And one more thing: don't forget to be Spoiler-Savvy. if you’re posting something that might surprise another reader, use the Spoiler feature  to make sure you’re not spilling the tea before it’s hot.
                 <p>
                   Glad you’re here, <br />
                   Eric
