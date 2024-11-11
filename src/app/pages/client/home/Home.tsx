@@ -190,7 +190,7 @@ function HomeEmpty() {
                 </Avatar>
                 <Box as="span" grow="Yes">
                   <Text as="span" size="Inherit" truncate>
-                    Server Rules
+                    Community Guidelines
                   </Text>
                 </Box>
               </Box>
@@ -276,7 +276,7 @@ export function Home() {
                       </Avatar>
                       <Box as="span" grow="Yes">
                         <Text as="span" size="Inherit" truncate>
-                          Server Rules
+                          Community Guidelines
                         </Text>
                       </Box>
                     </Box>
