@@ -8,12 +8,32 @@ type SSOLoginProps = {
   asIcons?: boolean;
   redirectUrl: string;
 };
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
   const discovery = useAutoDiscoveryInfo();
   const baseUrl = discovery['m.homeserver'].base_url;
   const mx = useMemo(() => createClient({ baseUrl }), [baseUrl]);
 
-  const getSSOIdUrl = (ssoId: string): string => mx.getSsoLoginUrl(redirectUrl, 'sso', ssoId);
+  // If the site is running in an iframe we 
+  let getSSOIdUrl = null;
+
+  const hardcodedRedirectUrl = "https://allstora.com/pages/kiki"
+  function isInIframe() {
+    try {
+      // Check if window is not the same as window.parent
+      return window !== window.parent;
+    } catch (e) {
+      // If accessing window.parent throws an error, we are in a cross-origin iframe
+      return true;
+    }
+  }
+  const iframe = isInIframe();
+  if (iframe === true) {
+    getSSOIdUrl = (ssoId: string): string => mx.getSsoLoginUrl(hardcodedRedirectUrl, 'sso', ssoId);
+  }
+  else {
+    getSSOIdUrl = (ssoId: string): string => mx.getSsoLoginUrl(redirectUrl, 'sso', ssoId);
+  }
 
   const anyAsBtn = providers.find(
     (provider) => !provider.icon || !mx.mxcUrlToHttp(provider.icon, 96, 96, 'crop', false)
@@ -25,7 +45,7 @@ export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
         const { id, name, icon } = provider;
         const iconUrl = icon && mx.mxcUrlToHttp(icon, 96, 96, 'crop', false);
 
-        const buttonTitle = `Continue with ${name}`;
+        const buttonTitle = `Join the conversation`;
 
         if (!anyAsBtn && iconUrl && asIcons) {
           return (
@@ -53,13 +73,12 @@ export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
             variant="Secondary"
             fill="Soft"
             outlined
-            before={
-              iconUrl && (
-                <Avatar size="200" radii="300">
-                  <AvatarImage src={iconUrl} alt={name} />
-                </Avatar>
-              )
-            }
+            target={iframe ? '_blank' : undefined}
+            before={iconUrl && (
+              <Avatar size="200" radii="300">
+                <AvatarImage src={iconUrl} alt={name} />
+              </Avatar>
+            )}
           >
             <Text align="Center" size="B500" truncate>
               {buttonTitle}
@@ -67,6 +86,6 @@ export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
           </Button>
         );
       })}
-    </Box>
+    </Box >
   );
 }

@@ -297,17 +297,7 @@ function AddRoomButton({ item }: { item: HierarchyItem }) {
           </Menu>
         </FocusTrap>
       }
-    >
-      <Chip
-        variant="Primary"
-        radii="Pill"
-        before={<Icon src={Icons.Plus} size="50" />}
-        onClick={handleAddRoom}
-        aria-pressed={!!cords}
-      >
-        <Text size="B300">Add Room</Text>
-      </Chip>
-    </PopOut>
+    />
   );
 }
 
@@ -359,17 +349,7 @@ function AddSpaceButton({ item }: { item: HierarchyItem }) {
           </Menu>
         </FocusTrap>
       }
-    >
-      <Chip
-        variant="SurfaceVariant"
-        radii="Pill"
-        before={<Icon src={Icons.Plus} size="50" />}
-        onClick={handleAddSpace}
-        aria-pressed={!!cords}
-      >
-        <Text size="B300">Add Space</Text>
-      </Chip>
-    </PopOut>
+    />
   );
 }
 
@@ -470,7 +450,7 @@ export const SpaceItemCard = as<'div', SpaceItemCardProps>(
                         avatarUrl={
                           summaryState.data?.avatar_url
                             ? mx.mxcUrlToHttp(summaryState.data.avatar_url, 96, 96, 'crop') ??
-                              undefined
+                            undefined
                             : undefined
                         }
                         suggested={content.suggested}

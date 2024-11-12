@@ -27,101 +27,105 @@ export function Rules({ scrollRef }: RulesProps) {
         </IconButton>
       </ScrollTopContainer>
       <div id="rules">
+        <h1>Welcome to Kiki, the community chat room for Allstora’s Book Clubs!</h1>
         <p>
-          {' '}
-          Welcome to Kiki! The community conversation application for Allstora Book Clubs! We look
-          forward to seeing you become a regular here! However, please ensure that you are familiar
-          with our Server Guidelines! Your entrance into our server confirms you accept the
-          following rules as well as agree to our Terms of Service{' '}
+          We look forward to seeing you become a regular here. By signing up for our platform, you
+          accept the following rules, and agree to our{' '}
+          <a href="https://allstora.com/pages/terms-and-conditions">Terms of Service</a>.
+        </p>
+
+        <h2>Rule 1: Stay on topic</h2>
+        <p>
+          Our rooms are separated into specific topics, and we ask that you respect the purpose of
+          those rooms. Please be mindful of whether you're discussing a book in a room that allows
+          spoilers or not.
+        </p>
+
+        <h2>Rule 2: Be respectful</h2>
+        <p>
+          Regardless of ethnicity, religion, gender identity, romantic or sexual orientation,
+          ability, social class, or mental health, everyone is welcome in Kiki. Harassment or
+          bigotry, either personal or generalized, will not be tolerated. If you feel unsafe or have
+          an issue within the community, please send our Moderation bot a direct message and a Staff
+          Member will help you as soon as possible.
+        </p>
+        <ul>
+          <li>
+            <strong>2B:</strong> Please ensure your comments and criticism are reasonable and
+            constructive. Hostile remarks are subject to removal.
+          </li>
+          <li>
+            <strong>2C:</strong> Do not spam or flood discussions with consecutive messages of
+            single letters, words, images, emoticons, or large blocks of text. Certain links are
+            blacklisted to help enforce our guidelines.
+          </li>
+          <li>
+            <strong>2D:</strong> Personal advertising is prohibited.
+          </li>
+        </ul>
+
+        <h2>Rule 3: Keep our server safe</h2>
+        <p>
+          Distribution of pornographic, offensive, or NSFW content will NOT be tolerated. This
+          includes, but is not limited to, hentai, gore, or shock media.
+        </p>
+        <ul>
+          <li>
+            <strong>3A:</strong> Any form of content that sexualizes minors, even as a joke or
+            sarcasm, will result in an immediate ban without appeal. There is a zero-tolerance
+            policy for the sexualization of underage characters or people.
+          </li>
+          <li>
+            <strong>3B:</strong> We encourage you to add profile photos, names, and pronouns that
+            help other members get to know you. Keep in mind that these must also abide by the
+            rules.
+          </li>
+        </ul>
+
+        <h2>Rule 4: Kiki Access</h2>
+        <p>
+          Access to Book Club content on Kiki is contingent on having an active subscription. Should
+          you make changes to your account or cancel a subscription, you may also lose access to the
+          content and discussions taking place on that Book Club’s Space. Any issues regarding Book
+          Club access can be directed to <a href="mailto:info@allstora.com">info@allstora.com</a>.
+        </p>
+
+        <h2>Rule 5: Do not backseat moderate or impersonate</h2>
+        <p>
+          Impersonating a moderator or Allstora Staff is prohibited. If you believe someone is
+          impersonating a moderator or staff member, submit a report or email{' '}
+          <a href="mailto:info@allstora.com">info@allstora.com</a>.
+        </p>
+
+        <h2>Rule 6: Respect copyright</h2>
+        <p>
+          Please credit any artist whose work you share. Third-party sites that do not easily
+          identify original creators may be de-linked. If the creator’s platform/name cannot easily
+          be found, please do not share.
+        </p>
+
+        <h2>Rule 7: Personal Information</h2>
+        <p>
+          Allstora is not responsible if you share personal information. Do not share any personal
+          information that you would like to keep private. Keep each other safe in order to keep our
+          community safe!
+        </p>
+
+        <h2>Rule 8: Everything Else</h2>
+        <p>
+          If a rule is not explicitly stated, moderators and Allstora Staff reserve final judgment
+          on what constitutes punishable behavior. Guidelines may be amended at any time. Offenses
+          that disrupt our community may result in a temporary or permanent ban, depending on the
+          severity and repetition of the offense.
         </p>
         <p>
-          <b>Rule 1: Stay on topic!</b>
-          Please visit our Channel Titles to become more familiar with our server. It will help you
-          find the appropriate places for specific discussions. Incorrect and/or inappropriate
-          content are subjected to removal!
-        </p>
-        <b>Rule 2: Be mindful of others! </b>
-        <br />
-        Do not spam or flood discussions with consecutive separate messages of single letters,
-        words, images, emoticons, or large blocks of text in one or multiple channels. Other
-        Trailblazers are also sharing this server, and we must be considerate of each other. Certain
-        links are blacklisted to help enforce our guidelines.
-        <p>
-          2A. Do not send unsolicited DMs to others. <br />
-          2B. Advertising under the objective to boost personal growth rather than contribute to our
-          community is prohibited. However, if you are interested in sharing your project, please do
-          so within reasonable frequencies within our relevant media channels.
+          If you seek clarification about a specific action related to you, please message a
+          moderator or info@allstora.com. Understand that personal opinions expressed by the Mod
+          Team and Staff are private and should NOT be taken as an official Allstora statement.
         </p>
         <p>
-          Rule 3: Be respectful to each other! It is everyones responsibility to keep this a safe
-          and positive community. Regardless of ethnicity, religion, gender identity, romantic or
-          sexual orientation, ability, social class, or mental health, everyone is welcome on this
-          server. Offensive content or harassment on this basis, either personal or generalized,
-          will not be tolerated. Please be respectful of your fellow server members. If you feel
-          unsafe or have an issue within the community and need to contact a moderator, please send
-          our Moderation bot a direct message.
-          <br />
-          3A. Content that affects others experience, including but not limited to: baiting,
-          fearmongering, misinformation, and derailing from the original discussions intention, are
-          subjected to removal.
-          <br />
-          3B. When commenting about others content, ensure your criticism is reasonable and
-          constructive. Hostile or irrational remarks will not go unnoticed from restriction.
-        </p>
-        <p>
-          Rule 4: Keep our server safe! Distribution of pornographic, offensive or uncomfortable, or
-          NSFW content will NOT be tolerated. Following along with Rule 3, do not share the
-          following examples: hentai, gore, shock media, etc. There is also a ZERO tolerance policy
-          for the sexualization of underage characters or people. 4A. Any form of content, from text
-          to media, that suggests normalization or justification of sexualizing minors will result
-          in an immediate ban without appeal. There is no room for jokes or maneuvering.
-          <br />
-          4B. We encourage you to add profile photos, names, and pronouns that help other members
-          get to know you. Keep in mind that these must also abide by the rules.
-        </p>
-        <p>
-          Rule 5: Access to Book Club Channels Accessing content for any of Allstoras Book Clubs is
-          contingent on having an active subscription. Should you decide to make changes to your
-          account or cancel a subscription, you will also lose access to the content and discussions
-          taking place on that book clubs channel. Any issues regarding channel access can be
-          directed to #support.
-        </p>
-        <p>
-          Rule 6: Do not backseat moderate or impersonate! Doctoring content to undermine or
-          impersonate as a moderator or Allstora Staff is prohibited. If there is a report youd like
-          to submit, please do not hesitate to contact Moderators directly via #moderator!
-        </p>
-        <p>
-          Rule 7: Respect the copyright of others! Please give credit out of courtesy. Third-party
-          sites that do not easily identify original creators will not be accepted. Reposts not
-          authorized by the original creator(s) will be removed. If the creators platform/name
-          cannot be found, please do not share.
-        </p>
-        <p>
-          Rule 8: How to contact Customer Support? ⁠ If you are having any issues in regards to
-          access to channels or the community chat as a whole, feel free to message in #support. If
-          you are having any other issues with your account or subscription, please email
-          info@allstora.com. They are the proper department to answer your inquiries related to
-          Payment, Account issues, or Feedback.
-        </p>
-        <p>
-          Rule 9: Personal Information We ask that you do not share any personal information on this
-          server that you would like to keep private. Allstora is not responsible in the event that
-          you share personal information. Keep eachother safe in order to keep our community safe!
-        </p>
-        <p>
-          Final Thoughts Even if a specific rule is not explicitly stated nor is this list
-          considered exhaustive, moderators and Allstora Staff reserve final interpretation.
-          Decisions will be based on the general principles that ultimately promote healthy
-          communities as well as the assumption that members act in good faith. Guidelines may be
-          amended based on future developments and feedback. Offenses that disrupt our community may
-          result in a temporary mute, permanent mute, or ban - depending on the severity and
-          repetition of the offense. Moderator actions will not be debated publicly nor discussed
-          with other Subscribers that are not directly involved with corresponding incidents. If you
-          seek clarification about a specific action related to you, please open an inquiry with
-          #moderator and an available Moderator will review. Lastly, understand that personal
-          opinions expressed by the Mod Team and Staff are private and should NOT be taken as an
-          official Allstora statement.
+          If you are having any issues, feel free to contact a #moderator or email{' '}
+          <a href="mailto:info@allstora.com">info@allstora.com</a>.
         </p>
       </div>
     </Box>

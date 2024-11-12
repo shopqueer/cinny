@@ -29,6 +29,7 @@ import {
   _ROOM_PATH,
   _SEARCH_PATH,
   _SERVER_PATH,
+  _WELCOME_PATH,
 } from './paths';
 import { isAuthenticated } from '../../client/state/auth';
 import {
@@ -136,6 +137,7 @@ export const createRouter = (clientConfig: ClientConfig, screenSize: ScreenSize)
           }
         >
           {mobile ? null : <Route index element={<WelcomePage />} />}
+          <Route path={_WELCOME_PATH} element={<WelcomePage />} />
           <Route path={_RULES_PATH} element={<HomeRules />} />
           <Route path={_CREATE_PATH} element={<p>create</p>} />
           <Route path={_JOIN_PATH} element={<p>join</p>} />

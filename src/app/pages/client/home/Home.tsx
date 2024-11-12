@@ -33,10 +33,15 @@ import {
   getHomeRoomPath,
   getHomeRulesPath,
   getHomeSearchPath,
+  getHomeWelcomePath,
 } from '../../pathUtils';
 import { getCanonicalAliasOrRoomId } from '../../../utils/matrix';
 import { useSelectedRoom } from '../../../hooks/router/useSelectedRoom';
-import { useHomeRulesSelected, useHomeSearchSelected } from '../../../hooks/router/useHomeSelected';
+import {
+  useHomeRulesSelected,
+  useHomeSearchSelected,
+  useHomeWelcomeSelected,
+} from '../../../hooks/router/useHomeSelected';
 import { useHomeRooms } from './useHomeRooms';
 import { useMatrixClient } from '../../../hooks/useMatrixClient';
 import { VirtualTile } from '../../../components/virtualizer';
@@ -154,43 +159,46 @@ function HomeHeader() {
 }
 
 function HomeEmpty() {
-  const navigate = useNavigate();
+  const rulesSelected = useHomeRulesSelected();
+  const welcomeSelected = useHomeWelcomeSelected();
 
   return (
-    <NavEmptyCenter>
-      <NavEmptyLayout
-        icon={<Icon size="600" src={Icons.Hash} />}
-        title={
-          <Text size="H5" align="Center">
-            No Rooms
-          </Text>
-        }
-        content={
-          <Text size="T300" align="Center">
-            You do not have any rooms yet.
-          </Text>
-        }
-        options={
-          <>
-            <Button onClick={() => openCreateRoom()} variant="Secondary" size="300">
-              <Text size="B300" truncate>
-                Create Room
-              </Text>
-            </Button>
-            <Button
-              onClick={() => navigate(getExplorePath())}
-              variant="Secondary"
-              fill="Soft"
-              size="300"
-            >
-              <Text size="B300" truncate>
-                Explore Community Rooms
-              </Text>
-            </Button>
-          </>
-        }
-      />
-    </NavEmptyCenter>
+    <PageNavContent>
+      <NavCategory>
+        <NavItem variant="Background" radii="400" aria-selected={welcomeSelected}>
+          <NavLink to={getHomeWelcomePath()}>
+            <NavItemContent>
+              <Box as="span" grow="Yes" alignItems="Center" gap="200">
+                <Avatar size="200" radii="400">
+                  <Icon src={Icons.Star} size="100" filled={welcomeSelected} />
+                </Avatar>
+                <Box as="span" grow="Yes">
+                  <Text as="span" size="Inherit" truncate>
+                    Welcome
+                  </Text>
+                </Box>
+              </Box>
+            </NavItemContent>
+          </NavLink>
+        </NavItem>
+        <NavItem variant="Background" radii="400" aria-selected={rulesSelected}>
+          <NavLink to={getHomeRulesPath()}>
+            <NavItemContent>
+              <Box as="span" grow="Yes" alignItems="Center" gap="200">
+                <Avatar size="200" radii="400">
+                  <Icon src={Icons.Flag} size="100" filled={rulesSelected} />
+                </Avatar>
+                <Box as="span" grow="Yes">
+                  <Text as="span" size="Inherit" truncate>
+                    Server Rules
+                  </Text>
+                </Box>
+              </Box>
+            </NavItemContent>
+          </NavLink>
+        </NavItem>
+      </NavCategory>
+    </PageNavContent>
   );
 }
 
@@ -207,6 +215,7 @@ export function Home() {
   const selectedRoomId = useSelectedRoom();
   const searchSelected = useHomeSearchSelected();
   const rulesSelected = useHomeRulesSelected();
+  const welcomeSelected = useHomeWelcomeSelected();
   const noRoomToDisplay = rooms.length === 0;
   const [closedCategories, setClosedCategories] = useAtom(useClosedNavCategoriesAtom());
 
@@ -242,6 +251,22 @@ export function Home() {
         <PageNavContent scrollRef={scrollRef}>
           <Box direction="Column" gap="300">
             <NavCategory>
+              <NavItem variant="Background" radii="400" aria-selected={welcomeSelected}>
+                <NavLink to={getHomeWelcomePath()}>
+                  <NavItemContent>
+                    <Box as="span" grow="Yes" alignItems="Center" gap="200">
+                      <Avatar size="200" radii="400">
+                        <Icon src={Icons.Star} size="100" filled={welcomeSelected} />
+                      </Avatar>
+                      <Box as="span" grow="Yes">
+                        <Text as="span" size="Inherit" truncate>
+                          Welcome
+                        </Text>
+                      </Box>
+                    </Box>
+                  </NavItemContent>
+                </NavLink>
+              </NavItem>
               <NavItem variant="Background" radii="400" aria-selected={rulesSelected}>
                 <NavLink to={getHomeRulesPath()}>
                   <NavItemContent>
@@ -258,6 +283,7 @@ export function Home() {
                   </NavItemContent>
                 </NavLink>
               </NavItem>
+
               <NavItem variant="Background" radii="400" aria-selected={searchSelected}>
                 <NavLink to={getHomeSearchPath()}>
                   <NavItemContent>

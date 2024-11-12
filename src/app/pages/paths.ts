@@ -23,6 +23,7 @@ export const _CREATE_PATH = 'create/';
 export const _JOIN_PATH = 'join/';
 export const _LOBBY_PATH = 'lobby/';
 export const _RULES_PATH = 'server-rules/';
+export const _WELCOME_PATH = 'welcome';
 
 /**
  * array of rooms and senders mxId assigned
@@ -50,6 +51,7 @@ export const HOME_RULES_PATH = `/home/${_RULES_PATH}`;
 export const HOME_JOIN_PATH = `/home/${_JOIN_PATH}`;
 export const HOME_SEARCH_PATH = `/home/${_SEARCH_PATH}`;
 export const HOME_ROOM_PATH = `/home/${_ROOM_PATH}`;
+export const HOME_WELCOME_PATH = `/home/${_WELCOME_PATH}`;
 
 export const DIRECT_PATH = '/direct/';
 export type DirectCreateSearchParams = {
