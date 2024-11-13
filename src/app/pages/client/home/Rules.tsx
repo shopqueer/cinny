@@ -1,7 +1,6 @@
 import React, { RefObject, useRef } from 'react';
-import { ScrollTopContainer } from '../../../components/scroll-top-container';
 import { Box, Icon, IconButton, Icons, Scroll, Text } from 'folds';
-import { useHomeRooms } from './useHomeRooms';
+import { ScrollTopContainer } from '../../../components/scroll-top-container';
 import { ScreenSize, useScreenSizeContext } from '../../../hooks/useScreenSize';
 import { Page, PageContent, PageContentCenter, PageHeader } from '../../../components/page';
 import { BackRouteHandler } from '../../../components/BackRouteHandler';
@@ -154,7 +153,7 @@ export function HomeRules() {
           <Box justifyContent="Center" alignItems="Center" gap="200">
             {screenSize !== ScreenSize.Mobile && <Icon size="400" src={Icons.Flag} />}
             <Text size="H3" truncate>
-              Rules
+              Guidelines
             </Text>
           </Box>
           <Box grow="Yes" basis="No" />
