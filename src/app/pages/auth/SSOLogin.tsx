@@ -4,12 +4,12 @@ import React, { useMemo } from 'react';
 import { useAutoDiscoveryInfo } from '../../hooks/useAutoDiscoveryInfo';
 
 type SSOLoginProps = {
-  providers: IIdentityProvider[];
-  asIcons?: boolean;
+  providers?: IIdentityProvider[];
   redirectUrl: string;
+  saveScreenSpace?: boolean;
 };
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
+export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginProps) {
   const discovery = useAutoDiscoveryInfo();
   const baseUrl = discovery['m.homeserver'].base_url;
   const mx = useMemo(() => createClient({ baseUrl }), [baseUrl]);
@@ -41,51 +41,52 @@ export function SSOLogin({ providers, redirectUrl, asIcons }: SSOLoginProps) {
 
   return (
     <Box justifyContent="Center" gap="600" wrap="Wrap">
-      {providers.map((provider) => {
-        const { id, name, icon } = provider;
-        const iconUrl = icon && mx.mxcUrlToHttp(icon, 96, 96, 'crop', false);
+      {providers ? (
+        providers.map((provider) => {
+          const { id, name, icon } = provider;
+          const iconUrl = icon && mx.mxcUrlToHttp(icon, 96, 96, 'crop', false);
 
-        const buttonTitle = `Join the conversation`;
+          const buttonTitle = `Join the conversation`;
 
-        if (!anyAsBtn && iconUrl && asIcons) {
+          if (!anyAsBtn && iconUrl) {
+            return (
+              <Avatar
+                style={{ cursor: 'pointer' }}
+                key={id}
+                as="a"
+                href={getSSOIdUrl(id)}
+                aria-label={buttonTitle}
+                size="300"
+                radii="300"
+              >
+                <AvatarImage src={iconUrl} alt={name} title={buttonTitle} />
+              </Avatar>
+            );
+          }
+
           return (
-            <Avatar
-              style={{ cursor: 'pointer' }}
+            <Button
+              style={{ width: '100%' }}
               key={id}
               as="a"
               href={getSSOIdUrl(id)}
-              aria-label={buttonTitle}
-              size="300"
-              radii="300"
+              size="500"
+              variant="Secondary"
+              fill="Soft"
+              outlined
+              target={iframe ? '_blank' : undefined}
+              before={iconUrl && (
+                <Avatar size="200" radii="300">
+                  <AvatarImage src={iconUrl} alt={name} />
+                </Avatar>
+              )}
             >
-              <AvatarImage src={iconUrl} alt={name} title={buttonTitle} />
-            </Avatar>
+              <Text align="Center" size="B500" truncate>
+                {buttonTitle}
+              </Text>
+            </Button>
           );
-        }
-
-        return (
-          <Button
-            style={{ width: '100%' }}
-            key={id}
-            as="a"
-            href={getSSOIdUrl(id)}
-            size="500"
-            variant="Secondary"
-            fill="Soft"
-            outlined
-            target={iframe ? '_blank' : undefined}
-            before={iconUrl && (
-              <Avatar size="200" radii="300">
-                <AvatarImage src={iconUrl} alt={name} />
-              </Avatar>
-            )}
-          >
-            <Text align="Center" size="B500" truncate>
-              {buttonTitle}
-            </Text>
-          </Button>
-        );
-      })}
+        })}
     </Box >
   );
 }

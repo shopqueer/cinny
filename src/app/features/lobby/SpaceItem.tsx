@@ -35,6 +35,8 @@ import { ErrorCode } from '../../cs-errorcode';
 import { useDraggableItem } from './DnD';
 import { openCreateRoom, openSpaceAddExisting } from '../../../client/action/navigation';
 import { stopPropagation } from '../../utils/keyboard';
+import { mxcUrlToHttp } from '../../utils/matrix';
+import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
 
 function SpaceProfileLoading() {
   return (
@@ -388,6 +390,7 @@ export const SpaceItemCard = as<'div', SpaceItemCardProps>(
     ref
   ) => {
     const mx = useMatrixClient();
+    const useAuthentication = useMediaAuthentication();
     const { roomId, content } = item;
     const space = getRoom(roomId);
     const targetRef = useRef<HTMLDivElement>(null);
@@ -412,7 +415,7 @@ export const SpaceItemCard = as<'div', SpaceItemCardProps>(
                     <SpaceProfile
                       roomId={roomId}
                       name={localSummary.name}
-                      avatarUrl={getRoomAvatarUrl(mx, space, 96)}
+                      avatarUrl={getRoomAvatarUrl(mx, space, 96, useAuthentication)}
                       suggested={content.suggested}
                       closed={closed}
                       categoryId={categoryId}
@@ -449,7 +452,7 @@ export const SpaceItemCard = as<'div', SpaceItemCardProps>(
                         name={summaryState.data.name || summaryState.data.canonical_alias || roomId}
                         avatarUrl={
                           summaryState.data?.avatar_url
-                            ? mx.mxcUrlToHttp(summaryState.data.avatar_url, 96, 96, 'crop') ??
+                            ? mxcUrlToHttp(mx, summaryState.data.avatar_url, useAuthentication, 96, 96, 'crop') ??
                             undefined
                             : undefined
                         }
