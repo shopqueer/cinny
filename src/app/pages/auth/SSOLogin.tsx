@@ -29,15 +29,19 @@ export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginPr
   }
   const iframe = isInIframe();
   if (iframe === true) {
-    getSSOIdUrl = (ssoId: string): string => mx.getSsoLoginUrl(hardcodedRedirectUrl, 'sso', ssoId);
+    getSSOIdUrl = (ssoId?: string): string => mx.getSsoLoginUrl(hardcodedRedirectUrl, 'sso', ssoId);
   }
   else {
-    getSSOIdUrl = (ssoId: string): string => mx.getSsoLoginUrl(redirectUrl, 'sso', ssoId);
+    getSSOIdUrl = (ssoId?: string): string => mx.getSsoLoginUrl(redirectUrl, 'sso', ssoId);
   }
 
-  const anyAsBtn = providers.find(
-    (provider) => !provider.icon || !mx.mxcUrlToHttp(provider.icon, 96, 96, 'crop', false)
-  );
+  const withoutIcon = providers
+    ? providers.find(
+      (provider) => !provider.icon || !mx.mxcUrlToHttp(provider.icon, 96, 96, 'crop', false)
+    )
+    : true;
+
+  const renderAsIcons = withoutIcon ? false : saveScreenSpace && providers && providers.length > 2;
 
   return (
     <Box justifyContent="Center" gap="600" wrap="Wrap">
@@ -46,9 +50,9 @@ export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginPr
           const { id, name, icon } = provider;
           const iconUrl = icon && mx.mxcUrlToHttp(icon, 96, 96, 'crop', false);
 
-          const buttonTitle = `Join the conversation`;
+          const buttonTitle = `Join the Conversation`;
 
-          if (!anyAsBtn && iconUrl) {
+          if (renderAsIcons) {
             return (
               <Avatar
                 style={{ cursor: 'pointer' }}
@@ -59,7 +63,7 @@ export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginPr
                 size="300"
                 radii="300"
               >
-                <AvatarImage src={iconUrl} alt={name} title={buttonTitle} />
+                <AvatarImage src={iconUrl!} alt={name} title={buttonTitle} />
               </Avatar>
             );
           }
@@ -74,19 +78,35 @@ export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginPr
               variant="Secondary"
               fill="Soft"
               outlined
-              target={iframe ? '_blank' : undefined}
-              before={iconUrl && (
-                <Avatar size="200" radii="300">
-                  <AvatarImage src={iconUrl} alt={name} />
-                </Avatar>
-              )}
+              before={
+                iconUrl && (
+                  <Avatar size="200" radii="300">
+                    <AvatarImage src={iconUrl} alt={name} />
+                  </Avatar>
+                )
+              }
             >
               <Text align="Center" size="B500" truncate>
                 {buttonTitle}
               </Text>
             </Button>
           );
-        })}
-    </Box >
+        })
+      ) : (
+        <Button
+          style={{ width: '100%' }}
+          as="a"
+          href={getSSOIdUrl()}
+          size="500"
+          variant="Secondary"
+          fill="Soft"
+          outlined
+        >
+          <Text align="Center" size="B500" truncate>
+            Continue with SSO
+          </Text>
+        </Button>
+      )}
+    </Box>
   );
 }
