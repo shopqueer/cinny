@@ -10,7 +10,6 @@ import { BackRouteHandler } from '../../components/BackRouteHandler';
 import { ScreenSize } from '../../hooks/useScreenSize';
 import settings from '../../../client/state/settings';
 import { useMatrixClient } from '../../hooks/useMatrixClient';
-import { end } from 'slate';
 
 
 export function WelcomePage() {
