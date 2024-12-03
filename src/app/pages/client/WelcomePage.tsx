@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Box, Icon, IconButton, Icons, Scroll, Text, config, toRem } from 'folds';
 import { Link } from 'react-router-dom';
 import { Page, PageHeader, PageHero, PageHeroSection } from '../../components/page';
@@ -9,6 +9,8 @@ import * as useScreenSize from '../../hooks/useScreenSize';
 import { BackRouteHandler } from '../../components/BackRouteHandler';
 import { ScreenSize } from '../../hooks/useScreenSize';
 import settings from '../../../client/state/settings';
+import { useMatrixClient } from '../../hooks/useMatrixClient';
+import { end } from 'slate';
 
 
 export function WelcomePage() {
@@ -17,6 +19,21 @@ export function WelcomePage() {
 
   const currentThemeIndex = settings.getThemeIndex()
   const wordmarkSvg = currentThemeIndex < 2 ? WordmarkBlackSVG : WordmarkWhiteSVG
+
+  const [joinedRooms, setJoinedRooms] = useState<string[]>([])
+  const mx = useMatrixClient();
+  useEffect(() => {
+    mx.getJoinedRooms().then(obj => setJoinedRooms(obj.joined_rooms))
+  }, [mx])
+
+
+  const SPACES_MAP: {[key:string]: {[key2:string]: string}} = {
+    "!PXXwRDLBXUcZVPlYjy:kiki-server.allstora.com": {"discussion": "!JvpqSiSSyYmZCgEAoY:kiki-server.allstora.com", "intro": "!wPQBycjzCRnsZjbOuS:kiki-server.allstora.com", "hostName": "Eric"},
+    "!QylPBYzSFBgSmRjpAx:kiki-server.allstora.com": {"discussion": "!JFFlUHoJYQtSqVKQxQ:kiki-server.allstora.com", "intro": "!MrneWlEWJPwrMuFkEw:kiki-server.allstora.com", "hostName": "Jordy"},
+    "!OAMvlYAJNHAeJAHqMJ:kiki-server.allstora.com": {"discussion": "!KbdMTynRVIyEstrZBb:kiki-server.allstora.com", "intro": "!neoqrlvgGuUZAZLaQD:kiki-server.allstora.com", "hostName": "Kate and Leisha"},
+    "!SIvciPzZUwTOeumsjM:kiki-server.allstora.com": {"discussion": "!wsavZGmlDvFYBEomkN:kiki-server.allstora.com", "intro": "!ZSDcqngwrcRomAvAHg:kiki-server.allstora.com", "hostName": "Dylan"},
+    "!gofhedAMppDZiREscQ:kiki-server.allstora.com": {"discussion": "!iKEWEyyYVAsGjSYEwq:kiki-server.allstora.com", "intro": "!bMTPoMcAggFZmReBNZ:kiki-server.allstora.com", "hostName": "Gus"},
+  }
 
   return (
     <Page>
@@ -57,33 +74,28 @@ export function WelcomePage() {
               <Box justifyContent="Center">
                 <Box grow="Yes" style={{ maxWidth: toRem(300) }} direction="Column" gap="300">
                   If you’re new, here are a few ways to get started:
-                  <ol>
-                    <li>
-                      <Link to={getHomeRulesPath()}>Check out our Community Guidelines.</Link>
-                    </li>
-                    <li>
-                      <Link
-                        to={getSpaceRoomPath(
-                          '!PXXwRDLBXUcZVPlYjy:kiki-server.allstora.com',
-                          '!wPQBycjzCRnsZjbOuS:kiki-server.allstora.com'
-                        )}
-                      >
-                        Introduce Yourself!
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to={getSpaceRoomPath(
-                        '!PXXwRDLBXUcZVPlYjy:kiki-server.allstora.com',
-                        '!JvpqSiSSyYmZCgEAoY:kiki-server.allstora.com'
-                      )}>
-                        Answer today’s Discussion Prompt.
-                      </Link>
-                    </li>
-                  </ol>
+                    {joinedRooms.filter((roomId) => roomId in SPACES_MAP).slice(0, 1).map((spaceId) => (
+                    <ol>
+                      <li>
+                        <Link to={getHomeRulesPath()}>Check out our Community Guidelines.</Link>
+                      </li>
+                    
+                      <li key={SPACES_MAP[spaceId].intro}>
+                        <Link to={getSpaceRoomPath(spaceId, SPACES_MAP[spaceId].intro)}>
+                          Introduce Yourself!
+                        </Link>
+                      </li>
+                      <li key={SPACES_MAP[spaceId].discussion}>
+                        <Link to={getSpaceRoomPath(spaceId, SPACES_MAP[spaceId].discussion)}>
+                          Answer today’s Discussion Prompt.
+                        </Link>
+                      </li>
+                    </ol>
+
+                    ))}
                   And one more thing: don't forget to be Spoiler-Savvy. if you’re posting something that might surprise another reader, use the Spoiler feature  to make sure you’re not spilling the tea before it’s hot.
                   <p>
-                    Glad you’re here, <br />
-                    Eric
+                    Glad you’re here,<br /> Allstora
                   </p>
                 </Box>
               </Box>
