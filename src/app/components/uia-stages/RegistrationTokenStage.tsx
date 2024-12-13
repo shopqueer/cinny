@@ -49,12 +49,12 @@ function RegistrationTokenErrorDialog({
             required
           />
         </Box>
-        <Button variant="Critical" type="submit">
+        <Button variant="Critical" type="submit" radii="Pill">
           <Text as="span" size="B400">
             Retry
           </Text>
         </Button>
-        <Button variant="Critical" fill="None" outlined type="button" onClick={onCancel}>
+        <Button variant="Critical" fill="None" outlined type="button" onClick={onCancel} radii="Pill">
           <Text as="span" size="B400">
             Cancel
           </Text>

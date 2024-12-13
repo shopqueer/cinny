@@ -46,7 +46,7 @@
     border-radius: inherit;
 
     .text {
-      color: white;
+      color: var(--tc-primary-high);
     }
     &--active {
       @extend .avatar__border;

@@ -24,6 +24,7 @@ export const Reaction = as<
     gap="200"
     {...props}
     ref={ref}
+    style={{borderRadius: '50px', padding: '4px 8px'}}
   >
     <Text className={css.ReactionText} as="span" size="T400">
       {reaction.startsWith('mxc://') ? (

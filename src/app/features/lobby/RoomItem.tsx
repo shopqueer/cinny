@@ -103,7 +103,7 @@ function RoomJoinButton({ roomId, via }: RoomJoinButtonProps) {
 function RoomProfileLoading() {
   return (
     <Box grow="Yes" gap="300">
-      <Avatar className={styleCss.AvatarPlaceholder} />
+      <Avatar className={styleCss.AvatarPlaceholder} radii="Pill" />
       <Box grow="Yes" direction="Column" gap="100">
         <Box gap="200" alignItems="Center">
           <Box className={styleCss.LinePlaceholder} shrink="No" style={{ maxWidth: toRem(80) }} />
@@ -134,7 +134,7 @@ function RoomProfileError({ roomId, suggested, error, via }: RoomProfileErrorPro
 
   return (
     <Box grow="Yes" gap="300">
-      <Avatar>
+      <Avatar radii="Pill">
         <RoomAvatar
           roomId={roomId}
           src={undefined}
@@ -207,7 +207,7 @@ function RoomProfile({
 }: RoomProfileProps) {
   return (
     <Box grow="Yes" gap="300">
-      <Avatar>
+      <Avatar radii="Pill">
         <RoomAvatar
           roomId={roomId}
           src={avatarUrl}

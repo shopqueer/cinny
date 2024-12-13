@@ -9,7 +9,7 @@ const avatarBg: CSSProperties = { backgroundColor: color.SurfaceVariant.Containe
 
 export const DefaultPlaceholder = as<'div'>(({ ...props }, ref) => (
   <MessageBase>
-    <ModernLayout {...props} ref={ref} before={<Avatar style={avatarBg} size="300" />}>
+    <ModernLayout {...props} ref={ref} before={<Avatar style={avatarBg} size="300" radii="Pill" />}>
       <Box style={contentMargin} grow="Yes" direction="Column" gap="200">
         <Box grow="Yes" gap="200" alignItems="Center" justifyContent="SpaceBetween">
           <LinePlaceholder style={{ maxWidth: toRem(randomNumberBetween(40, 100)) }} />

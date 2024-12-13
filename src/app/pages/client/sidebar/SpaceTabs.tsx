@@ -143,7 +143,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(
             onClick={handleMarkAsRead}
             size="300"
             after={<Icon size="100" src={Icons.CheckTwice} />}
-            radii="300"
+            radii="Pill"
             disabled={!unread}
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -153,7 +153,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(
           {onUnpin && (
             <MenuItem
               size="300"
-              radii="300"
+              radii="Pill"
               onClick={handleUnpin}
               after={<Icon size="100" src={Icons.Pin} />}
             >
@@ -171,7 +171,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(
             fill="None"
             size="300"
             after={<Icon size="100" src={Icons.UserPlus} />}
-            radii="300"
+            radii="Pill"
             disabled={!canInvite}
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -182,7 +182,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(
             onClick={handleCopyLink}
             size="300"
             after={<Icon size="100" src={Icons.Link} />}
-            radii="300"
+            radii="Pill"
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
               Copy Link
@@ -192,7 +192,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(
             onClick={handleRoomSettings}
             size="300"
             after={<Icon size="100" src={Icons.Setting} />}
-            radii="300"
+            radii="Pill"
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
               Space Settings
@@ -502,7 +502,7 @@ function OpenedSpaceFolder({ folder, onClose, children }: OpenedSpaceFolderProps
     >
       <SidebarFolderDropTarget ref={aboveTargetRef} position="Top" />
       <SidebarAvatar size="300">
-        <IconButton data-id={folder.id} size="300" variant="Background" onClick={onClose}>
+        <IconButton data-id={folder.id} size="300" variant="Background" onClick={onClose} radii="Pill">
           <Icon size="400" src={Icons.ChevronTop} filled />
         </IconButton>
       </SidebarAvatar>
@@ -557,7 +557,7 @@ function ClosedSpaceFolder({
                   if (!space) return null;
 
                   return (
-                    <SidebarAvatar key={sId} size="200" radii="300">
+                    <SidebarAvatar key={sId} size="200" radii="Pill">
                       <RoomAvatar
                         roomId={space.roomId}
                         src={getRoomAvatarUrl(mx, space, 96, useAuthentication) ?? undefined}

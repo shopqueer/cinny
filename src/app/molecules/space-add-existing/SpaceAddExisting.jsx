@@ -180,7 +180,7 @@ function SpaceAddExistingContent({ roomId, spaces: onlySpaces }) {
           {process && <Spinner size="small" />}
           <Text weight="medium">{process || `${selected.length} item selected`}</Text>
           {!process && (
-            <Button onClick={handleAdd} variant="primary">
+            <Button onClick={handleAdd} variant="primary" rounded>
               Add
             </Button>
           )}

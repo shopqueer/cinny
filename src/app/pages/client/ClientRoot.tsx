@@ -68,6 +68,7 @@ function ClientRootOptions({ mx }: { mx: MatrixClient }) {
       }}
       variant="Background"
       fill="None"
+      radii="Pill"
       onClick={handleToggle}
     >
       <Icon size="200" src={Icons.VerticalDots} />
@@ -90,7 +91,7 @@ function ClientRootOptions({ mx }: { mx: MatrixClient }) {
           >
             <Menu>
               <Box direction="Column" gap="100" style={{ padding: config.space.S100 }}>
-                <MenuItem onClick={() => clearCacheAndReload(mx)} size="300" radii="300">
+                <MenuItem onClick={() => clearCacheAndReload(mx)} size="300" radii="Pill">
                   <Text as="span" size="T300" truncate>
                     Clear Cache and Reload
                   </Text>
@@ -98,7 +99,7 @@ function ClientRootOptions({ mx }: { mx: MatrixClient }) {
                 <MenuItem
                   onClick={() => logoutClient(mx)}
                   size="300"
-                  radii="300"
+                  radii="Pill"
                   variant="Critical"
                   fill="None"
                 >
@@ -184,7 +185,7 @@ export function ClientRoot({ children }: ClientRootProps) {
                 {startState.status === AsyncStatus.Error && (
                   <Text>{`Failed to load. ${startState.error.message}`}</Text>
                 )}
-                <Button variant="Critical" onClick={mx ? () => startMatrix(mx) : loadMatrix}>
+                <Button variant="Critical" onClick={mx ? () => startMatrix(mx) : loadMatrix} radii="Pill">
                   <Text as="span" size="B400">
                     Retry
                   </Text>

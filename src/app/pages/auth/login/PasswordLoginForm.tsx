@@ -97,7 +97,7 @@ function UsernameHint({ server }: { server: string }) {
         type="button"
         variant="Background"
         size="300"
-        radii="300"
+        radii="Pill"
         aria-pressed={!!anchor}
       >
         <Icon style={{ opacity: config.opacity.P300 }} size="100" src={Icons.Info} />
@@ -208,6 +208,7 @@ export function PasswordLoginForm({ defaultUsername, defaultEmail }: PasswordLog
           name="usernameInput"
           variant="Background"
           size="500"
+          radii="Pill"
           required
           outlined
           after={<UsernameHint server={server} />}
@@ -227,7 +228,7 @@ export function PasswordLoginForm({ defaultUsername, defaultEmail }: PasswordLog
         <Text as="label" size="L400" priority="300">
           Password
         </Text>
-        <PasswordInput name="passwordInput" variant="Background" size="500" outlined required />
+        <PasswordInput name="passwordInput" variant="Background" size="500" outlined required radii="Pill" />
         <Box alignItems="Start" justifyContent="SpaceBetween" gap="200">
           {loginState.status === AsyncStatus.Error && (
             <>

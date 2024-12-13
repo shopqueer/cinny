@@ -54,7 +54,7 @@ export const Footer = style({
   marginTop: 0,
   minHeight: toRem(40),
 
-  borderRadius: config.radii.R400,
+  borderRadius: 'var(--bo-rounded-radius)',
   backgroundColor: color.SurfaceVariant.Container,
   color: color.SurfaceVariant.OnContainer,
 });

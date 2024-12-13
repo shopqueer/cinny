@@ -161,7 +161,7 @@ export function SearchResultGroup({
     <Box direction="Column" gap="200">
       <Header size="300">
         <Box gap="200" grow="Yes">
-          <Avatar size="200" radii="300">
+          <Avatar size="200" radii="Pill">
             <RoomAvatar
               roomId={room.roomId}
               src={getRoomAvatarUrl(mx, room, 96, useAuthentication)}
@@ -207,7 +207,7 @@ export function SearchResultGroup({
               <ModernLayout
                 before={
                   <AvatarBase>
-                    <Avatar size="300">
+                    <Avatar size="300" radii="Pill">
                       <UserAvatar
                         userId={event.sender}
                         src={
@@ -236,7 +236,7 @@ export function SearchResultGroup({
                       data-event-id={mainEventId}
                       onClick={handleOpenClick}
                       variant="Secondary"
-                      radii="400"
+                      radii="Pill"
                     >
                       <Text size="T200">Open</Text>
                     </Chip>

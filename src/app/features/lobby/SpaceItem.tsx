@@ -42,7 +42,7 @@ function SpaceProfileLoading() {
   return (
     <Box gap="200" alignItems="Center">
       <Box grow="Yes" gap="200" alignItems="Center" className={css.HeaderChipPlaceholder}>
-        <Avatar className={styleCss.AvatarPlaceholder} size="200" radii="300" />
+        <Avatar className={styleCss.AvatarPlaceholder} size="200" radii="Pill" />
         <Box
           className={styleCss.LinePlaceholder}
           shrink="No"
@@ -71,8 +71,9 @@ function UnknownPrivateSpaceProfile({
       className={css.HeaderChip}
       variant="Surface"
       size="500"
+      radii="Pill"
       before={
-        <Avatar size="200" radii="300">
+        <Avatar size="200" radii="Pill">
           <RoomAvatar
             roomId={roomId}
             src={avatarUrl}
@@ -130,10 +131,11 @@ function UnknownSpaceProfile({
       className={css.HeaderChip}
       variant="Surface"
       size="500"
+      radii="Pill"
       onClick={join}
       disabled={!canJoin}
       before={
-        <Avatar size="200" radii="300">
+        <Avatar size="200" radii="Pill">
           <RoomAvatar
             roomId={roomId}
             src={avatarUrl}
@@ -196,8 +198,9 @@ function SpaceProfile({
       className={css.HeaderChip}
       variant="Surface"
       size="500"
+      radii="Pill"
       before={
-        <Avatar size="200" radii="300">
+        <Avatar size="200" radii="Pill">
           <RoomAvatar
             roomId={roomId}
             src={avatarUrl}
@@ -239,6 +242,7 @@ function RootSpaceProfile({ closed, categoryId, handleClose }: RootSpaceProfileP
       className={css.HeaderChip}
       variant="Surface"
       size="500"
+      radii="Pill"
       after={<Icon src={closed ? Icons.ChevronRight : Icons.ChevronBottom} size="50" />}
     >
       <Box alignItems="Center" gap="200">
@@ -286,14 +290,14 @@ function AddRoomButton({ item }: { item: HierarchyItem }) {
           <Menu style={{ padding: config.space.S100 }}>
             <MenuItem
               size="300"
-              radii="300"
+              radii="Pill"
               variant="Primary"
               fill="None"
               onClick={handleCreateRoom}
             >
               <Text size="T300">New Room</Text>
             </MenuItem>
-            <MenuItem size="300" radii="300" fill="None" onClick={handleAddExisting}>
+            <MenuItem size="300" radii="Pill" fill="None" onClick={handleAddExisting}>
               <Text size="T300">Existing Room</Text>
             </MenuItem>
           </Menu>
@@ -338,14 +342,14 @@ function AddSpaceButton({ item }: { item: HierarchyItem }) {
           <Menu style={{ padding: config.space.S100 }}>
             <MenuItem
               size="300"
-              radii="300"
+              radii="Pill"
               variant="Primary"
               fill="None"
               onClick={handleCreateSpace}
             >
               <Text size="T300">New Space</Text>
             </MenuItem>
-            <MenuItem size="300" radii="300" fill="None" onClick={handleAddExisting}>
+            <MenuItem size="300" radii="Pill" fill="None" onClick={handleAddExisting}>
               <Text size="T300">Existing Space</Text>
             </MenuItem>
           </Menu>

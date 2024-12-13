@@ -27,7 +27,7 @@ export function LobbyHero() {
   return (
     <PageHero
       icon={
-        <Avatar size="500">
+        <Avatar size="500" radii="Pill">
           <RoomAvatar
             roomId={space.roomId}
             src={avatarUrl}

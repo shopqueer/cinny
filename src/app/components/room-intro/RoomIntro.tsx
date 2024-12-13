@@ -46,7 +46,7 @@ export const RoomIntro = as<'div', RoomIntroProps>(({ room, ...props }, ref) => 
   return (
     <Box direction="Column" grow="Yes" gap="500" {...props} ref={ref}>
       <Box>
-        <Avatar size="500">
+        <Avatar size="500" radii="Pill">
           <RoomAvatar
             roomId={room.roomId}
             src={avatarHttpUrl ?? undefined}
@@ -76,7 +76,7 @@ export const RoomIntro = as<'div', RoomIntroProps>(({ room, ...props }, ref) => 
             onClick={() => openInviteUser(room.roomId)}
             variant="Secondary"
             size="300"
-            radii="300"
+            radii="Pill"
           >
             <Text size="B300">Invite Member</Text>
           </Button>
@@ -87,7 +87,7 @@ export const RoomIntro = as<'div', RoomIntroProps>(({ room, ...props }, ref) => 
                 variant="Success"
                 size="300"
                 fill="Soft"
-                radii="300"
+                radii="Pill"
               >
                 <Text size="B300">Open Old Room</Text>
               </Button>
@@ -97,7 +97,7 @@ export const RoomIntro = as<'div', RoomIntroProps>(({ room, ...props }, ref) => 
                 variant="Secondary"
                 size="300"
                 fill="Soft"
-                radii="300"
+                radii="Pill"
                 disabled={prevRoomState.status === AsyncStatus.Loading}
                 after={
                   prevRoomState.status === AsyncStatus.Loading ? (

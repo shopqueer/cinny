@@ -109,7 +109,7 @@ function InviteCard({ room, userId, direct, compact, onNavigate }: InviteCardPro
         </Box>
       </Box>
       <Box gap="300">
-        <Avatar size="300">
+        <Avatar size="300" radii="Pill">
           <RoomAvatar
             roomId={room.roomId}
             src={direct ? getDirectRoomAvatarUrl(mx, room, 96, useAuthentication) : getRoomAvatarUrl(mx, room, 96, useAuthentication)}
@@ -176,6 +176,7 @@ function InviteCard({ room, userId, direct, compact, onNavigate }: InviteCardPro
               fill="Soft"
               disabled={joining || leaving}
               before={leaving ? <Spinner variant="Secondary" size="100" /> : undefined}
+              radii="Pill"
             >
               <Text size="B300">Decline</Text>
             </Button>
@@ -187,6 +188,7 @@ function InviteCard({ room, userId, direct, compact, onNavigate }: InviteCardPro
               outlined
               disabled={joining || leaving}
               before={joining ? <Spinner variant="Primary" fill="Soft" size="100" /> : undefined}
+              radii="Pill"
             >
               <Text size="B300">Accept</Text>
             </Button>
@@ -237,7 +239,7 @@ export function Invites() {
             {screenSize === ScreenSize.Mobile && (
               <BackRouteHandler>
                 {(onBack) => (
-                  <IconButton onClick={onBack}>
+                  <IconButton onClick={onBack} radii="Pill">
                     <Icon src={Icons.ArrowLeft} />
                   </IconButton>
                 )}

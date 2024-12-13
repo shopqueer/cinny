@@ -67,7 +67,7 @@ const DirectMenu = forwardRef<HTMLDivElement, DirectMenuProps>(({ requestClose }
           onClick={handleMarkAsRead}
           size="300"
           after={<Icon size="100" src={Icons.CheckTwice} />}
-          radii="300"
+          radii="Pill"
           aria-disabled={!unread}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -100,7 +100,7 @@ function DirectHeader() {
             </Text>
           </Box>
           <Box>
-            <IconButton aria-pressed={!!menuAnchor} variant="Background" onClick={handleOpenMenu}>
+            <IconButton aria-pressed={!!menuAnchor} variant="Background" onClick={handleOpenMenu} radii="Pill">
               <Icon src={Icons.VerticalDots} size="200" />
             </IconButton>
           </Box>
@@ -200,11 +200,11 @@ export function Direct() {
         <PageNavContent scrollRef={scrollRef}>
           <Box direction="Column" gap="300">
             <NavCategory>
-              <NavItem variant="Background" radii="400">
+              <NavItem variant="Background" radii="Pill">
                 <NavButton onClick={() => openInviteUser()}>
                   <NavItemContent>
                     <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                      <Avatar size="200" radii="400">
+                      <Avatar size="200" radii="Pill">
                         <Icon src={Icons.Plus} size="100" />
                       </Avatar>
                       <Box as="span" grow="Yes">

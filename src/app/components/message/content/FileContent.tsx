@@ -54,7 +54,7 @@ const renderErrorButton = (retry: () => void, text: string) => (
         variant="Critical"
         fill="Soft"
         outlined
-        radii="300"
+        radii="Pill"
         onClick={retry}
         before={<Icon size="100" src={Icons.Warning} filled />}
       >
@@ -134,7 +134,7 @@ export function ReadTextFile({ body, mimeType, url, encInfo, renderViewer }: Rea
         <Button
           variant="Secondary"
           fill="Solid"
-          radii="300"
+          radii="Pill"
           size="400"
           onClick={() =>
             textState.status === AsyncStatus.Success ? setTextViewer(true) : loadText()
@@ -219,7 +219,7 @@ export function ReadPdfFile({ body, mimeType, url, encInfo, renderViewer }: Read
         <Button
           variant="Secondary"
           fill="Solid"
-          radii="300"
+          radii="Pill"
           size="400"
           onClick={() => (pdfState.status === AsyncStatus.Success ? setPdfViewer(true) : loadPdf())}
           disabled={pdfState.status === AsyncStatus.Loading}
@@ -270,7 +270,7 @@ export function DownloadFile({ body, mimeType, url, info, encInfo }: DownloadFil
     <Button
       variant="Secondary"
       fill="Soft"
-      radii="300"
+      radii="Pill"
       size="400"
       onClick={() =>
         downloadState.status === AsyncStatus.Success

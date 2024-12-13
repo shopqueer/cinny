@@ -73,8 +73,8 @@ function ImagePackProfile({
                 <Input name="nameInput" label="Name" value={displayName} required />
                 <Input name="attributionInput" label="Attribution" value={attribution} resizable />
                 <div>
-                  <Button variant="primary" type="submit">Save</Button>
-                  <Button onClick={() => setIsEdit(false)}>Cancel</Button>
+                  <Button variant="primary" type="submit" rounded>Save</Button>
+                  <Button onClick={() => setIsEdit(false)} rounded>Cancel</Button>
                 </div>
               </form>
             ) : (
@@ -93,6 +93,7 @@ function ImagePackProfile({
         <Button
           onClick={onUsageChange ? handleUsageSelect : undefined}
           iconSrc={onUsageChange ? ChevronBottomIC : null}
+          rounded
         >
           <Text>
             {usage === 'emoticon' && 'Emoji'}

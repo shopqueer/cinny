@@ -43,7 +43,7 @@ function BtnTooltip({ text, shortCode }: { text: string; shortCode?: string }) {
       <Box gap="200" direction="Column" alignItems="Center">
         <Text align="Center">{text}</Text>
         {shortCode && (
-          <Badge as="kbd" radii="300" size="500">
+          <Badge as="kbd" radii="Pill" size="500">
             <Text size="T200" align="Center">
               {shortCode}
             </Text>
@@ -77,7 +77,7 @@ export function MarkButton({ format, icon, tooltip }: MarkButtonProps) {
           onClick={handleClick}
           aria-pressed={isMarkActive(editor, format)}
           size="400"
-          radii="300"
+          radii="Pill"
           disabled={disableInline}
         >
           <Icon size="200" src={icon} />
@@ -109,7 +109,7 @@ export function BlockButton({ format, icon, tooltip }: BlockButtonProps) {
           onClick={handleClick}
           aria-pressed={isBlockActive(editor, format)}
           size="400"
-          radii="300"
+          radii="Pill"
         >
           <Icon size="200" src={icon} />
         </IconButton>
@@ -166,7 +166,7 @@ export function HeadingBlockButton() {
                     ref={triggerRef}
                     onClick={() => handleMenuSelect(1)}
                     size="400"
-                    radii="300"
+                    radii="Pill"
                   >
                     <Icon size="200" src={Icons.Heading1} />
                   </IconButton>
@@ -181,7 +181,7 @@ export function HeadingBlockButton() {
                     ref={triggerRef}
                     onClick={() => handleMenuSelect(2)}
                     size="400"
-                    radii="300"
+                    radii="Pill"
                   >
                     <Icon size="200" src={Icons.Heading2} />
                   </IconButton>
@@ -196,7 +196,7 @@ export function HeadingBlockButton() {
                     ref={triggerRef}
                     onClick={() => handleMenuSelect(3)}
                     size="400"
-                    radii="300"
+                    radii="Pill"
                   >
                     <Icon size="200" src={Icons.Heading3} />
                   </IconButton>
@@ -213,7 +213,7 @@ export function HeadingBlockButton() {
         onClick={handleMenuOpen}
         aria-pressed={isActive}
         size="400"
-        radii="300"
+        radii="Pill"
       >
         <Icon size="200" src={level ? Icons[`Heading${level}`] : Icons.Heading1} />
         <Icon size="200" src={isActive ? Icons.Cross : Icons.ChevronBottom} />
@@ -243,7 +243,7 @@ export function ExitFormatting({ tooltip }: ExitFormattingProps) {
           variant="SurfaceVariant"
           onClick={handleClick}
           size="400"
-          radii="300"
+          radii="Pill"
         >
           <Text size="B400">{`Exit ${KeySymbol.Hyper}`}</Text>
         </IconButton>
@@ -347,7 +347,7 @@ export function Toolbar() {
                   onClick={() => setIsMarkdown(!isMarkdown)}
                   aria-pressed={isMarkdown}
                   size="300"
-                  radii="300"
+                  radii="Pill"
                   disabled={disableInline || !!isAnyMarkActive(editor)}
                 >
                   <Icon size="200" src={Icons.Markdown} filled={isMarkdown} />

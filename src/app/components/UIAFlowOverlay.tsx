@@ -46,7 +46,7 @@ export function UIAFlowOverlay({
             </Chip>
             <TooltipProvider
               tooltip={
-                <Tooltip variant="Critical">
+                <Tooltip variant="Critical" radii="Pill">
                   <Text>Exit</Text>
                 </Tooltip>
               }

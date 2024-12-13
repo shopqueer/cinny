@@ -58,7 +58,7 @@ function ResetPasswordComplete({ email }: { email?: string }) {
               <Text>
                 Password has been reset successfully. Please login with your new password.
               </Text>
-              <Button variant="Primary" onClick={handleClick}>
+              <Button variant="Primary" onClick={handleClick} radii="Pill">
                 <Text size="B400" as="span">
                   Login
                 </Text>
@@ -179,6 +179,7 @@ export function PasswordResetForm({ defaultEmail }: PasswordResetFormProps) {
           name="emailInput"
           variant="Background"
           size="500"
+          radii="Pill"
           required
           outlined
         />
@@ -201,6 +202,7 @@ export function PasswordResetForm({ defaultEmail }: PasswordResetFormProps) {
                 name="passwordInput"
                 variant="Background"
                 size="500"
+                radii="Pill"
                 outlined
                 required
               />
@@ -215,6 +217,7 @@ export function PasswordResetForm({ defaultEmail }: PasswordResetFormProps) {
                 name="confirmPasswordInput"
                 variant="Background"
                 size="500"
+                radii="Pill"
                 style={{ color: match ? undefined : color.Critical.Main }}
                 outlined
                 required

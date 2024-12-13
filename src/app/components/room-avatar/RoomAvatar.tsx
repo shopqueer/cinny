@@ -21,7 +21,7 @@ export function RoomAvatar({ roomId, src, alt, renderFallback }: RoomAvatarProps
   if (!src || error) {
     return (
       <AvatarFallback
-        style={{ backgroundColor: colorMXID(roomId ?? ''), color: color.Surface.Container }}
+        style={{ backgroundColor: colorMXID(roomId ?? ''), color: color.Surface.Container, borderRadius: "100%" }}
         className={css.RoomAvatar}
       >
         {renderFallback()}
@@ -37,6 +37,7 @@ export function RoomAvatar({ roomId, src, alt, renderFallback }: RoomAvatarProps
       onError={() => setError(true)}
       onLoad={handleLoad}
       draggable={false}
+      style={{ borderRadius: '100%' }}
     />
   );
 }

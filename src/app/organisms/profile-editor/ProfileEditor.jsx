@@ -107,7 +107,7 @@ function ProfileEditor({ userId }) {
         value={mx.getUser(mx.getUserId()).displayName}
         forwardRef={displayNameRef}
       />
-      <Button variant="primary" type="submit" disabled={disabled}>
+      <Button variant="primary" type="submit" disabled={disabled} rounded>
         Save
       </Button>
       <Button onClick={cancelDisplayNameChanges}>Cancel</Button>

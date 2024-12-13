@@ -48,7 +48,7 @@ export const EventReaders = as<'div', EventReadersProps>(
           <Box grow="Yes">
             <Text size="H3">Seen by</Text>
           </Box>
-          <IconButton size="300" onClick={requestClose}>
+          <IconButton size="300" onClick={requestClose} radii="Pill">
             <Icon src={Icons.Cross} />
           </IconButton>
         </Header>
@@ -66,13 +66,13 @@ export const EventReaders = as<'div', EventReadersProps>(
                   <MenuItem
                     key={readerId}
                     style={{ padding: `0 ${config.space.S200}` }}
-                    radii="400"
+                    radii="Pill"
                     onClick={() => {
                       requestClose();
                       openProfileViewer(readerId, room.roomId);
                     }}
                     before={
-                      <Avatar size="200">
+                      <Avatar size="200" radii="Pill">
                         <UserAvatar
                           userId={readerId}
                           src={avatarUrl ?? undefined}

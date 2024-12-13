@@ -261,10 +261,10 @@ function RoomAliases({ roomId }) {
 
     return (
       <div className="room-aliases__item-btns">
-        {canPublishAlias && !isMain && <Button onClick={() => handleSetMainAlias(alias)} variant="primary">Set as Main</Button>}
-        {!isPublished && canPublishAlias && <Button onClick={() => handlePublishAlias(alias)} variant="positive">Publish</Button>}
-        {isPublished && canPublishAlias && <Button onClick={() => handleUnPublishAlias(alias)} variant="caution">Un-Publish</Button>}
-        <Button onClick={() => handleDeleteAlias(alias)} variant="danger">Delete</Button>
+        {canPublishAlias && !isMain && <Button onClick={() => handleSetMainAlias(alias)} variant="primary" rounded>Set as Main</Button>}
+        {!isPublished && canPublishAlias && <Button onClick={() => handlePublishAlias(alias)} variant="positive" rounded>Publish</Button>}
+        {isPublished && canPublishAlias && <Button onClick={() => handleUnPublishAlias(alias)} variant="caution" rounded>Un-Publish</Button>}
+        <Button onClick={() => handleDeleteAlias(alias)} variant="danger" rounded>Delete</Button>
       </div>
     );
   };
@@ -334,7 +334,7 @@ function RoomAliases({ roomId }) {
                 required
               />
             </div>
-            <Button variant="primary" type="submit">Add</Button>
+            <Button variant="primary" type="submit" rounded>Add</Button>
           </form>
           <div className="room-aliases__input-status">
             {validate.status === cons.status.SUCCESS && <Text className="room-aliases__valid" variant="b2">{validate.msg}</Text>}
@@ -343,7 +343,7 @@ function RoomAliases({ roomId }) {
         </div>
       )}
       <div className="room-aliases__content">
-        <Button onClick={() => setIsLocalVisible(!isLocalVisible)}>
+        <Button onClick={() => setIsLocalVisible(!isLocalVisible)} rounded>
           {`${isLocalVisible ? 'Hide' : 'Add / View'} local address`}
         </Button>
       </div>

@@ -19,6 +19,11 @@
   cursor: pointer;
   @include state.disabled;
 
+  &.rounded {
+    border-radius: var(--bo-rounded-radius);
+    box-shadow: var(--bs-input-border);
+  }
+
   & .text {
     @extend .cp-txt__ellipsis;
   }
@@ -72,7 +77,8 @@
   @include state.focus(var(--bs-caution-outline));
   @include state.active(var(--bg-caution-active));
 }
-.btn-danger {
+.btn-danger, .btn-danger.rounded {
+  --bs-danger-border: var(--bs-input-danger-border);
   box-shadow: var(--bs-danger-border);
   @include color(var(--tc-danger-high), var(--ic-danger-normal));
   @include state.hover(var(--bg-danger-hover));

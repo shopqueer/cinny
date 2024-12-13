@@ -172,10 +172,10 @@ function RoomProfile({ roomId }) {
       )}
       {status.type !== cons.status.IN_FLIGHT && (
         <div>
-          <Button type="submit" variant="primary">
+          <Button type="submit" variant="primary" rounded>
             Save
           </Button>
-          <Button onClick={handleCancelEditing}>Cancel</Button>
+          <Button onClick={handleCancelEditing} rounded>Cancel</Button>
         </div>
       )}
     </form>

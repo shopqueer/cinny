@@ -46,7 +46,7 @@ function ImagePackItem({
           {onRename && <IconButton tooltip="Rename" size="extra-small" src={PencilIC} onClick={() => onRename(shortcode)} />}
           {onDelete && <IconButton tooltip="Delete" size="extra-small" src={BinIC} onClick={() => onDelete(shortcode)} />}
         </div>
-        <Button onClick={onUsageChange ? handleUsageSelect : undefined}>
+        <Button onClick={onUsageChange ? handleUsageSelect : undefined} rounded>
           {onUsageChange && <RawIcon src={ChevronBottomIC} size="extra-small" />}
           <Text variant="b2">
             {usage === 'emoticon' && 'Emoji'}

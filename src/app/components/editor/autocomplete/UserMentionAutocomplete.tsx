@@ -39,13 +39,13 @@ function UnknownMentionItem({
   return (
     <MenuItem
       as="button"
-      radii="300"
+      radii="Pill"
       onKeyDown={(evt: ReactKeyboardEvent<HTMLButtonElement>) =>
         onTabPress(evt, () => handleAutocomplete(userId, name))
       }
       onClick={() => handleAutocomplete(userId, name)}
       before={
-        <Avatar size="200">
+        <Avatar size="200" radii="Pill">
           <UserAvatar
             userId={userId}
             renderFallback={() => <Icon size="50" src={Icons.User} filled />}
@@ -153,7 +153,7 @@ export function UserMentionAutocomplete({
             <MenuItem
               key={roomMember.userId}
               as="button"
-              radii="300"
+              radii="Pill"
               onKeyDown={(evt: ReactKeyboardEvent<HTMLButtonElement>) =>
                 onTabPress(evt, () => handleAutocomplete(roomMember.userId, getName(roomMember)))
               }
@@ -164,7 +164,7 @@ export function UserMentionAutocomplete({
                 </Text>
               }
               before={
-                <Avatar size="200">
+                <Avatar size="200" radii="Pill">
                   <UserAvatar
                     userId={roomMember.userId}
                     src={avatarUrl ?? undefined}

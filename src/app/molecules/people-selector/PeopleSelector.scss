@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  border-radius: var(--bo-border-rounded);
 
   &__container {
     display: flex;

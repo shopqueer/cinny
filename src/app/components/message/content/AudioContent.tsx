@@ -109,7 +109,7 @@ export function AudioContent({
               min={0}
               max={duration}
               value={currentTime}
-              radii="300"
+              radii="Pill"
             />
           </div>
         )}
@@ -134,7 +134,7 @@ export function AudioContent({
         <Chip
           onClick={handlePlay}
           variant="Secondary"
-          radii="300"
+          radii="Pill"
           disabled={srcState.status === AsyncStatus.Loading}
           before={
             srcState.status === AsyncStatus.Loading || loading ? (
@@ -179,7 +179,7 @@ export function AudioContent({
                 min={0}
                 max={1}
                 value={volume}
-                radii="300"
+                radii="Pill"
               />
             </div>
           )}

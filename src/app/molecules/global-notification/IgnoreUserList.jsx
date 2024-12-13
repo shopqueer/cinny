@@ -40,7 +40,7 @@ function IgnoreUserList() {
             <Text variant="b3">Ignore userId if you do not want to receive their messages or invites.</Text>
             <form onSubmit={handleSubmit}>
               <Input name="ignoreInput" required />
-              <Button variant="primary" type="submit">Ignore</Button>
+              <Button variant="primary" type="submit" rounded>Ignore</Button>
             </form>
             {ignoredUsers.length > 0 && (
               <div>

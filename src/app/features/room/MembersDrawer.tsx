@@ -264,7 +264,7 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
               align="End"
               offset={4}
               tooltip={
-                <Tooltip>
+                <Tooltip radii="Pill">
                   <Text>Close</Text>
                 </Tooltip>
               }
@@ -273,6 +273,7 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
                 <IconButton
                   ref={triggerRef}
                   variant="Background"
+                  radii="Pill"
                   onClick={() => setPeopleDrawer(false)}
                 >
                   <Icon src={Icons.Cross} />
@@ -316,7 +317,7 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
                                 }
                                 aria-pressed={menuItem.name === membershipFilter.name}
                                 size="300"
-                                radii="300"
+                                radii="Pill"
                                 onClick={() => {
                                   setMembershipFilterIndex(index);
                                   setAnchor(undefined);
@@ -338,7 +339,7 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
                         }
                         variant={membershipFilter.color}
                         size="400"
-                        radii="300"
+                        radii="Pill"
                         before={<Icon src={Icons.Filter} size="50" />}
                       >
                         <Text size="T200">{membershipFilter.name}</Text>
@@ -371,7 +372,7 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
                                 variant="Surface"
                                 aria-pressed={menuItem.name === sortFilter.name}
                                 size="300"
-                                radii="300"
+                                radii="Pill"
                                 onClick={() => {
                                   setSortFilterIndex(index);
                                   setAnchor(undefined);
@@ -393,7 +394,7 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
                         }
                         variant="Background"
                         size="400"
-                        radii="300"
+                        radii="Pill"
                         after={<Icon src={Icons.Sort} size="50" />}
                       >
                         <Text size="T200">{sortFilter.name}</Text>
@@ -410,7 +411,7 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
                   placeholder="Type name..."
                   variant="Surface"
                   size="400"
-                  radii="400"
+                  radii="Pill"
                   before={<Icon size="50" src={Icons.Search} />}
                   after={
                     result && (
@@ -507,10 +508,10 @@ export function MembersDrawer({ room, members }: MembersDrawerProps) {
                       key={`${room.roomId}-${member.userId}`}
                       className={css.DrawerVirtualItem}
                       variant="Background"
-                      radii="400"
+                      radii="Pill"
                       onClick={handleMemberClick}
                       before={
-                        <Avatar size="200">
+                        <Avatar size="200" radii="Pill">
                           <UserAvatar
                             userId={member.userId}
                             src={avatarUrl ?? undefined}

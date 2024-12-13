@@ -80,7 +80,7 @@ function OrderButton({ order, onChange }: OrderButtonProps) {
                 onClick={() => setOrder()}
                 variant="Surface"
                 size="300"
-                radii="300"
+                radii="Pill"
                 aria-pressed={!rankOrder}
               >
                 <Text size="T300">Recent</Text>
@@ -89,7 +89,7 @@ function OrderButton({ order, onChange }: OrderButtonProps) {
                 onClick={() => setOrder(SearchOrderBy.Rank)}
                 variant="Surface"
                 size="300"
-                radii="300"
+                radii="Pill"
                 aria-pressed={rankOrder}
               >
                 <Text size="T300">Relevance</Text>
@@ -219,7 +219,7 @@ function SelectRoomButton({ roomList, selectedRooms, onChange }: SelectRoomButto
                 <Input
                   onChange={handleSearchChange}
                   size="300"
-                  radii="300"
+                  radii="Pill"
                   after={
                     searchResult && searchResult.items.length > 0 ? (
                       <Badge variant="Secondary" size="400" radii="Pill">
@@ -269,7 +269,7 @@ function SelectRoomButton({ roomList, selectedRooms, onChange }: SelectRoomButto
                             onClick={handleRoomClick}
                             variant={selected ? 'Success' : 'Surface'}
                             size="300"
-                            radii="300"
+                            radii="Pill"
                             aria-pressed={selected}
                             before={
                               <Icon
@@ -292,7 +292,7 @@ function SelectRoomButton({ roomList, selectedRooms, onChange }: SelectRoomButto
               </Scroll>
               <Line variant="Surface" size="300" />
               <Box shrink="No" direction="Column" gap="100" style={{ padding: config.space.S200 }}>
-                <Button size="300" variant="Secondary" radii="300" onClick={handleSave}>
+                <Button size="300" variant="Secondary" radii="Pill" onClick={handleSave}>
                   {localSelected && localSelected.length > 0 ? (
                     <Text size="B300">Save ({localSelected.length})</Text>
                   ) : (
@@ -301,7 +301,7 @@ function SelectRoomButton({ roomList, selectedRooms, onChange }: SelectRoomButto
                 </Button>
                 <Button
                   size="300"
-                  radii="300"
+                  radii="Pill"
                   variant="Secondary"
                   fill="Soft"
                   onClick={handleDeselectAll}
@@ -360,6 +360,7 @@ export function SearchFilters({
           aria-pressed={!global}
           before={!global && <Icon size="100" src={Icons.Check} />}
           outlined
+          radii="Pill"
           onClick={() => onGlobalChange()}
         >
           <Text size="T200">{defaultRoomsFilterName}</Text>
@@ -370,6 +371,7 @@ export function SearchFilters({
             aria-pressed={global}
             before={global && <Icon size="100" src={Icons.Check} />}
             outlined
+            radii="Pill"
             onClick={() => onGlobalChange(true)}
           >
             <Text size="T200">Global</Text>
