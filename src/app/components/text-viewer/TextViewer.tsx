@@ -30,7 +30,7 @@ export const TextViewer = as<'div', TextViewerProps>(
       >
         <Header className={css.TextViewerHeader} size="400">
           <Box grow="Yes" alignItems="Center" gap="200">
-            <IconButton size="300" radii="300" onClick={requestClose}>
+            <IconButton size="300" radii="Pill" onClick={requestClose}>
               <Icon size="50" src={Icons.ArrowLeft} />
             </IconButton>
             <Text size="T300" truncate>
@@ -38,7 +38,7 @@ export const TextViewer = as<'div', TextViewerProps>(
             </Text>
           </Box>
           <Box shrink="No" alignItems="Center" gap="200">
-            <Chip variant="Primary" radii="300" onClick={handleCopy}>
+            <Chip variant="Primary" radii="Pill" onClick={handleCopy}>
               <Text size="B300">Copy All</Text>
             </Chip>
           </Box>

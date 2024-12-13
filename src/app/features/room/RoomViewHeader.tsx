@@ -95,7 +95,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           onClick={handleMarkAsRead}
           size="300"
           after={<Icon size="100" src={Icons.CheckTwice} />}
-          radii="300"
+          radii="Pill"
           disabled={!unread}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -111,7 +111,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           fill="None"
           size="300"
           after={<Icon size="100" src={Icons.UserPlus} />}
-          radii="300"
+          radii="Pill"
           disabled={!canInvite}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -122,7 +122,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           onClick={handleCopyLink}
           size="300"
           after={<Icon size="100" src={Icons.Link} />}
-          radii="300"
+          radii="Pill"
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
             Copy Link
@@ -132,7 +132,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           onClick={handleRoomSettings}
           size="300"
           after={<Icon size="100" src={Icons.Setting} />}
-          radii="300"
+          radii="Pill"
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
             Room Settings
@@ -150,7 +150,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
                 fill="None"
                 size="300"
                 after={<Icon size="100" src={Icons.ArrowGoLeft} />}
-                radii="300"
+                radii="Pill"
                 aria-pressed={promptLeave}
               >
                 <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -212,7 +212,7 @@ export function RoomViewHeader() {
           <BackRouteHandler>
             {(onBack) => (
               <Box shrink="No" alignItems="Center">
-                <IconButton onClick={onBack}>
+                <IconButton onClick={onBack} radii="Pill">
                   <Icon src={Icons.ArrowLeft} />
                 </IconButton>
               </Box>
@@ -221,7 +221,7 @@ export function RoomViewHeader() {
         )}
         <Box grow="Yes" alignItems="Center" gap="300">
           {screenSize !== ScreenSize.Mobile && (
-            <Avatar size="300">
+            <Avatar size="300" radii="Pill">
               <RoomAvatar
                 roomId={room.roomId}
                 src={avatarUrl}
@@ -285,13 +285,13 @@ export function RoomViewHeader() {
               position="Bottom"
               offset={4}
               tooltip={
-                <Tooltip>
+                <Tooltip radii="Pill">
                   <Text>Search</Text>
                 </Tooltip>
               }
             >
               {(triggerRef) => (
-                <IconButton ref={triggerRef} onClick={handleSearchClick}>
+                <IconButton ref={triggerRef} onClick={handleSearchClick} radii="Pill">
                   <Icon size="400" src={Icons.Search} />
                 </IconButton>
               )}
@@ -302,13 +302,13 @@ export function RoomViewHeader() {
               position="Bottom"
               offset={4}
               tooltip={
-                <Tooltip>
+                <Tooltip radii="Pill">
                   <Text>Members</Text>
                 </Tooltip>
               }
             >
               {(triggerRef) => (
-                <IconButton ref={triggerRef} onClick={() => setPeopleDrawer((drawer) => !drawer)}>
+                <IconButton ref={triggerRef} onClick={() => setPeopleDrawer((drawer) => !drawer)} radii="Pill">
                   <Icon size="400" src={Icons.User} />
                 </IconButton>
               )}
@@ -319,13 +319,13 @@ export function RoomViewHeader() {
             align="End"
             offset={4}
             tooltip={
-              <Tooltip>
+              <Tooltip radii="Pill">
                 <Text>More Options</Text>
               </Tooltip>
             }
           >
             {(triggerRef) => (
-              <IconButton onClick={handleOpenMenu} ref={triggerRef} aria-pressed={!!menuAnchor}>
+              <IconButton onClick={handleOpenMenu} ref={triggerRef} aria-pressed={!!menuAnchor} radii="Pill"> 
                 <Icon size="400" src={Icons.VerticalDots} filled={!!menuAnchor} />
               </IconButton>
             )}

@@ -96,7 +96,7 @@ export function AddServer() {
                 <Box grow="Yes">
                   <Text size="H4">Add Server</Text>
                 </Box>
-                <IconButton size="300" onClick={() => setDialog(false)} radii="300">
+                <IconButton size="300" onClick={() => setDialog(false)} radii="Pill">
                   <Icon src={Icons.Cross} />
                 </IconButton>
               </Header>
@@ -110,7 +110,7 @@ export function AddServer() {
                 <Text priority="400">Add server name to explore public communities.</Text>
                 <Box direction="Column" gap="100">
                   <Text size="L400">Server Name</Text>
-                  <Input ref={serverInputRef} name="serverInput" variant="Background" required />
+                  <Input ref={serverInputRef} name="serverInput" variant="Background" required radii="Pill" />
                   {exploreState.status === AsyncStatus.Error && (
                     <Text style={{ color: color.Critical.Main }} size="T300">
                       Failed to load public rooms. Please try again.
@@ -131,7 +131,7 @@ export function AddServer() {
                     <Text size="B400">Save</Text>
                   </Button> */}
 
-                  <Button type="submit" onClick={handleView} variant="Secondary" fill="Soft">
+                  <Button type="submit" onClick={handleView} variant="Secondary" fill="Soft" radii="Pill">
                     <Text size="B400">View</Text>
                   </Button>
                 </Box>
@@ -146,6 +146,7 @@ export function AddServer() {
         size="300"
         before={<Icon size="100" src={Icons.Plus} />}
         onClick={() => setDialog(true)}
+        radii="Pill"
       >
         <Text size="B300" truncate>
           Add Server
@@ -182,11 +183,11 @@ export function Explore() {
       <PageNavContent>
         <Box direction="Column" gap="300">
           <NavCategory>
-            <NavItem variant="Background" radii="400" aria-selected={featuredSelected}>
+            <NavItem variant="Background" radii="Pill" aria-selected={featuredSelected}>
               <NavLink to={getExploreFeaturedPath()}>
                 <NavItemContent>
                   <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                    <Avatar size="200" radii="400">
+                    <Avatar size="200" radii="Pill">
                       <Icon src={Icons.Bulb} size="100" filled={featuredSelected} />
                     </Avatar>
                     <Box as="span" grow="Yes">
@@ -201,13 +202,13 @@ export function Explore() {
             {userServer && (
               <NavItem
                 variant="Background"
-                radii="400"
+                radii="Pill"
                 aria-selected={selectedServer === userServer}
               >
                 <NavLink to={getExploreServerPath(userServer)}>
                   <NavItemContent>
                     <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                      <Avatar size="200" radii="400">
+                      <Avatar size="200" radii="Pill">
                         <Icon
                           src={Icons.Category}
                           size="100"
@@ -236,13 +237,13 @@ export function Explore() {
                 <NavItem
                   key={server}
                   variant="Background"
-                  radii="400"
+                  radii="Pill"
                   aria-selected={server === selectedServer}
                 >
                   <NavLink to={getExploreServerPath(server)}>
                     <NavItemContent>
                       <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                        <Avatar size="200" radii="400">
+                        <Avatar size="200" radii="Pill">
                           <Icon
                             src={Icons.Category}
                             size="100"

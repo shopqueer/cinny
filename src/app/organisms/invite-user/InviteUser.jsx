@@ -174,6 +174,7 @@ function InviteUser({ isOpen, roomId, searchTerm, onRequestClose }) {
               navigateRoom(createdDM.get(userId));
               onRequestClose();
             }}
+            rounded
           >
             Open
           </Button>
@@ -198,11 +199,11 @@ function InviteUser({ isOpen, roomId, searchTerm, onRequestClose }) {
         }
       }
       return typeof roomId === 'string' ? (
-        <Button onClick={() => inviteToRoom(userId)} variant="primary">
+        <Button onClick={() => inviteToRoom(userId)} variant="primary" rounded>
           Invite
         </Button>
       ) : (
-        <Button onClick={() => createDM(userId)} variant="primary">
+        <Button onClick={() => createDM(userId)} variant="primary" rounded>
           Message
         </Button>
       );
@@ -274,7 +275,7 @@ function InviteUser({ isOpen, roomId, searchTerm, onRequestClose }) {
           }}
         >
           <Input value={searchTerm} forwardRef={usernameRef} label="Name or userId" />
-          <Button disabled={isSearching} iconSrc={UserIC} variant="primary" type="submit">
+          <Button disabled={isSearching} iconSrc={UserIC} variant="primary" type="submit" rounded>
             Search
           </Button>
         </form>

@@ -68,7 +68,7 @@ function CreateKeyBackupDialog({ keyData }) {
       {done === null && (
         <>
           <Text>Failed to create backup</Text>
-          <Button onClick={doBackup}>Retry</Button>
+          <Button onClick={doBackup} rounded>Retry</Button>
         </>
       )}
     </div>
@@ -138,7 +138,7 @@ function RestoreKeyBackupDialog({ keyData }) {
       {status.error && (
         <>
           <Text>{status.error}</Text>
-          <Button onClick={restoreBackup}>Retry</Button>
+          <Button onClick={restoreBackup} rounded>Retry</Button>
         </>
       )}
     </div>
@@ -175,7 +175,7 @@ function DeleteKeyBackupDialog({ requestClose }) {
       {isDeleting ? (
         <Spinner size="small" />
       ) : (
-        <Button variant="danger" onClick={deleteBackup}>
+        <Button variant="danger" onClick={deleteBackup} rounded>
           Delete
         </Button>
       )}
@@ -258,7 +258,7 @@ function KeyBackup() {
     if (keyBackup === undefined) return <Spinner size="small" />;
     if (keyBackup === null)
       return (
-        <Button variant="primary" onClick={openCreateKeyBackup}>
+        <Button variant="primary" onClick={openCreateKeyBackup} rounded>
           Create Backup
         </Button>
       );

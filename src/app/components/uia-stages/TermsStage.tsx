@@ -21,12 +21,12 @@ function TermsErrorDialog({
           <Text size="H4">{title}</Text>
           <Text>{message}</Text>
         </Box>
-        <Button variant="Critical" onClick={onRetry}>
+        <Button variant="Critical" onClick={onRetry} radii="Pill">
           <Text as="span" size="B400">
             Retry
           </Text>
         </Button>
-        <Button variant="Critical" fill="None" outlined onClick={onCancel}>
+        <Button variant="Critical" fill="None" outlined onClick={onCancel} radii="Pill">
           <Text as="span" size="B400">
             Cancel
           </Text>

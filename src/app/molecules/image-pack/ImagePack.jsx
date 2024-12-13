@@ -41,7 +41,7 @@ const renameImagePackItem = (shortcode) =>
           >
             <Input value={shortcode} name="shortcode" label="Shortcode" autoFocus required />
             <div style={{ height: 'var(--sp-normal)' }} />
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" rounded>
               Rename
             </Button>
           </form>
@@ -315,12 +315,12 @@ function ImagePack({ roomId, stateKey, handlePackDelete }) {
       {(pack.images.size > 2 || handlePackDelete) && (
         <div className="image-pack__footer">
           {pack.images.size > 2 && (
-            <Button onClick={() => setViewMore(!viewMore)}>
+            <Button onClick={() => setViewMore(!viewMore)} rounded>
               {viewMore ? 'View less' : `View ${pack.images.size - 2} more`}
             </Button>
           )}
           {handlePackDelete && (
-            <Button variant="danger" onClick={handleDeletePack}>
+            <Button variant="danger" onClick={handleDeletePack} rounded>
               Delete Pack
             </Button>
           )}
@@ -419,7 +419,7 @@ function ImagePackUser() {
       )}
       {pack.images.size > 2 && (
         <div className="image-pack__footer">
-          <Button onClick={() => setViewMore(!viewMore)}>
+          <Button onClick={() => setViewMore(!viewMore)} rounded>
             {viewMore ? 'View less' : `View ${pack.images.size - 2} more`}
           </Button>
         </div>

@@ -108,7 +108,7 @@ export const PdfViewer = as<'div', PdfViewerProps>(
       <Box className={classNames(css.PdfViewer, className)} direction="Column" {...props} ref={ref}>
         <Header className={css.PdfViewerHeader} size="400">
           <Box grow="Yes" alignItems="Center" gap="200">
-            <IconButton size="300" radii="300" onClick={requestClose}>
+            <IconButton size="300" radii="Pill" onClick={requestClose}>
               <Icon size="50" src={Icons.ArrowLeft} />
             </IconButton>
             <Text size="T300" truncate>
@@ -142,7 +142,7 @@ export const PdfViewer = as<'div', PdfViewerProps>(
             <Chip
               variant="Primary"
               onClick={handleDownload}
-              radii="300"
+              radii="Pill"
               before={<Icon size="50" src={Icons.Download} />}
             >
               <Text size="B300">Download</Text>
@@ -158,7 +158,7 @@ export const PdfViewer = as<'div', PdfViewerProps>(
                 variant="Critical"
                 fill="Soft"
                 size="300"
-                radii="300"
+                radii="Pill"
                 before={<Icon src={Icons.Warning} size="50" />}
                 onClick={loadPdfJS}
               >
@@ -184,7 +184,7 @@ export const PdfViewer = as<'div', PdfViewerProps>(
           <Header as="footer" className={css.PdfViewerFooter} size="400">
             <Chip
               variant="Secondary"
-              radii="300"
+              radii="Pill"
               before={<Icon size="50" src={Icons.ChevronLeft} />}
               onClick={handlePrevPage}
               aria-disabled={pageNo <= 1}
@@ -223,10 +223,10 @@ export const PdfViewer = as<'div', PdfViewerProps>(
                           step={1}
                           outlined
                           type="number"
-                          radii="300"
+                          radii="Pill"
                           aria-label="Page Number"
                         />
-                        <Button type="submit" size="300" variant="Primary" radii="300">
+                        <Button type="submit" size="300" variant="Primary" radii="Pill">
                           <Text size="B300">Jump To Page</Text>
                         </Button>
                       </Box>
@@ -237,7 +237,7 @@ export const PdfViewer = as<'div', PdfViewerProps>(
                 <Chip
                   onClick={handleOpenJump}
                   variant="SurfaceVariant"
-                  radii="300"
+                  radii="Pill"
                   aria-pressed={jumpAnchor !== undefined}
                 >
                   <Text size="B300">{`${pageNo}/${docState.data.numPages}`}</Text>
@@ -246,7 +246,7 @@ export const PdfViewer = as<'div', PdfViewerProps>(
             </Box>
             <Chip
               variant="Primary"
-              radii="300"
+              radii="Pill"
               after={<Icon size="50" src={Icons.ChevronRight} />}
               onClick={handleNextPage}
               aria-disabled={pageNo >= docState.data.numPages}

@@ -158,7 +158,7 @@ export const MessageAllReactionItem = as<
       <MenuItem
         size="300"
         after={<Icon size="100" src={Icons.Smile} />}
-        radii="300"
+        radii="Pill"
         onClick={() => setOpen(true)}
         {...props}
         ref={ref}
@@ -208,7 +208,7 @@ export const MessageReadReceiptItem = as<
       <MenuItem
         size="300"
         after={<Icon size="100" src={Icons.CheckTwice} />}
-        radii="300"
+        radii="Pill"
         onClick={() => setOpen(true)}
         {...props}
         ref={ref}
@@ -291,7 +291,7 @@ export const MessageSourceCodeItem = as<
       <MenuItem
         size="300"
         after={<Icon size="100" src={Icons.BlockCode} />}
-        radii="300"
+        radii="Pill"
         onClick={() => setOpen(true)}
         {...props}
         ref={ref}
@@ -328,7 +328,7 @@ export const MessageCopyLinkItem = as<
     <MenuItem
       size="300"
       after={<Icon size="100" src={Icons.Link} />}
-      radii="300"
+      radii="Pill"
       onClick={handleCopy}
       {...props}
       ref={ref}
@@ -403,7 +403,7 @@ export const MessageDeleteItem = as<
                 <Box grow="Yes">
                   <Text size="H4">Delete Message</Text>
                 </Box>
-                <IconButton size="300" onClick={handleClose} radii="300">
+                <IconButton size="300" onClick={handleClose} radii="Pill">
                   <Icon src={Icons.Cross} />
                 </IconButton>
               </Header>
@@ -439,6 +439,7 @@ export const MessageDeleteItem = as<
                       <Spinner fill="Solid" variant="Critical" size="200" />
                     ) : undefined
                   }
+                  radii="Pill"
                   aria-disabled={deleteState.status === AsyncStatus.Loading}
                 >
                   <Text size="B400">
@@ -455,7 +456,7 @@ export const MessageDeleteItem = as<
         fill="None"
         size="300"
         after={<Icon size="100" src={Icons.Delete} />}
-        radii="300"
+        radii="Pill"
         onClick={() => setOpen(true)}
         aria-pressed={open}
         {...props}
@@ -533,7 +534,7 @@ export const MessageReportItem = as<
                 <Box grow="Yes">
                   <Text size="H4">Report Message</Text>
                 </Box>
-                <IconButton size="300" onClick={handleClose} radii="300">
+                <IconButton size="300" onClick={handleClose} radii="Pill">
                   <Icon src={Icons.Cross} />
                 </IconButton>
               </Header>
@@ -565,6 +566,7 @@ export const MessageReportItem = as<
                 <Button
                   type="submit"
                   variant="Critical"
+                  radii="Pill"
                   before={
                     reportState.status === AsyncStatus.Loading ? (
                       <Spinner fill="Solid" variant="Critical" size="200" />
@@ -589,7 +591,7 @@ export const MessageReportItem = as<
         fill="None"
         size="300"
         after={<Icon size="100" src={Icons.Warning} />}
-        radii="300"
+        radii="Pill"
         onClick={() => setOpen(true)}
         aria-pressed={open}
         {...props}
@@ -704,6 +706,7 @@ export const Message = as<'div', MessageProps>(
           className={css.MessageAvatar}
           as="button"
           size="300"
+          radii="Pill"
           data-user-id={senderId}
           onClick={onUserClick}
         >
@@ -826,7 +829,7 @@ export const Message = as<'div', MessageProps>(
                       onClick={handleOpenEmojiBoard}
                       variant="SurfaceVariant"
                       size="300"
-                      radii="300"
+                      radii="Pill"
                       aria-pressed={!!emojiBoardAnchor}
                     >
                       <Icon src={Icons.SmilePlus} size="100" />
@@ -838,7 +841,7 @@ export const Message = as<'div', MessageProps>(
                   data-event-id={mEvent.getId()}
                   variant="SurfaceVariant"
                   size="300"
-                  radii="300"
+                  radii="Pill"
                 >
                   <Icon src={Icons.ReplyArrow} size="100" />
                 </IconButton>
@@ -847,7 +850,7 @@ export const Message = as<'div', MessageProps>(
                     onClick={() => onEditId(mEvent.getId())}
                     variant="SurfaceVariant"
                     size="300"
-                    radii="300"
+                    radii="Pill"
                   >
                     <Icon src={Icons.Pencil} size="100" />
                   </IconButton>
@@ -882,7 +885,7 @@ export const Message = as<'div', MessageProps>(
                             <MenuItem
                               size="300"
                               after={<Icon size="100" src={Icons.SmilePlus} />}
-                              radii="300"
+                              radii="Pill"
                               onClick={handleAddReactions}
                             >
                               <Text
@@ -905,7 +908,7 @@ export const Message = as<'div', MessageProps>(
                           <MenuItem
                             size="300"
                             after={<Icon size="100" src={Icons.ReplyArrow} />}
-                            radii="300"
+                            radii="Pill"
                             data-event-id={mEvent.getId()}
                             onClick={(evt: any) => {
                               onReplyClick(evt);
@@ -925,7 +928,7 @@ export const Message = as<'div', MessageProps>(
                             <MenuItem
                               size="300"
                               after={<Icon size="100" src={Icons.Pencil} />}
-                              radii="300"
+                              radii="Pill"
                               data-event-id={mEvent.getId()}
                               onClick={() => {
                                 onEditId(mEvent.getId());
@@ -979,7 +982,7 @@ export const Message = as<'div', MessageProps>(
                   <IconButton
                     variant="SurfaceVariant"
                     size="300"
-                    radii="300"
+                    radii="Pill"
                     onClick={handleOpenMenu}
                     aria-pressed={!!menuAnchor}
                   >
@@ -1122,7 +1125,7 @@ export const Event = as<'div', EventProps>(
                   <IconButton
                     variant="SurfaceVariant"
                     size="300"
-                    radii="300"
+                    radii="Pill"
                     onClick={handleOpenMenu}
                     aria-pressed={!!menuAnchor}
                   >

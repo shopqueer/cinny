@@ -88,7 +88,7 @@ function JoinAliasContent({ term, requestClose }) {
             <Text>{process}</Text>
           </>
         ) : (
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" rounded>
             Join
           </Button>
         )}

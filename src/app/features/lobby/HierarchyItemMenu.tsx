@@ -60,7 +60,7 @@ function SuggestMenuItem({
     <MenuItem
       onClick={handleToggleSuggested}
       size="300"
-      radii="300"
+      radii="Pill"
       before={toggleState.status === AsyncStatus.Loading && <Spinner size="100" />}
       disabled={toggleState.status === AsyncStatus.Loading}
     >
@@ -100,7 +100,7 @@ function RemoveMenuItem({
       variant="Critical"
       fill="None"
       size="300"
-      radii="300"
+      radii="Pill"
       before={
         removeState.status === AsyncStatus.Loading && (
           <Spinner variant="Critical" fill="Soft" size="100" />
@@ -133,7 +133,7 @@ function InviteMenuItem({
     <MenuItem
       onClick={handleInvite}
       size="300"
-      radii="300"
+      radii="Pill"
       variant="Primary"
       fill="None"
       disabled={disabled}
@@ -164,7 +164,7 @@ function SettingsMenuItem({
   };
 
   return (
-    <MenuItem onClick={handleSettings} size="300" radii="300" disabled={disabled}>
+    <MenuItem onClick={handleSettings} size="300" radii="Pill" disabled={disabled}>
       <Text as="span" size="T300" truncate>
         Settings
       </Text>
@@ -209,7 +209,7 @@ export function HierarchyItemMenu({
         size="300"
         variant="SurfaceVariant"
         fill="None"
-        radii="300"
+        radii="Pill"
         aria-pressed={!!menuAnchor}
       >
         <Icon size="50" src={Icons.VerticalDots} />
@@ -237,7 +237,7 @@ export function HierarchyItemMenu({
                     {onTogglePin && (
                       <MenuItem
                         size="300"
-                        radii="300"
+                        radii="Pill"
                         onClick={() => {
                           onTogglePin(item.roomId);
                           handleRequestClose();
@@ -263,7 +263,7 @@ export function HierarchyItemMenu({
                             fill="None"
                             size="300"
                             after={<Icon size="100" src={Icons.ArrowGoLeft} />}
-                            radii="300"
+                            radii="Pill"
                             aria-pressed={promptLeave}
                           >
                             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>

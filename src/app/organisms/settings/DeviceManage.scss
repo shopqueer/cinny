@@ -30,7 +30,7 @@
     padding: 2px var(--sp-ultra-tight);
     color: var(--bg-surface);
     background-color: var(--tc-surface-low);
-    border-radius: 4px;
+    border-radius: var(--bo-rounded-radius);
   }
 
   &__rename {

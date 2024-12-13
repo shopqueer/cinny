@@ -42,7 +42,7 @@ export function WelcomePage() {
             {screenSize === ScreenSize.Mobile && (
               <BackRouteHandler>
                 {(onBack) => (
-                  <IconButton onClick={onBack}>
+                  <IconButton onClick={onBack} radii="Pill">
                     <Icon src={Icons.ArrowLeft} />
                   </IconButton>
                 )}
@@ -74,7 +74,7 @@ export function WelcomePage() {
                 <Box grow="Yes" style={{ maxWidth: toRem(300) }} direction="Column" gap="300">
                   If you’re new, here are a few ways to get started:
                     {joinedRooms.filter((roomId) => roomId in SPACES_MAP).slice(0, 1).map((spaceId) => (
-                    <ol>
+                    <ol key={spaceId}>
                       <li>
                         <Link to={getHomeRulesPath()}>Check out our Community Guidelines.</Link>
                       </li>

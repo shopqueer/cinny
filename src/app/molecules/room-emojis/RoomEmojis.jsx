@@ -99,7 +99,7 @@ function RoomEmojis({ roomId }) {
           <MenuHeader>Create Pack</MenuHeader>
           <form onSubmit={handlePackCreate}>
             <Input name="nameInput" placeholder="Pack Name" required />
-            <Button variant="primary" type="submit">Create pack</Button>
+            <Button variant="primary" type="submit" rounded>Create pack</Button>
           </form>
         </div>
       )}

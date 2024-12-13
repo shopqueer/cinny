@@ -84,7 +84,7 @@ function ExportE2ERoomKeys() {
       <form className="export-e2e-room-keys__form" onSubmit={(e) => { e.preventDefault(); exportE2ERoomKeys(); }}>
         <Input forwardRef={passwordRef} type="password" placeholder="Password" required />
         <Input forwardRef={confirmPasswordRef} type="password" placeholder="Confirm password" required />
-        <Button disabled={status.isOngoing} variant="primary" type="submit">Export</Button>
+        <Button disabled={status.isOngoing} variant="primary" type="submit" rounded>Export</Button>
       </form>
       { status.type === cons.status.IN_FLIGHT && (
         <div className="import-e2e-room-keys__process">

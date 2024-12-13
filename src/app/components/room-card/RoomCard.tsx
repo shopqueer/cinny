@@ -210,7 +210,7 @@ export const RoomCard = as<'div', RoomCardProps>(
     return (
       <RoomCardBase {...props} ref={ref}>
         <Box gap="200" justifyContent="SpaceBetween">
-          <Avatar size="500">
+          <Avatar size="500" radii="Pill">
             <RoomAvatar
               roomId={roomIdOrAlias}
               src={avatar ?? undefined}
@@ -223,7 +223,7 @@ export const RoomCard = as<'div', RoomCardProps>(
             />
           </Avatar>
           {(roomType === RoomType.Space || joinedRoom?.isSpaceRoom()) && (
-            <Badge variant="Secondary" fill="Soft" outlined>
+            <Badge variant="Secondary" fill="Soft" outlined radii="Pill">
               <Text size="L400">Space</Text>
             </Badge>
           )}
@@ -261,6 +261,7 @@ export const RoomCard = as<'div', RoomCardProps>(
             variant="Secondary"
             fill="Soft"
             size="300"
+            radii="Pill"
           >
             <Text size="B300" truncate>
               View
@@ -274,6 +275,7 @@ export const RoomCard = as<'div', RoomCardProps>(
             size="300"
             disabled={joining}
             before={joining && <Spinner size="50" variant="Secondary" fill="Soft" />}
+            radii="Pill"
           >
             <Text size="B300" truncate>
               {joining ? 'Joining' : 'Join'}
@@ -288,6 +290,7 @@ export const RoomCard = as<'div', RoomCardProps>(
               variant="Critical"
               fill="Solid"
               size="300"
+              radii="Pill"
             >
               <Text size="B300" truncate>
                 Retry
@@ -305,6 +308,7 @@ export const RoomCard = as<'div', RoomCardProps>(
                   fill="Soft"
                   outlined
                   size="300"
+                  radii="Pill"
                 >
                   <Text size="B300" truncate>
                     View Error

@@ -15,7 +15,7 @@ const Avatar = React.forwardRef(({ text, bgColor, iconSrc, iconColor, imageSrc, 
   if (size === 'extra-small') textSize = 'b3';
 
   return (
-    <div ref={ref} className={`avatar-container avatar-container__${size} noselect`}>
+    <div ref={ref} className={`avatar-container avatar-container__${size} noselect`} style={{borderRadius:'var(--bo-rounded-radius)'}}>
       {imageSrc !== null ? (
         <img
           draggable="false"
@@ -37,7 +37,7 @@ const Avatar = React.forwardRef(({ text, bgColor, iconSrc, iconColor, imageSrc, 
             <RawIcon size={size} src={iconSrc} color={iconColor} />
           ) : (
             text !== null && (
-              <Text variant={textSize} primary>
+              <Text variant={textSize} primary className="avatar__initials">
                 {avatarInitials(text)}
               </Text>
             )

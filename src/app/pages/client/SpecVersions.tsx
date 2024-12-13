@@ -24,12 +24,12 @@ export function SpecVersions({ baseUrl, children }: { baseUrl: string; children:
                 <Text>
                   Failed to connect to homeserver. Either homeserver is down or your internet.
                 </Text>
-                <Button variant="Critical" onClick={retry}>
+                <Button variant="Critical" onClick={retry} radii="Pill">
                   <Text as="span" size="B400">
                     Retry
                   </Text>
                 </Button>
-                <Button variant="Critical" onClick={ignore} fill="Soft">
+                <Button variant="Critical" onClick={ignore} fill="Soft" radii="Pill">
                   <Text as="span" size="B400">
                     Continue
                   </Text>

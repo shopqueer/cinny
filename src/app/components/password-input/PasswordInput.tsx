@@ -19,6 +19,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             type={visible ? 'text' : 'password'}
             size={size}
             variant={variant}
+            radii="Pill"
             after={
               <>
                 {after}
@@ -27,7 +28,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
                   type="button"
                   variant={visible ? 'Warning' : variant}
                   size="300"
-                  radii="300"
+                  radii="Pill"
                 >
                   <Icon
                     style={{ opacity: config.opacity.P300 }}

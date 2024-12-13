@@ -172,7 +172,7 @@ function GlobalNotification() {
       <SettingTile
         title="Message containing my display name"
         options={(
-          <Button onClick={(evt) => onSelect(evt, DISPLAY_NAME)} iconSrc={ChevronBottomIC}>
+          <Button onClick={(evt) => onSelect(evt, DISPLAY_NAME)} iconSrc={ChevronBottomIC} rounded>
             { typeToLabel[rulesToType[DISPLAY_NAME]] }
           </Button>
         )}
@@ -181,7 +181,7 @@ function GlobalNotification() {
       <SettingTile
         title="Message containing my username"
         options={(
-          <Button onClick={(evt) => onSelect(evt, USERNAME)} iconSrc={ChevronBottomIC}>
+          <Button onClick={(evt) => onSelect(evt, USERNAME)} iconSrc={ChevronBottomIC} rounded>
             { typeToLabel[rulesToType[USERNAME]] }
           </Button>
         )}
@@ -190,7 +190,7 @@ function GlobalNotification() {
       <SettingTile
         title="Message containing @room"
         options={(
-          <Button onClick={(evt) => onSelect(evt, ROOM_PING)} iconSrc={ChevronBottomIC}>
+          <Button onClick={(evt) => onSelect(evt, ROOM_PING)} iconSrc={ChevronBottomIC} rounded>
             {typeToLabel[rulesToType[ROOM_PING]]}
           </Button>
         )}
@@ -200,7 +200,7 @@ function GlobalNotification() {
         <SettingTile
           title="Message containing keywords"
           options={(
-            <Button onClick={(evt) => onSelect(evt, KEYWORD)} iconSrc={ChevronBottomIC}>
+            <Button onClick={(evt) => onSelect(evt, KEYWORD)} iconSrc={ChevronBottomIC} rounded>
               {typeToLabel[rulesToType[KEYWORD]]}
             </Button>
           )}
@@ -214,7 +214,7 @@ function GlobalNotification() {
             <Text variant="b3">Get notification when a message contains keyword.</Text>
             <form onSubmit={handleSubmit}>
               <Input name="keywordInput" required />
-              <Button variant="primary" type="submit">Add</Button>
+              <Button variant="primary" type="submit" rounded>Add</Button>
             </form>
             {keywordRules.length > 0 && (
               <div>

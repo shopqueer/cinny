@@ -114,9 +114,9 @@ function AppearanceSection() {
             <SegmentedControls
               selected={settings.useSystemTheme ? -1 : settings.getThemeIndex()}
               segments={[
-                { text: 'Light' },
+                { text: 'Allstora Light' },
                 { text: 'Silver' },
-                { text: 'Dark' },
+                { text: 'Allstora Dark' },
                 { text: 'Butter' },
               ]}
               onSelect={(index) => {
@@ -138,12 +138,13 @@ function AppearanceSection() {
           title="Page Zoom"
           options={
             <Input
-              style={{ width: toRem(150) }}
+              style={{ width: toRem(150), boxShadow: "var(--bs-input-border)" }}
               variant={pageZoom === parseInt(currentZoom, 10) ? 'Background' : 'Primary'}
               size="400"
               type="number"
               min="75"
               max="150"
+              radii="Pill"
               value={currentZoom}
               onChange={handleZoomChange}
               onKeyDown={handleZoomEnter}
@@ -314,6 +315,7 @@ function NotificationsSection() {
             setShowNotifications(window.Notification?.permission === 'granted');
           })
         }
+        rounded
       >
         Request permission
       </Button>
@@ -422,11 +424,11 @@ function AboutSection() {
             <Text>Yet another matrix client</Text>
 
             <div className="settings-about__btns">
-              <Button onClick={() => window.open('https://github.com/ajbura/cinny')}>
+              <Button onClick={() => window.open('https://github.com/ajbura/cinny')} rounded>
                 Source code
               </Button>
-              <Button onClick={() => window.open('https://cinny.in/#sponsor')}>Support</Button>
-              <Button onClick={() => clearCacheAndReload(mx)} variant="danger">
+              <Button onClick={() => window.open('https://cinny.in/#sponsor')} rounded>Support</Button>
+              <Button onClick={() => clearCacheAndReload(mx)} variant="danger" rounded>
                 Clear cache & reload
               </Button>
             </div>

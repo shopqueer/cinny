@@ -86,7 +86,7 @@ export function CommandAutocomplete({
         <MenuItem
           key={commandName}
           as="button"
-          radii="300"
+          radii="Pill"
           onKeyDown={(evt: ReactKeyboardEvent<HTMLButtonElement>) =>
             onTabPress(evt, () => handleAutocomplete(commandName))
           }

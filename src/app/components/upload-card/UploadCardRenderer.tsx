@@ -35,7 +35,7 @@ export function UploadCardRenderer({
 
   return (
     <UploadCard
-      radii="300"
+      radii="Pill"
       before={<Icon src={getFileTypeIcon(Icons, file.type)} />}
       after={
         <>

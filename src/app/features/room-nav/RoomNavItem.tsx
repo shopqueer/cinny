@@ -81,7 +81,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             onClick={handleMarkAsRead}
             size="300"
             after={<Icon size="100" src={Icons.CheckTwice} />}
-            radii="300"
+            radii="Pill"
             disabled={!unread}
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -97,7 +97,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             fill="None"
             size="300"
             after={<Icon size="100" src={Icons.UserPlus} />}
-            radii="300"
+            radii="Pill"
             disabled={!canInvite}
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -108,7 +108,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             onClick={handleCopyLink}
             size="300"
             after={<Icon size="100" src={Icons.Link} />}
-            radii="300"
+            radii="Pill"
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
               Copy Link
@@ -118,7 +118,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             onClick={handleRoomSettings}
             size="300"
             after={<Icon size="100" src={Icons.Setting} />}
-            radii="300"
+            radii="Pill"
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
               Room Settings
@@ -136,7 +136,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
                   fill="None"
                   size="300"
                   after={<Icon size="100" src={Icons.ArrowGoLeft} />}
-                  radii="300"
+                  radii="Pill"
                   aria-pressed={promptLeave}
                 >
                   <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -203,7 +203,7 @@ export function RoomNavItem({
   return (
     <NavItem
       variant="Background"
-      radii="400"
+      radii="Pill"
       highlight={unread !== undefined}
       aria-selected={selected}
       data-hover={!!menuAnchor}
@@ -214,7 +214,7 @@ export function RoomNavItem({
       <NavLink to={linkPath}>
         <NavItemContent>
           <Box as="span" grow="Yes" alignItems="Center" gap="200">
-            <Avatar size="200" radii="400">
+            <Avatar size="200" radii="Pill">
               {showAvatar ? (
                 <RoomAvatar
                   roomId={room.roomId}
@@ -286,7 +286,7 @@ export function RoomNavItem({
               variant="Background"
               fill="None"
               size="300"
-              radii="300"
+              radii="Pill"
             >
               <Icon size="50" src={Icons.VerticalDots} />
             </IconButton>

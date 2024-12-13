@@ -171,7 +171,7 @@ function RoomMembers({ roomId }) {
           mList.length !== 0
           && members.length > itemCount
           && searchMembers === null
-          && <Button onClick={loadMorePeople}>View more</Button>
+          && <Button onClick={loadMorePeople} rounded>View more</Button>
         }
       </div>
     </div>

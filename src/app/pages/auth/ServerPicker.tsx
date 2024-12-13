@@ -89,6 +89,7 @@ export function ServerPicker({
       size="500"
       readOnly={!allowCustomServer}
       onClick={allowCustomServer ? undefined : handleOpenServerMenu}
+      radii="Pill"
       after={
         serverList.length === 0 || (serverList.length === 1 && !allowCustomServer) ? undefined : (
           <PopOut
@@ -115,7 +116,7 @@ export function ServerPicker({
                     {serverList?.map((serverName) => (
                       <MenuItem
                         key={serverName}
-                        radii="300"
+                        radii="Pill"
                         aria-pressed={serverName === server}
                         data-server={serverName}
                         onClick={handleServerSelect}
@@ -133,7 +134,7 @@ export function ServerPicker({
               variant={allowCustomServer ? 'Background' : 'Surface'}
               size="300"
               aria-pressed={!!serverMenuAnchor}
-              radii="300"
+              radii="Pill"
             >
               <Icon src={Icons.ChevronBottom} />
             </IconButton>

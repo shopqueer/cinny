@@ -34,7 +34,7 @@ export function SpaceSearch() {
             {screenSize === ScreenSize.Mobile && (
               <BackRouteHandler>
                 {(onBack) => (
-                  <IconButton onClick={onBack}>
+                  <IconButton onClick={onBack} radii="Pill">
                     <Icon src={Icons.ArrowLeft} />
                   </IconButton>
                 )}
