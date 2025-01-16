@@ -48,6 +48,7 @@ import { useOrphanSpaces } from '../../state/hooks/roomList';
 import { roomToParentsAtom } from '../../state/room/roomToParents';
 import { AccountDataEvent } from '../../../types/matrix/accountData';
 import { useRoomMembers } from '../../hooks/useRoomMembers';
+import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 export function Lobby() {
   const navigate = useNavigate();
@@ -355,10 +356,23 @@ export function Lobby() {
     [mx, sidebarItems, sidebarSpaces]
   );
 
+  const customClub = space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
+
   return (
     <PowerLevelsContextProvider value={spacePowerLevels}>
       <Box grow="Yes">
-        <Page>
+        <Page
+          style={
+            customClub?.backgroundImage
+              ? {
+                  backgroundImage: `url(${customClub.backgroundImage.src})`,
+                  backgroundPosition: customClub.backgroundImage.position,
+                  backgroundRepeat: customClub.backgroundImage.repeat,
+                  backgroundSize: customClub.backgroundImage.size,
+                }
+              : {}
+          }
+        >
           <LobbyHeader
             showProfile={!onTop}
             powerLevels={roomsPowerLevels.get(space.roomId) ?? {}}

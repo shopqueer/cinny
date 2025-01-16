@@ -41,6 +41,8 @@ import { getDirectRoomAvatarUrl, getRoomAvatarUrl } from '../../utils/room';
 import { ItemDraggableTarget, useDraggableItem } from './DnD';
 import { mxcUrlToHttp } from '../../utils/matrix';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
+import { useSpace } from '../../hooks/useSpace';
+import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 type RoomJoinButtonProps = {
   roomId: string;
@@ -205,6 +207,9 @@ function RoomProfile({
   joinRule,
   options,
 }: RoomProfileProps) {
+  const space = useSpace();
+  const customClub = space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
+
   return (
     <Box grow="Yes" gap="300">
       <Avatar radii="Pill">
@@ -212,9 +217,13 @@ function RoomProfile({
           roomId={roomId}
           src={avatarUrl}
           alt={name}
-          renderFallback={() => (
-            <RoomIcon size="300" joinRule={joinRule ?? JoinRule.Restricted} filled />
-          )}
+          renderFallback={() =>
+            customClub?.roomIcon ? (
+              <Icon size="300" src={customClub.roomIcon} filled />
+            ) : (
+              <RoomIcon size="300" joinRule={joinRule ?? JoinRule.Restricted} filled />
+            )
+          }
         />
       </Avatar>
       <Box grow="Yes" direction="Column">
@@ -367,7 +376,9 @@ export const RoomItemCard = as<'div', RoomItemCardProps>(
                   name={localSummary.name}
                   topic={localSummary.topic}
                   avatarUrl={
-                    dm ? getDirectRoomAvatarUrl(mx, room, 96, useAuthentication) : getRoomAvatarUrl(mx, room, 96, useAuthentication)
+                    dm
+                      ? getDirectRoomAvatarUrl(mx, room, 96, useAuthentication)
+                      : getRoomAvatarUrl(mx, room, 96, useAuthentication)
                   }
                   memberCount={localSummary.memberCount}
                   suggested={content.suggested}
@@ -421,8 +432,14 @@ export const RoomItemCard = as<'div', RoomItemCardProps>(
                         topic={summaryState.data.topic}
                         avatarUrl={
                           summaryState.data?.avatar_url
-                            ? mxcUrlToHttp(mx, summaryState.data.avatar_url, useAuthentication, 96, 96, 'crop') ??
-                            undefined
+                            ? mxcUrlToHttp(
+                                mx,
+                                summaryState.data.avatar_url,
+                                useAuthentication,
+                                96,
+                                96,
+                                'crop'
+                              ) ?? undefined
                             : undefined
                         }
                         memberCount={summaryState.data.num_joined_members}

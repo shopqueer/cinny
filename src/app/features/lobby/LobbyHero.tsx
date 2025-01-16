@@ -13,6 +13,7 @@ import { PageHero } from '../../components/page';
 import { onEnterOrSpace, stopPropagation } from '../../utils/keyboard';
 import { mxcUrlToHttp } from '../../utils/matrix';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
+import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 export function LobbyHero() {
   const mx = useMatrixClient();
@@ -22,19 +23,36 @@ export function LobbyHero() {
   const name = useRoomName(space);
   const topic = useRoomTopic(space);
   const avatarMxc = useRoomAvatar(space);
-  const avatarUrl = avatarMxc ? mxcUrlToHttp(mx, avatarMxc, useAuthentication, 96, 96, 'crop') ?? undefined : undefined;
+  const avatarUrl = avatarMxc
+    ? mxcUrlToHttp(mx, avatarMxc, useAuthentication, 96, 96, 'crop') ?? undefined
+    : undefined;
+
+  const customClub =
+    space.roomId in CUSTOM_CLUBS
+      ? CUSTOM_CLUBS[space.roomId]
+      : undefined;
 
   return (
     <PageHero
       icon={
-        <Avatar size="500" radii="Pill">
-          <RoomAvatar
-            roomId={space.roomId}
-            src={avatarUrl}
-            alt={name}
-            renderFallback={() => <Text size="H4">{nameInitials(name)}</Text>}
+        customClub?.lobbyLogo ? (
+          <img
+            src={customClub.lobbyLogo.src}
+            alt={customClub.lobbyLogo.alt}
+            width="300"
+            style={{ maxWidth: '80vw' }}
+            className={customClub.lobbyLogo.invertOnDark ? 'invert-on-dark' : ''}
           />
-        </Avatar>
+        ) : (
+          <Avatar size="500" radii="Pill">
+            <RoomAvatar
+              roomId={space.roomId}
+              src={avatarUrl}
+              alt={name}
+              renderFallback={() => <Text size="H4">{nameInitials(name)}</Text>}
+            />
+          </Avatar>
+        )
       }
       title={name}
       subTitle={

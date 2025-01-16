@@ -44,6 +44,10 @@ const copyFiles = {
       src: 'public/locales',
       dest: 'public/',
     },
+    {
+      src: 'public/img',
+      dest: 'public/img'
+    }
   ],
 };
 

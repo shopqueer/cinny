@@ -54,6 +54,7 @@ import { getMatrixToRoom } from '../../plugins/matrix-to';
 import { getViaServers } from '../../plugins/via-servers';
 import { BackRouteHandler } from '../../components/BackRouteHandler';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
+import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 type RoomMenuProps = {
   room: Room;
@@ -187,7 +188,9 @@ export function RoomViewHeader() {
   const avatarMxc = useRoomAvatar(room, mDirects.has(room.roomId));
   const name = useRoomName(room);
   const topic = useRoomTopic(room);
-  const avatarUrl = avatarMxc ? mxcUrlToHttp(mx, avatarMxc, useAuthentication, 96, 96, 'crop') ?? undefined : undefined;
+  const avatarUrl = avatarMxc
+    ? mxcUrlToHttp(mx, avatarMxc, useAuthentication, 96, 96, 'crop') ?? undefined
+    : undefined;
 
   const setPeopleDrawer = useSetSetting(settingsAtom, 'isPeopleDrawer');
 
@@ -204,6 +207,8 @@ export function RoomViewHeader() {
   const handleOpenMenu: MouseEventHandler<HTMLButtonElement> = (evt) => {
     setMenuAnchor(evt.currentTarget.getBoundingClientRect());
   };
+
+  const customClub = space && space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
 
   return (
     <PageHeader balance={screenSize === ScreenSize.Mobile}>
@@ -226,13 +231,17 @@ export function RoomViewHeader() {
                 roomId={room.roomId}
                 src={avatarUrl}
                 alt={name}
-                renderFallback={() => (
-                  <RoomIcon
-                    size="200"
-                    joinRule={room.getJoinRule() ?? JoinRule.Restricted}
-                    filled
-                  />
-                )}
+                renderFallback={() =>
+                  customClub?.roomIcon ? (
+                    <Icon size="200" src={customClub.roomIcon} filled />
+                  ) : (
+                    <RoomIcon
+                      size="200"
+                      joinRule={room.getJoinRule() ?? JoinRule.Restricted}
+                      filled
+                    />
+                  )
+                }
               />
             </Avatar>
           )}
@@ -308,7 +317,11 @@ export function RoomViewHeader() {
               }
             >
               {(triggerRef) => (
-                <IconButton ref={triggerRef} onClick={() => setPeopleDrawer((drawer) => !drawer)} radii="Pill">
+                <IconButton
+                  ref={triggerRef}
+                  onClick={() => setPeopleDrawer((drawer) => !drawer)}
+                  radii="Pill"
+                >
                   <Icon size="400" src={Icons.User} />
                 </IconButton>
               )}
@@ -325,7 +338,12 @@ export function RoomViewHeader() {
             }
           >
             {(triggerRef) => (
-              <IconButton onClick={handleOpenMenu} ref={triggerRef} aria-pressed={!!menuAnchor} radii="Pill"> 
+              <IconButton
+                onClick={handleOpenMenu}
+                ref={triggerRef}
+                aria-pressed={!!menuAnchor}
+                radii="Pill"
+              >
                 <Icon size="400" src={Icons.VerticalDots} filled={!!menuAnchor} />
               </IconButton>
             )}
