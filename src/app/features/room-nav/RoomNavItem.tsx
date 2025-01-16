@@ -39,6 +39,8 @@ import { getMatrixToRoom } from '../../plugins/matrix-to';
 import { getCanonicalAliasOrRoomId, isRoomAlias } from '../../utils/matrix';
 import { getViaServers } from '../../plugins/via-servers';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
+import { useSpace } from '../../hooks/useSpace';
+import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 type RoomNavItemMenuProps = {
   room: Room;
@@ -200,6 +202,9 @@ export function RoomNavItem({
 
   const optionsVisible = hover || !!menuAnchor;
 
+  const space = useSpace();
+  const customClub = space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
+
   return (
     <NavItem
       variant="Background"
@@ -219,7 +224,9 @@ export function RoomNavItem({
                 <RoomAvatar
                   roomId={room.roomId}
                   src={
-                    direct ? getDirectRoomAvatarUrl(mx, room, 96, useAuthentication) : getRoomAvatarUrl(mx, room, 96, useAuthentication)
+                    direct
+                      ? getDirectRoomAvatarUrl(mx, room, 96, useAuthentication)
+                      : getRoomAvatarUrl(mx, room, 96, useAuthentication)
                   }
                   alt={room.name}
                   renderFallback={() => (
@@ -227,6 +234,13 @@ export function RoomNavItem({
                       {nameInitials(room.name)}
                     </Text>
                   )}
+                />
+              ) : customClub?.roomIcon ? (
+                <Icon
+                  size="100"
+                  src={customClub.roomIcon}
+                  style={{ opacity: unread ? config.opacity.P500 : config.opacity.P300 }}
+                  filled={selected}
                 />
               ) : (
                 <RoomIcon

@@ -649,3 +649,12 @@ audio:not([controls]) {
   justify-content: center;
   align-items: center;
 }
+
+.invert-on-dark {
+  filter: invert(0);
+}
+
+.butter-theme .invert-on-dark,
+.dark-theme .invert-on-dark {
+  filter: invert(1);
+}
