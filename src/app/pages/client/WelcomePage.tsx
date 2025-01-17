@@ -32,6 +32,9 @@ export function WelcomePage() {
     "!OAMvlYAJNHAeJAHqMJ:kiki-server.allstora.com": {"discussion": "!KbdMTynRVIyEstrZBb:kiki-server.allstora.com", "intro": "!neoqrlvgGuUZAZLaQD:kiki-server.allstora.com", "hostName": "Kate and Leisha"},
     "!SIvciPzZUwTOeumsjM:kiki-server.allstora.com": {"discussion": "!wsavZGmlDvFYBEomkN:kiki-server.allstora.com", "intro": "!ZSDcqngwrcRomAvAHg:kiki-server.allstora.com", "hostName": "Dylan"},
     "!gofhedAMppDZiREscQ:kiki-server.allstora.com": {"discussion": "!iKEWEyyYVAsGjSYEwq:kiki-server.allstora.com", "intro": "!bMTPoMcAggFZmReBNZ:kiki-server.allstora.com", "hostName": "Gus"},
+    "!ojBDxbTjFVezlkZecR:kiki-server.allstora.com": {"discussion": "!zZGAlAVCFiiZILPznL:kiki-server.allstora.com", "intro": "!QzrUrcYlpPdnzhOypL:kiki-server.allstora.com", "hostName": "Rob"},
+    // TODO: we may want to change these room IDs if we add the common rooms to Ru's club
+    "!cwvocyDXRTKBDZkXKb:kiki-server.allstora.com": {"discussion": "!rgHJQdtucUuLMiCpfL:kiki-server.allstora.com", "intro": "!eZcJrpjWLHDwMazhQz:kiki-server.allstora.com", "hostName": "RuPaul"}
   }
 
   return (
