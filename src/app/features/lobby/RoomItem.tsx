@@ -41,7 +41,7 @@ import { getDirectRoomAvatarUrl, getRoomAvatarUrl } from '../../utils/room';
 import { ItemDraggableTarget, useDraggableItem } from './DnD';
 import { mxcUrlToHttp } from '../../utils/matrix';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
-import { useSpace } from '../../hooks/useSpace';
+import { useSpaceOptionally } from '../../hooks/useSpace';
 import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 type RoomJoinButtonProps = {
@@ -207,8 +207,8 @@ function RoomProfile({
   joinRule,
   options,
 }: RoomProfileProps) {
-  const space = useSpace();
-  const customClub = space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
+  const space = useSpaceOptionally();
+  const customClub = space && space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
 
   return (
     <Box grow="Yes" gap="300">

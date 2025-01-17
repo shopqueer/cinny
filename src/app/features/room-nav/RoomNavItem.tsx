@@ -39,7 +39,7 @@ import { getMatrixToRoom } from '../../plugins/matrix-to';
 import { getCanonicalAliasOrRoomId, isRoomAlias } from '../../utils/matrix';
 import { getViaServers } from '../../plugins/via-servers';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
-import { useSpace } from '../../hooks/useSpace';
+import { useSpaceOptionally } from '../../hooks/useSpace';
 import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 type RoomNavItemMenuProps = {
@@ -202,8 +202,8 @@ export function RoomNavItem({
 
   const optionsVisible = hover || !!menuAnchor;
 
-  const space = useSpace();
-  const customClub = space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
+  const space = useSpaceOptionally();
+  const customClub = space && space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
 
   return (
     <NavItem
