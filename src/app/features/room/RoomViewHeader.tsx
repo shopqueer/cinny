@@ -50,7 +50,7 @@ import { useRoomAvatar, useRoomName, useRoomTopic } from '../../hooks/useRoomMet
 import { mDirectAtom } from '../../state/mDirectList';
 import { ScreenSize, useScreenSizeContext } from '../../hooks/useScreenSize';
 import { stopPropagation } from '../../utils/keyboard';
-import { getMatrixToRoom } from '../../plugins/matrix-to';
+import { getMatrixToRoom, matrixToAllstora } from '../../plugins/matrix-to';
 import { getViaServers } from '../../plugins/via-servers';
 import { BackRouteHandler } from '../../components/BackRouteHandler';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
@@ -67,6 +67,8 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
   const { getPowerLevel, canDoAction } = usePowerLevelsAPI(powerLevels);
   const canInvite = canDoAction('invite', getPowerLevel(mx.getUserId() ?? ''));
 
+  const space = useSpaceOptionally();
+
   const handleMarkAsRead = () => {
     markAsRead(mx, room.roomId);
     requestClose();
@@ -80,7 +82,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
   const handleCopyLink = () => {
     const roomIdOrAlias = getCanonicalAliasOrRoomId(mx, room.roomId);
     const viaServers = isRoomAlias(roomIdOrAlias) ? undefined : getViaServers(room);
-    copyToClipboard(getMatrixToRoom(roomIdOrAlias, viaServers));
+    copyToClipboard(matrixToAllstora(getMatrixToRoom(roomIdOrAlias, viaServers), space?.roomId));
     requestClose();
   };
 

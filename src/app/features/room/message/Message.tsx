@@ -65,9 +65,10 @@ import { MessageEditor } from './MessageEditor';
 import { UserAvatar } from '../../../components/user-avatar';
 import { copyToClipboard } from '../../../utils/dom';
 import { stopPropagation } from '../../../utils/keyboard';
-import { getMatrixToRoomEvent } from '../../../plugins/matrix-to';
+import { getMatrixToRoomEvent, matrixToAllstora } from '../../../plugins/matrix-to';
 import { getViaServers } from '../../../plugins/via-servers';
 import { useMediaAuthentication } from '../../../hooks/useMediaAuthentication';
+import { useSpaceOptionally } from '../../../hooks/useSpace';
 
 export type ReactionHandler = (keyOrMxc: string, shortcode: string) => void;
 
@@ -315,12 +316,14 @@ export const MessageCopyLinkItem = as<
 >(({ room, mEvent, onClose, ...props }, ref) => {
   const mx = useMatrixClient();
 
+  const space = useSpaceOptionally();
+
   const handleCopy = () => {
     const roomIdOrAlias = getCanonicalAliasOrRoomId(mx, room.roomId);
     const eventId = mEvent.getId();
     const viaServers = isRoomAlias(roomIdOrAlias) ? undefined : getViaServers(room);
     if (!eventId) return;
-    copyToClipboard(getMatrixToRoomEvent(roomIdOrAlias, eventId, viaServers));
+    copyToClipboard(matrixToAllstora(getMatrixToRoomEvent(roomIdOrAlias, eventId, viaServers), space?.roomId) );
     onClose?.();
   };
 
