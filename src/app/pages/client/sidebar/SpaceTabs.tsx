@@ -84,10 +84,11 @@ import { markAsRead } from '../../../../client/action/notifications';
 import { copyToClipboard } from '../../../utils/dom';
 import { openInviteUser, openSpaceSettings } from '../../../../client/action/navigation';
 import { stopPropagation } from '../../../utils/keyboard';
-import { getMatrixToRoom } from '../../../plugins/matrix-to';
+import { getMatrixToRoom, matrixToAllstora } from '../../../plugins/matrix-to';
 import { getViaServers } from '../../../plugins/via-servers';
 import { getRoomAvatarUrl } from '../../../utils/room';
 import { useMediaAuthentication } from '../../../hooks/useMediaAuthentication';
+import { useSpaceOptionally } from '../../../hooks/useSpace';
 
 type SpaceMenuProps = {
   room: Room;
@@ -101,6 +102,8 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(
     const powerLevels = usePowerLevels(room);
     const { getPowerLevel, canDoAction } = usePowerLevelsAPI(powerLevels);
     const canInvite = canDoAction('invite', getPowerLevel(mx.getUserId() ?? ''));
+
+    const space = useSpaceOptionally();
 
     const allChild = useSpaceChildren(
       allRoomsAtom,
@@ -122,7 +125,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(
     const handleCopyLink = () => {
       const roomIdOrAlias = getCanonicalAliasOrRoomId(mx, room.roomId);
       const viaServers = isRoomAlias(roomIdOrAlias) ? undefined : getViaServers(room);
-      copyToClipboard(getMatrixToRoom(roomIdOrAlias, viaServers));
+      copyToClipboard(matrixToAllstora(getMatrixToRoom(roomIdOrAlias, viaServers), space?.roomId));
       requestClose();
     };
 

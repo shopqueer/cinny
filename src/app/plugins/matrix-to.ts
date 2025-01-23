@@ -1,4 +1,5 @@
 const MATRIX_TO_BASE = 'https://matrix.to';
+const ALLSTORA_BASE = 'https://kiki-chat.allstora.com';
 
 export const getMatrixToUser = (userId: string): string => `${MATRIX_TO_BASE}/#/${userId}`;
 
@@ -27,6 +28,14 @@ export const getMatrixToRoomEvent = (
   }
 
   return `${MATRIX_TO_BASE}/#/${fragment}`;
+};
+
+export const matrixToAllstora = (matrixURI: string, spaceId?: string): string => {
+  if (spaceId) {
+    return matrixURI.replace(`${MATRIX_TO_BASE}/#/`, `${ALLSTORA_BASE}/${spaceId}/`);
+  } else {
+    return matrixURI.replace(`${MATRIX_TO_BASE}/#/`, `${ALLSTORA_BASE}/`);
+  }
 };
 
 export type MatrixToRoom = {

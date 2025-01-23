@@ -41,7 +41,7 @@ import {
   useSpaceLobbySelected,
   useSpaceSearchSelected,
 } from '../../../hooks/router/useSelectedSpace';
-import { useSpace } from '../../../hooks/useSpace';
+import { useSpace, useSpaceOptionally } from '../../../hooks/useSpace';
 import { VirtualTile } from '../../../components/virtualizer';
 import { RoomNavCategoryButton, RoomNavItem } from '../../../features/room-nav';
 import { muteChangesAtom } from '../../../state/room-list/mutedRoomList';
@@ -66,7 +66,7 @@ import { useClosedNavCategoriesAtom } from '../../../state/hooks/closedNavCatego
 import { useStateEvent } from '../../../hooks/useStateEvent';
 import { StateEvent } from '../../../../types/matrix/room';
 import { stopPropagation } from '../../../utils/keyboard';
-import { getMatrixToRoom } from '../../../plugins/matrix-to';
+import { getMatrixToRoom, matrixToAllstora } from '../../../plugins/matrix-to';
 import { getViaServers } from '../../../plugins/via-servers';
 
 type SpaceMenuProps = {
@@ -79,6 +79,8 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
   const powerLevels = usePowerLevels(room);
   const { getPowerLevel, canDoAction } = usePowerLevelsAPI(powerLevels);
   const canInvite = canDoAction('invite', getPowerLevel(mx.getUserId() ?? ''));
+
+  const space = useSpaceOptionally();
 
   const allChild = useSpaceChildren(
     allRoomsAtom,
@@ -95,7 +97,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
   const handleCopyLink = () => {
     const roomIdOrAlias = getCanonicalAliasOrRoomId(mx, room.roomId);
     const viaServers = isRoomAlias(roomIdOrAlias) ? undefined : getViaServers(room);
-    copyToClipboard(getMatrixToRoom(roomIdOrAlias, viaServers));
+    copyToClipboard(matrixToAllstora(getMatrixToRoom(roomIdOrAlias, viaServers), space?.roomId));
     requestClose();
   };
 
