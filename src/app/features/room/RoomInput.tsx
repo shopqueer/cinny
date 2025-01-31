@@ -601,7 +601,7 @@ export const RoomInput = forwardRef<HTMLDivElement, RoomInputProps>(
                   </PopOut>
                 )}
               </UseStateProvider>
-              <IconButton onClick={submit} variant="SurfaceVariant" size="300" radii="Pill">
+              <IconButton id="send_message" onClick={submit} variant="SurfaceVariant" size="300" radii="Pill">
                 <Icon src={Icons.Send} />
               </IconButton>
             </>
