@@ -803,6 +803,7 @@ export const Message = as<'div', MessageProps>(
                     align={emojiBoardAnchor?.width === 0 ? 'Start' : 'End'}
                     offset={emojiBoardAnchor?.width === 0 ? 0 : undefined}
                     anchor={emojiBoardAnchor}
+                    id="react_board"
                     content={
                       <EmojiBoard
                         imagePackRooms={imagePackRooms ?? []}
@@ -836,6 +837,7 @@ export const Message = as<'div', MessageProps>(
                 <IconButton
                   onClick={onReplyClick}
                   data-event-id={mEvent.getId()}
+                  id="reply_button"
                   variant="SurfaceVariant"
                   size="300"
                   radii="300"
@@ -881,6 +883,7 @@ export const Message = as<'div', MessageProps>(
                           {canSendReaction && (
                             <MenuItem
                               size="300"
+                              id="react_menu_item"
                               after={<Icon size="100" src={Icons.SmilePlus} />}
                               radii="300"
                               onClick={handleAddReactions}
@@ -906,6 +909,7 @@ export const Message = as<'div', MessageProps>(
                             size="300"
                             after={<Icon size="100" src={Icons.ReplyArrow} />}
                             radii="300"
+                            id="reply_menu_item"
                             data-event-id={mEvent.getId()}
                             onClick={(evt: any) => {
                               onReplyClick(evt);

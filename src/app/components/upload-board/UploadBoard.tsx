@@ -94,6 +94,7 @@ export function UploadBoardHeader({
         {isSuccess && (
           <Chip
             as="button"
+            id="send_upload"
             onClick={handleSend}
             variant="Primary"
             radii="Pill"
