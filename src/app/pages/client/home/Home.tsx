@@ -108,7 +108,7 @@ const HomeMenu = forwardRef<HTMLDivElement, HomeMenuProps>(({ requestClose }, re
 
 function HomeHeader() {
   const [menuAnchor, setMenuAnchor] = useState<RectCords>();
-
+  document.title = 'Kiki by Allstora'
   const handleOpenMenu: MouseEventHandler<HTMLButtonElement> = (evt) => {
     const cords = evt.currentTarget.getBoundingClientRect();
     setMenuAnchor((currentState) => {

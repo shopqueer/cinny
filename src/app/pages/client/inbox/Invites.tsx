@@ -200,6 +200,7 @@ function InviteCard({ room, userId, direct, compact, onNavigate }: InviteCardPro
 }
 
 export function Invites() {
+  document.title = 'Kiki by Allstora'
   const mx = useMatrixClient();
   const userId = mx.getUserId()!;
   const mDirects = useAtomValue(mDirectAtom);

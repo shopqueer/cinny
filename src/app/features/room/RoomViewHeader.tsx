@@ -189,6 +189,11 @@ export function RoomViewHeader() {
   const ecryptedRoom = !!encryptionEvent;
   const avatarMxc = useRoomAvatar(room, mDirects.has(room.roomId));
   const name = useRoomName(room);
+  if (space) {
+    document.title = "Kiki | ".concat(space.name, " | ", name)
+  } else {
+    document.title = "Kiki | ".concat(name)
+  }
   const topic = useRoomTopic(room);
   const avatarUrl = avatarMxc
     ? mxcUrlToHttp(mx, avatarMxc, useAuthentication, 96, 96, 'crop') ?? undefined

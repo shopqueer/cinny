@@ -198,6 +198,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
 function SpaceHeader() {
   const space = useSpace();
   const spaceName = useRoomName(space);
+  document.title = "Kiki | ".concat(spaceName)
   const [menuAnchor, setMenuAnchor] = useState<RectCords>();
 
   const joinRules = useStateEvent(
