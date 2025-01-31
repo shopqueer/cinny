@@ -33,6 +33,7 @@ export function SearchInput({ active, loading, searchInputRef, onSearch, onReset
         variant="Background"
         placeholder="Search for keyword"
         autoComplete="off"
+        radii="Pill"
         before={
           active && loading ? (
             <Spinner variant="Secondary" size="200" />

@@ -181,6 +181,7 @@ function EmojiBoardTabs({
         variant="Secondary"
         fill={tab === EmojiBoardTab.Sticker ? 'Solid' : 'None'}
         size="500"
+        radii="Pill"
         onClick={() => onTabChange(EmojiBoardTab.Sticker)}
       >
         <Text as="span" size="L400">
@@ -193,6 +194,7 @@ function EmojiBoardTabs({
         variant="Secondary"
         fill={tab === EmojiBoardTab.Emoji ? 'Solid' : 'None'}
         size="500"
+        radii="Pill"
         onClick={() => onTabChange(EmojiBoardTab.Emoji)}
       >
         <Text as="span" size="L400">
@@ -221,7 +223,7 @@ export function SidebarBtn<T extends string>({
       delay={500}
       position="Left"
       tooltip={
-        <Tooltip id={`SidebarStackItem-${id}-label`}>
+        <Tooltip id={`SidebarStackItem-${id}-label`} radii="Pill">
           <Text size="T300">{label}</Text>
         </Tooltip>
       }
@@ -233,7 +235,7 @@ export function SidebarBtn<T extends string>({
           ref={ref}
           onClick={() => onItemClick(id)}
           size="400"
-          radii="300"
+          radii="Pill"
           variant="Surface"
         >
           {children}
@@ -344,7 +346,7 @@ function RecentEmojiSidebarStack({ onItemClick }: { onItemClick: (id: string) =>
         label="Recent"
         onItemClick={() => onItemClick(RECENT_GROUP_ID)}
       >
-        <Icon src={Icons.RecentClock} filled={activeGroupId === RECENT_GROUP_ID} />
+        <Icon src={Icons.RecentClock} filled={activeGroupId === RECENT_GROUP_ID} radii="Pill" />
       </SidebarBtn>
     </SidebarStack>
   );
@@ -417,7 +419,7 @@ function NativeEmojiSidebarStack({
           label={labels[group.id]}
           onItemClick={onItemClick}
         >
-          <Icon src={icons[group.id]} filled={activeGroupId === group.id} />
+          <Icon src={icons[group.id]} filled={activeGroupId === group.id} radii="Pill" />
         </SidebarBtn>
       ))}
     </SidebarStack>
@@ -795,6 +797,7 @@ export function EmojiBoard({
                 size="400"
                 placeholder={allowTextCustomEmoji ? 'Search or Text Reaction ' : 'Search'}
                 maxLength={50}
+                radii="Pill"
                 after={
                   allowTextCustomEmoji && result?.query ? (
                     <Chip

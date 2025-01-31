@@ -20,7 +20,7 @@ function ReCaptchaErrorDialog({
           <Text size="H4">{title}</Text>
           <Text>{message}</Text>
         </Box>
-        <Button variant="Critical" fill="None" outlined onClick={onCancel}>
+        <Button variant="Critical" fill="None" outlined onClick={onCancel} radii="Pill">
           <Text as="span" size="B400">
             Cancel
           </Text>

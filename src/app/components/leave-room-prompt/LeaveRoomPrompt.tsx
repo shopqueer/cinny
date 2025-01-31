@@ -68,7 +68,7 @@ export function LeaveRoomPrompt({ roomId, onDone, onCancel }: LeaveRoomPromptPro
               <Box grow="Yes">
                 <Text size="H4">Leave Room</Text>
               </Box>
-              <IconButton size="300" onClick={onCancel} radii="300">
+              <IconButton size="300" onClick={onCancel} radii="Pill">
                 <Icon src={Icons.Cross} />
               </IconButton>
             </Header>
@@ -85,6 +85,7 @@ export function LeaveRoomPrompt({ roomId, onDone, onCancel }: LeaveRoomPromptPro
                 type="submit"
                 variant="Critical"
                 onClick={handleLeave}
+                radii="Pill"
                 before={
                   leaveState.status === AsyncStatus.Loading ? (
                     <Spinner fill="Solid" variant="Critical" size="200" />

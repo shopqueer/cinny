@@ -84,7 +84,7 @@ const HomeMenu = forwardRef<HTMLDivElement, HomeMenuProps>(({ requestClose }, re
           onClick={handleMarkAsRead}
           size="300"
           after={<Icon size="100" src={Icons.CheckTwice} />}
-          radii="300"
+          radii="Pill"
           aria-disabled={!unread}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -94,7 +94,7 @@ const HomeMenu = forwardRef<HTMLDivElement, HomeMenuProps>(({ requestClose }, re
         <MenuItem
           onClick={handleJoinAddress}
           size="300"
-          radii="300"
+          radii="Pill"
           after={<Icon size="100" src={Icons.Link} />}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -127,7 +127,7 @@ function HomeHeader() {
             </Text>
           </Box>
           <Box>
-            <IconButton aria-pressed={!!menuAnchor} variant="Background" onClick={handleOpenMenu}>
+            <IconButton aria-pressed={!!menuAnchor} variant="Background" onClick={handleOpenMenu} radii="Pill">
               <Icon src={Icons.VerticalDots} size="200" />
             </IconButton>
           </Box>
@@ -165,11 +165,11 @@ function HomeEmpty() {
   return (
     <PageNavContent>
       <NavCategory>
-        <NavItem variant="Background" radii="400" aria-selected={welcomeSelected}>
+        <NavItem variant="Background" radii="Pill" aria-selected={welcomeSelected}>
           <NavLink to={getHomeWelcomePath()}>
             <NavItemContent>
               <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                <Avatar size="200" radii="400">
+                <Avatar size="200" radii="Pill">
                   <Icon src={Icons.Star} size="100" filled={welcomeSelected} />
                 </Avatar>
                 <Box as="span" grow="Yes">
@@ -181,11 +181,11 @@ function HomeEmpty() {
             </NavItemContent>
           </NavLink>
         </NavItem>
-        <NavItem variant="Background" radii="400" aria-selected={rulesSelected}>
+        <NavItem variant="Background" radii="Pill" aria-selected={rulesSelected}>
           <NavLink to={getHomeRulesPath()}>
             <NavItemContent>
               <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                <Avatar size="200" radii="400">
+                <Avatar size="200" radii="Pill">
                   <Icon src={Icons.Flag} size="100" filled={rulesSelected} />
                 </Avatar>
                 <Box as="span" grow="Yes">
@@ -251,11 +251,11 @@ export function Home() {
         <PageNavContent scrollRef={scrollRef}>
           <Box direction="Column" gap="300">
             <NavCategory>
-              <NavItem variant="Background" radii="400" aria-selected={welcomeSelected}>
+              <NavItem variant="Background" radii="Pill" aria-selected={welcomeSelected}>
                 <NavLink to={getHomeWelcomePath()}>
                   <NavItemContent>
                     <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                      <Avatar size="200" radii="400">
+                      <Avatar size="200" radii="Pill">
                         <Icon src={Icons.Star} size="100" filled={welcomeSelected} />
                       </Avatar>
                       <Box as="span" grow="Yes">
@@ -267,11 +267,11 @@ export function Home() {
                   </NavItemContent>
                 </NavLink>
               </NavItem>
-              <NavItem variant="Background" radii="400" aria-selected={rulesSelected}>
+              <NavItem variant="Background" radii="Pill" aria-selected={rulesSelected}>
                 <NavLink to={getHomeRulesPath()}>
                   <NavItemContent>
                     <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                      <Avatar size="200" radii="400">
+                      <Avatar size="200" radii="Pill">
                         <Icon src={Icons.Flag} size="100" filled={rulesSelected} />
                       </Avatar>
                       <Box as="span" grow="Yes">
@@ -284,11 +284,11 @@ export function Home() {
                 </NavLink>
               </NavItem>
 
-              <NavItem variant="Background" radii="400" aria-selected={searchSelected}>
+              <NavItem variant="Background" radii="Pill" aria-selected={searchSelected}>
                 <NavLink to={getHomeSearchPath()}>
                   <NavItemContent>
                     <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                      <Avatar size="200" radii="400">
+                      <Avatar size="200" radii="Pill">
                         <Icon src={Icons.Search} size="100" filled={searchSelected} />
                       </Avatar>
                       <Box as="span" grow="Yes">

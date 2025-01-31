@@ -20,14 +20,14 @@ function InvitesNavItem() {
   return (
     <NavItem
       variant="Background"
-      radii="400"
+      radii="Pill"
       highlight={inviteCount > 0}
       aria-selected={invitesSelected}
     >
       <NavLink to={getInboxInvitesPath()}>
         <NavItemContent>
           <Box as="span" grow="Yes" alignItems="Center" gap="200">
-            <Avatar size="200" radii="400">
+            <Avatar size="200" radii="Pill">
               <Icon src={Icons.Mail} size="100" filled={invitesSelected} />
             </Avatar>
             <Box as="span" grow="Yes">
@@ -62,11 +62,11 @@ export function Inbox() {
       <PageNavContent>
         <Box direction="Column" gap="300">
           <NavCategory>
-            <NavItem variant="Background" radii="400" aria-selected={notificationsSelected}>
+            <NavItem variant="Background" radii="Pill" aria-selected={notificationsSelected}>
               <NavLink to={getInboxNotificationsPath()}>
                 <NavItemContent>
                   <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                    <Avatar size="200" radii="400">
+                    <Avatar size="200" radii="Pill">
                       <Icon src={Icons.MessageUnread} size="100" filled={notificationsSelected} />
                     </Avatar>
                     <Box as="span" grow="Yes">

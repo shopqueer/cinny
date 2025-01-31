@@ -272,7 +272,7 @@ export const MessageEditor = as<'div', MessageEditorProps>(
                   <IconButton
                     variant="SurfaceVariant"
                     size="300"
-                    radii="300"
+                    radii="Pill"
                     onClick={() => setToolbar(!toolbar)}
                   >
                     <Icon size="400" src={toolbar ? Icons.AlphabetUnderline : Icons.Alphabet} />
@@ -307,7 +307,7 @@ export const MessageEditor = as<'div', MessageEditorProps>(
                           }
                           variant="SurfaceVariant"
                           size="300"
-                          radii="300"
+                          radii="Pill"
                         >
                           <Icon size="400" src={Icons.Smile} filled={anchor !== undefined} />
                         </IconButton>

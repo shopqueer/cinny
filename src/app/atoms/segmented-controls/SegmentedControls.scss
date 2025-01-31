@@ -3,8 +3,8 @@
 
 .segmented-controls {
   background-color: var(--bg-surface-low);
-  border-radius: var(--bo-radius);
-  border: 1px solid var(--bg-surface-border);
+  border-radius: var(--bo-rounded-radius);
+  border: 1px solid var(--bg-input-border);
 
   display: inline-flex;
   overflow: hidden;

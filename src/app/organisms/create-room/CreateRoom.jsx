@@ -160,7 +160,7 @@ function CreateRoomContent({ isSpace, parentId, onRequestClose }) {
         <SettingTile
           title="Visibility"
           options={
-            <Button onClick={handleJoinRule} iconSrc={ChevronBottomIC}>
+            <Button onClick={handleJoinRule} iconSrc={ChevronBottomIC} rounded>
               {joinRuleShortText[joinRules.indexOf(joinRule)]}
             </Button>
           }
@@ -226,6 +226,7 @@ function CreateRoomContent({ isSpace, parentId, onRequestClose }) {
             iconSrc={isSpace ? SpacePlusIC : HashPlusIC}
             type="submit"
             variant="primary"
+            rounded
           >
             Create
           </Button>

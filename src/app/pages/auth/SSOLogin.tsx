@@ -61,7 +61,7 @@ export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginPr
                 href={getSSOIdUrl(id)}
                 aria-label={buttonTitle}
                 size="300"
-                radii="300"
+                radii="Pill"
               >
                 <AvatarImage src={iconUrl!} alt={name} title={buttonTitle} />
               </Avatar>
@@ -76,11 +76,12 @@ export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginPr
               href={getSSOIdUrl(id)}
               size="500"
               variant="Secondary"
-              fill="Soft"
+              fill="None"
+              radii="Pill"
               outlined
               before={
                 iconUrl && (
-                  <Avatar size="200" radii="300">
+                  <Avatar size="200">
                     <AvatarImage src={iconUrl} alt={name} />
                   </Avatar>
                 )
@@ -100,6 +101,7 @@ export function SSOLogin({ providers, redirectUrl, saveScreenSpace }: SSOLoginPr
           size="500"
           variant="Secondary"
           fill="Soft"
+          radii="Pill"
           outlined
         >
           <Text align="Center" size="B500" truncate>

@@ -105,7 +105,7 @@ export function UploadBoardHeader({
           </Chip>
         )}
         {isError && !open && (
-          <Badge variant="Critical" fill="Solid" radii="300">
+          <Badge variant="Critical" fill="Solid" radii="Pill">
             <Text size="L400">Upload Failed</Text>
           </Badge>
         )}

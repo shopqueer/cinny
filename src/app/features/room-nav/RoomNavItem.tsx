@@ -35,10 +35,12 @@ import { LeaveRoomPrompt } from '../../components/leave-room-prompt';
 import { useRoomTypingMember } from '../../hooks/useRoomTypingMembers';
 import { TypingIndicator } from '../../components/typing-indicator';
 import { stopPropagation } from '../../utils/keyboard';
-import { getMatrixToRoom } from '../../plugins/matrix-to';
+import { getMatrixToRoom, matrixToAllstora } from '../../plugins/matrix-to';
 import { getCanonicalAliasOrRoomId, isRoomAlias } from '../../utils/matrix';
 import { getViaServers } from '../../plugins/via-servers';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
+import { useSpaceOptionally } from '../../hooks/useSpace';
+import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 type RoomNavItemMenuProps = {
   room: Room;
@@ -51,6 +53,8 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
     const powerLevels = usePowerLevels(room);
     const { getPowerLevel, canDoAction } = usePowerLevelsAPI(powerLevels);
     const canInvite = canDoAction('invite', getPowerLevel(mx.getUserId() ?? ''));
+
+    const space = useSpaceOptionally();
 
     const handleMarkAsRead = () => {
       markAsRead(mx, room.roomId);
@@ -65,7 +69,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
     const handleCopyLink = () => {
       const roomIdOrAlias = getCanonicalAliasOrRoomId(mx, room.roomId);
       const viaServers = isRoomAlias(roomIdOrAlias) ? undefined : getViaServers(room);
-      copyToClipboard(getMatrixToRoom(roomIdOrAlias, viaServers));
+      copyToClipboard(matrixToAllstora(getMatrixToRoom(roomIdOrAlias, viaServers), space?.roomId));
       requestClose();
     };
 
@@ -81,7 +85,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             onClick={handleMarkAsRead}
             size="300"
             after={<Icon size="100" src={Icons.CheckTwice} />}
-            radii="300"
+            radii="Pill"
             disabled={!unread}
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -97,7 +101,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             fill="None"
             size="300"
             after={<Icon size="100" src={Icons.UserPlus} />}
-            radii="300"
+            radii="Pill"
             disabled={!canInvite}
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -108,7 +112,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             onClick={handleCopyLink}
             size="300"
             after={<Icon size="100" src={Icons.Link} />}
-            radii="300"
+            radii="Pill"
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
               Copy Link
@@ -118,7 +122,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
             onClick={handleRoomSettings}
             size="300"
             after={<Icon size="100" src={Icons.Setting} />}
-            radii="300"
+            radii="Pill"
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
               Room Settings
@@ -136,7 +140,7 @@ const RoomNavItemMenu = forwardRef<HTMLDivElement, RoomNavItemMenuProps>(
                   fill="None"
                   size="300"
                   after={<Icon size="100" src={Icons.ArrowGoLeft} />}
-                  radii="300"
+                  radii="Pill"
                   aria-pressed={promptLeave}
                 >
                   <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -200,10 +204,13 @@ export function RoomNavItem({
 
   const optionsVisible = hover || !!menuAnchor;
 
+  const space = useSpaceOptionally();
+  const customClub = space && space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
+
   return (
     <NavItem
       variant="Background"
-      radii="400"
+      radii="Pill"
       highlight={unread !== undefined}
       aria-selected={selected}
       data-hover={!!menuAnchor}
@@ -214,12 +221,14 @@ export function RoomNavItem({
       <NavLink to={linkPath}>
         <NavItemContent>
           <Box as="span" grow="Yes" alignItems="Center" gap="200">
-            <Avatar size="200" radii="400">
+            <Avatar size="200" radii="Pill">
               {showAvatar ? (
                 <RoomAvatar
                   roomId={room.roomId}
                   src={
-                    direct ? getDirectRoomAvatarUrl(mx, room, 96, useAuthentication) : getRoomAvatarUrl(mx, room, 96, useAuthentication)
+                    direct
+                      ? getDirectRoomAvatarUrl(mx, room, 96, useAuthentication)
+                      : getRoomAvatarUrl(mx, room, 96, useAuthentication)
                   }
                   alt={room.name}
                   renderFallback={() => (
@@ -227,6 +236,13 @@ export function RoomNavItem({
                       {nameInitials(room.name)}
                     </Text>
                   )}
+                />
+              ) : customClub?.roomIcon ? (
+                <Icon
+                  size="100"
+                  src={customClub.roomIcon}
+                  style={{ opacity: unread ? config.opacity.P500 : config.opacity.P300 }}
+                  filled={selected}
                 />
               ) : (
                 <RoomIcon
@@ -286,7 +302,7 @@ export function RoomNavItem({
               variant="Background"
               fill="None"
               size="300"
-              radii="300"
+              radii="Pill"
             >
               <Icon size="50" src={Icons.VerticalDots} />
             </IconButton>

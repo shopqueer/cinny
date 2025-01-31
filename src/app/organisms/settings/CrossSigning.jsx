@@ -23,7 +23,7 @@ const failedDialog = () => {
     <div className="cross-signing__failure">
       <Text variant="h1">❌</Text>
       <Text weight="medium">Failed to setup cross signing. Please try again.</Text>
-      <Button onClick={requestClose}>Close</Button>
+      <Button onClick={requestClose} rounded>Close</Button>
     </div>
   );
 
@@ -51,10 +51,10 @@ const securityKeyDialog = (key) => {
       <Text weight="medium">Please save this security key somewhere safe.</Text>
       <Text className="cross-signing__key-text">{key.encodedPrivateKey}</Text>
       <div className="cross-signing__key-btn">
-        <Button variant="primary" onClick={() => copyKey(key)}>
+        <Button variant="primary" onClick={() => copyKey(key)} rounded>
           Copy
         </Button>
-        <Button onClick={() => downloadKey(key)}>Download</Button>
+        <Button onClick={() => downloadKey(key)} rounded>Download</Button>
       </div>
     </div>
   );
@@ -128,7 +128,7 @@ function CrossSigningSetup() {
           session verification.
         </Text>
         {genWithPhrase !== false && (
-          <Button variant="primary" onClick={() => setup()} disabled={genWithPhrase !== undefined}>
+          <Button variant="primary" onClick={() => setup()} disabled={genWithPhrase !== undefined} rounded>
             Generate Key
           </Button>
         )}
@@ -180,7 +180,7 @@ function CrossSigningSetup() {
               </Text>
             )}
             {genWithPhrase !== true && (
-              <Button variant="primary" type="submit" disabled={genWithPhrase !== undefined}>
+              <Button variant="primary" type="submit" disabled={genWithPhrase !== undefined} rounded>
                 Set Phrase & Generate Key
               </Button>
             )}
@@ -211,7 +211,7 @@ function CrossSigningReset() {
         You almost certainly do not want to do this, unless you have lost <b>Security Key</b> or{' '}
         <b>Phrase</b> and every session you can cross-sign from.
       </Text>
-      <Button variant="danger" onClick={setupDialog}>
+      <Button variant="danger" onClick={setupDialog} rounded>
         Reset
       </Button>
     </div>
@@ -240,11 +240,11 @@ function CrossSignin() {
       }
       options={
         isCSEnabled ? (
-          <Button variant="danger" onClick={resetDialog}>
+          <Button variant="danger" onClick={resetDialog} rounded>
             Reset
           </Button>
         ) : (
-          <Button variant="primary" onClick={setupDialog}>
+          <Button variant="primary" onClick={setupDialog} rounded>
             Setup
           </Button>
         )

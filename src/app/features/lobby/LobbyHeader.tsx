@@ -66,7 +66,7 @@ const LobbyMenu = forwardRef<HTMLDivElement, LobbyMenuProps>(
             fill="None"
             size="300"
             after={<Icon size="100" src={Icons.UserPlus} />}
-            radii="300"
+            radii="Pill"
             disabled={!canInvite}
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -77,7 +77,7 @@ const LobbyMenu = forwardRef<HTMLDivElement, LobbyMenuProps>(
             onClick={handleRoomSettings}
             size="300"
             after={<Icon size="100" src={Icons.Setting} />}
-            radii="300"
+            radii="Pill"
           >
             <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
               Space Settings
@@ -95,7 +95,7 @@ const LobbyMenu = forwardRef<HTMLDivElement, LobbyMenuProps>(
                   fill="None"
                   size="300"
                   after={<Icon size="100" src={Icons.ArrowGoLeft} />}
-                  radii="300"
+                  radii="Pill"
                   aria-pressed={promptLeave}
                 >
                   <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -146,7 +146,7 @@ export function LobbyHeader({ showProfile, powerLevels }: LobbyHeaderProps) {
             <Box shrink="No">
               <BackRouteHandler>
                 {(onBack) => (
-                  <IconButton onClick={onBack}>
+                  <IconButton onClick={onBack} radii="Pill">
                     <Icon src={Icons.ArrowLeft} />
                   </IconButton>
                 )}
@@ -166,7 +166,7 @@ export function LobbyHeader({ showProfile, powerLevels }: LobbyHeaderProps) {
             <Box justifyContent="Center" alignItems="Center" gap="300">
               {showProfile && (
                 <>
-                  <Avatar size="300">
+                  <Avatar size="300" radii="Pill">
                     <RoomAvatar
                       roomId={space.roomId}
                       src={avatarUrl}
@@ -193,13 +193,13 @@ export function LobbyHeader({ showProfile, powerLevels }: LobbyHeaderProps) {
               position="Bottom"
               offset={4}
               tooltip={
-                <Tooltip>
+                <Tooltip radii="Pill">
                   <Text>Members</Text>
                 </Tooltip>
               }
             >
               {(triggerRef) => (
-                <IconButton ref={triggerRef} onClick={() => setPeopleDrawer((drawer) => !drawer)}>
+                <IconButton ref={triggerRef} onClick={() => setPeopleDrawer((drawer) => !drawer)} radii="Pill">
                   <Icon size="400" src={Icons.User} />
                 </IconButton>
               )}
@@ -210,13 +210,13 @@ export function LobbyHeader({ showProfile, powerLevels }: LobbyHeaderProps) {
             align="End"
             offset={4}
             tooltip={
-              <Tooltip>
+              <Tooltip radii="Pill">
                 <Text>More Options</Text>
               </Tooltip>
             }
           >
             {(triggerRef) => (
-              <IconButton onClick={handleOpenMenu} ref={triggerRef} aria-pressed={!!menuAnchor}>
+              <IconButton onClick={handleOpenMenu} ref={triggerRef} aria-pressed={!!menuAnchor} radii="Pill">
                 <Icon size="400" src={Icons.VerticalDots} filled={!!menuAnchor} />
               </IconButton>
             )}

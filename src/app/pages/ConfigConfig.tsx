@@ -35,12 +35,12 @@ export function ConfigConfigError({ error, retry, ignore }: ConfigConfigErrorPro
                   </Text>
                 )}
             </Box>
-            <Button variant="Critical" onClick={retry}>
+            <Button variant="Critical" onClick={retry} radii="Pill">
               <Text as="span" size="B400">
                 Retry
               </Text>
             </Button>
-            <Button variant="Critical" onClick={ignore} fill="Soft">
+            <Button variant="Critical" onClick={ignore} fill="Soft" radii="Pill">
               <Text as="span" size="B400">
                 Continue
               </Text>

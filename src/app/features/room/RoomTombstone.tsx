@@ -43,7 +43,7 @@ export function RoomTombstone({ roomId, body, replacementRoomId }: RoomTombstone
       <Box shrink="No">
         {replacementRoom?.getMyMembership() === Membership.Join ||
         joinState.status === AsyncStatus.Success ? (
-          <Button onClick={handleOpen} size="300" variant="Success" fill="Solid" radii="300">
+          <Button onClick={handleOpen} size="300" variant="Success" fill="Solid" radii="Pill">
             <Text size="B300">Open New Room</Text>
           </Button>
         ) : (
@@ -52,7 +52,7 @@ export function RoomTombstone({ roomId, body, replacementRoomId }: RoomTombstone
             size="300"
             variant="Primary"
             fill="Solid"
-            radii="300"
+            radii="Pill"
             before={
               joinState.status === AsyncStatus.Loading && (
                 <Spinner size="100" variant="Primary" fill="Solid" />

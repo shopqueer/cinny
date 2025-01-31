@@ -84,8 +84,8 @@ function SecretStorageAccess({ onComplete }) {
         {error && <Text variant="b3">{error}</Text>}
         {!process && (
           <div className="secret-storage-access__btn">
-            <Button variant="primary" type="submit">Continue</Button>
-            {isPassphrase && <Button onClick={toggleWithPhrase}>{`Use Security ${withPhrase ? 'Key' : 'Phrase'}`}</Button>}
+            <Button variant="primary" type="submit" rounded>Continue</Button>
+            {isPassphrase && <Button onClick={toggleWithPhrase} rounded>{`Use Security ${withPhrase ? 'Key' : 'Phrase'}`}</Button>}
           </div>
         )}
       </form>

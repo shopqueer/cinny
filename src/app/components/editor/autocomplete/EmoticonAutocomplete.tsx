@@ -96,7 +96,7 @@ export function EmoticonAutocomplete({
           <MenuItem
             key={emoticon.shortcode + key}
             as="button"
-            radii="300"
+            radii="Pill"
             onKeyDown={(evt: ReactKeyboardEvent<HTMLButtonElement>) =>
               onTabPress(evt, () => handleAutocomplete(key, emoticon.shortcode))
             }

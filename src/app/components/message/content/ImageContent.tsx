@@ -149,7 +149,7 @@ export const ImageContent = as<'div', ImageContentProps>(
             <Button
               variant="Secondary"
               fill="Solid"
-              radii="300"
+              radii="Pill"
               size="300"
               onClick={loadSrc}
               before={<Icon size="Inherit" src={Icons.Photo} filled />}
@@ -181,7 +181,7 @@ export const ImageContent = as<'div', ImageContentProps>(
           <Box className={css.AbsoluteContainer} alignItems="Center" justifyContent="Center">
             <TooltipProvider
               tooltip={
-                <Tooltip variant="Critical">
+                <Tooltip variant="Critical" radii="Pill">
                   <Text>Failed to load image!</Text>
                 </Tooltip>
               }
@@ -195,7 +195,7 @@ export const ImageContent = as<'div', ImageContentProps>(
                   variant="Critical"
                   fill="Soft"
                   outlined
-                  radii="300"
+                  radii="Pill"
                   onClick={handleRetry}
                   before={<Icon size="Inherit" src={Icons.Warning} filled />}
                 >
@@ -207,7 +207,7 @@ export const ImageContent = as<'div', ImageContentProps>(
         )}
         {!load && typeof info?.size === 'number' && (
           <Box className={css.AbsoluteFooter} justifyContent="End" alignContent="Center" gap="200">
-            <Badge variant="Secondary" fill="Soft">
+            <Badge variant="Secondary" fill="Soft" radii="Pill">
               <Text size="L400">{bytesToSize(info.size)}</Text>
             </Badge>
           </Box>

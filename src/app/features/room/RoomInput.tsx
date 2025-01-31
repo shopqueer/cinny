@@ -492,7 +492,7 @@ export const RoomInput = forwardRef<HTMLDivElement, RoomInputProps>(
                     onClick={() => setReplyDraft(undefined)}
                     variant="SurfaceVariant"
                     size="300"
-                    radii="300"
+                    radii="Pill"
                   >
                     <Icon src={Icons.Cross} size="50" />
                   </IconButton>
@@ -524,7 +524,7 @@ export const RoomInput = forwardRef<HTMLDivElement, RoomInputProps>(
               onClick={() => pickFile('*')}
               variant="SurfaceVariant"
               size="300"
-              radii="300"
+              radii="Pill"
             >
               <Icon src={Icons.PlusCircle} />
             </IconButton>
@@ -534,7 +534,7 @@ export const RoomInput = forwardRef<HTMLDivElement, RoomInputProps>(
               <IconButton
                 variant="SurfaceVariant"
                 size="300"
-                radii="300"
+                radii="Pill"
                 onClick={() => setToolbar(!toolbar)}
               >
                 <Icon src={toolbar ? Icons.AlphabetUnderline : Icons.Alphabet} />
@@ -573,7 +573,7 @@ export const RoomInput = forwardRef<HTMLDivElement, RoomInputProps>(
                         onClick={() => setEmojiBoardTab(EmojiBoardTab.Sticker)}
                         variant="SurfaceVariant"
                         size="300"
-                        radii="300"
+                        radii="Pill"
                       >
                         <Icon
                           src={Icons.Sticker}
@@ -589,7 +589,7 @@ export const RoomInput = forwardRef<HTMLDivElement, RoomInputProps>(
                       onClick={() => setEmojiBoardTab(EmojiBoardTab.Emoji)}
                       variant="SurfaceVariant"
                       size="300"
-                      radii="300"
+                      radii="Pill"
                     >
                       <Icon
                         src={Icons.Smile}
@@ -601,7 +601,7 @@ export const RoomInput = forwardRef<HTMLDivElement, RoomInputProps>(
                   </PopOut>
                 )}
               </UseStateProvider>
-              <IconButton id="send_message" onClick={submit} variant="SurfaceVariant" size="300" radii="300">
+              <IconButton id="send_message" onClick={submit} variant="SurfaceVariant" size="300" radii="Pill">
                 <Icon src={Icons.Send} />
               </IconButton>
             </>
