@@ -489,6 +489,7 @@ const useNotificationsSearchParams = (
 const DEFAULT_REFRESH_MS = 7000;
 
 export function Notifications() {
+  document.title = 'Kiki by Allstora'
   const mx = useMatrixClient();
   const [mediaAutoLoad] = useSetting(settingsAtom, 'mediaAutoLoad');
   const [urlPreview] = useSetting(settingsAtom, 'urlPreview');
