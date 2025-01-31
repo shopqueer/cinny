@@ -51,7 +51,7 @@ export function UserTab() {
     <SidebarItem>
       <SidebarItemTooltip tooltip="User Settings">
         {(triggerRef) => (
-          <SidebarAvatar as="button" ref={triggerRef} onClick={() => openSettings()}>
+          <SidebarAvatar as="button" ref={triggerRef} onClick={() => openSettings()} radii="Pill">
             <UserAvatar
               userId={userId}
               src={avatarUrl}

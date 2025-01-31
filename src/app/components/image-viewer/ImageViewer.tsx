@@ -33,7 +33,7 @@ export const ImageViewer = as<'div', ImageViewerProps>(
       >
         <Header className={css.ImageViewerHeader} size="400">
           <Box grow="Yes" alignItems="Center" gap="200">
-            <IconButton size="300" radii="300" onClick={requestClose}>
+            <IconButton size="300" radii="Pill" onClick={requestClose}>
               <Icon size="50" src={Icons.ArrowLeft} />
             </IconButton>
             <Text size="T300" truncate>
@@ -67,7 +67,7 @@ export const ImageViewer = as<'div', ImageViewerProps>(
             <Chip
               variant="Primary"
               onClick={handleDownload}
-              radii="300"
+              radii="Pill"
               before={<Icon size="50" src={Icons.Download} />}
             >
               <Text size="B300">Download</Text>

@@ -114,6 +114,7 @@ function Search({ active, loading, searchInputRef, onSearch, onReset }: SearchPr
         size="500"
         variant="Background"
         placeholder="Search for keyword"
+        radii="Pill"
         before={
           active && loading ? (
             <Spinner variant="Secondary" size="200" />
@@ -203,7 +204,7 @@ function ThirdPartyProtocolsSelector({
                   size="300"
                   variant="Surface"
                   aria-pressed={instanceId === undefined}
-                  radii="300"
+                  radii="Pill"
                   onClick={handleInstanceSelect}
                 >
                   <Text size="T200" truncate>
@@ -217,7 +218,7 @@ function ThirdPartyProtocolsSelector({
                     data-instance-id={instance.instance_id}
                     aria-pressed={instanceId === instance.instance_id}
                     variant="Surface"
-                    radii="300"
+                    radii="Pill"
                     onClick={handleInstanceSelect}
                   >
                     <Text size="T200" truncate>
@@ -313,11 +314,11 @@ function LimitButton({ limit, onLimitChange }: LimitButtonProps) {
                     step={1}
                     outlined
                     type="number"
-                    radii="400"
+                    radii="Pill"
                     aria-label="Per Page Item Limit"
                   />
                 </Box>
-                <Button type="submit" size="300" variant="Primary" radii="400">
+                <Button type="submit" size="300" variant="Primary" radii="Pill">
                   <Text size="B300">Change Limit</Text>
                 </Button>
               </Box>
@@ -499,7 +500,7 @@ export function PublicRooms() {
               {screenSize === ScreenSize.Mobile && (
                 <BackRouteHandler>
                   {(onBack) => (
-                    <IconButton onClick={onBack}>
+                    <IconButton onClick={onBack} radii="Pill">
                       <Icon src={Icons.ArrowLeft} />
                     </IconButton>
                   )}
@@ -550,6 +551,7 @@ export function PublicRooms() {
                             )
                           }
                           outlined
+                          radii="Pill"
                         >
                           <Text size="T200">{filter.title}</Text>
                         </Chip>
@@ -622,6 +624,7 @@ export function PublicRooms() {
                               size="300"
                               fill="Soft"
                               disabled={!data.prev_batch}
+                              radii="Pill"
                             >
                               <Text size="B300" truncate>
                                 Previous Page
@@ -633,6 +636,7 @@ export function PublicRooms() {
                               size="300"
                               fill="Solid"
                               disabled={!data.next_batch}
+                              radii="Pill"
                             >
                               <Text size="B300" truncate>
                                 Next Page

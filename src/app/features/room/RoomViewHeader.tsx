@@ -50,10 +50,11 @@ import { useRoomAvatar, useRoomName, useRoomTopic } from '../../hooks/useRoomMet
 import { mDirectAtom } from '../../state/mDirectList';
 import { ScreenSize, useScreenSizeContext } from '../../hooks/useScreenSize';
 import { stopPropagation } from '../../utils/keyboard';
-import { getMatrixToRoom } from '../../plugins/matrix-to';
+import { getMatrixToRoom, matrixToAllstora } from '../../plugins/matrix-to';
 import { getViaServers } from '../../plugins/via-servers';
 import { BackRouteHandler } from '../../components/BackRouteHandler';
 import { useMediaAuthentication } from '../../hooks/useMediaAuthentication';
+import { CUSTOM_CLUBS } from '../../utils/customClubs';
 
 type RoomMenuProps = {
   room: Room;
@@ -65,6 +66,8 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
   const powerLevels = usePowerLevelsContext();
   const { getPowerLevel, canDoAction } = usePowerLevelsAPI(powerLevels);
   const canInvite = canDoAction('invite', getPowerLevel(mx.getUserId() ?? ''));
+
+  const space = useSpaceOptionally();
 
   const handleMarkAsRead = () => {
     markAsRead(mx, room.roomId);
@@ -79,7 +82,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
   const handleCopyLink = () => {
     const roomIdOrAlias = getCanonicalAliasOrRoomId(mx, room.roomId);
     const viaServers = isRoomAlias(roomIdOrAlias) ? undefined : getViaServers(room);
-    copyToClipboard(getMatrixToRoom(roomIdOrAlias, viaServers));
+    copyToClipboard(matrixToAllstora(getMatrixToRoom(roomIdOrAlias, viaServers), space?.roomId));
     requestClose();
   };
 
@@ -95,7 +98,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           onClick={handleMarkAsRead}
           size="300"
           after={<Icon size="100" src={Icons.CheckTwice} />}
-          radii="300"
+          radii="Pill"
           disabled={!unread}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -111,7 +114,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           fill="None"
           size="300"
           after={<Icon size="100" src={Icons.UserPlus} />}
-          radii="300"
+          radii="Pill"
           disabled={!canInvite}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -122,7 +125,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           onClick={handleCopyLink}
           size="300"
           after={<Icon size="100" src={Icons.Link} />}
-          radii="300"
+          radii="Pill"
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
             Copy Link
@@ -132,7 +135,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
           onClick={handleRoomSettings}
           size="300"
           after={<Icon size="100" src={Icons.Setting} />}
-          radii="300"
+          radii="Pill"
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
             Room Settings
@@ -150,7 +153,7 @@ const RoomMenu = forwardRef<HTMLDivElement, RoomMenuProps>(({ room, requestClose
                 fill="None"
                 size="300"
                 after={<Icon size="100" src={Icons.ArrowGoLeft} />}
-                radii="300"
+                radii="Pill"
                 aria-pressed={promptLeave}
               >
                 <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -187,7 +190,9 @@ export function RoomViewHeader() {
   const avatarMxc = useRoomAvatar(room, mDirects.has(room.roomId));
   const name = useRoomName(room);
   const topic = useRoomTopic(room);
-  const avatarUrl = avatarMxc ? mxcUrlToHttp(mx, avatarMxc, useAuthentication, 96, 96, 'crop') ?? undefined : undefined;
+  const avatarUrl = avatarMxc
+    ? mxcUrlToHttp(mx, avatarMxc, useAuthentication, 96, 96, 'crop') ?? undefined
+    : undefined;
 
   const setPeopleDrawer = useSetSetting(settingsAtom, 'isPeopleDrawer');
 
@@ -205,6 +210,8 @@ export function RoomViewHeader() {
     setMenuAnchor(evt.currentTarget.getBoundingClientRect());
   };
 
+  const customClub = space && space.roomId in CUSTOM_CLUBS ? CUSTOM_CLUBS[space.roomId] : undefined;
+
   return (
     <PageHeader balance={screenSize === ScreenSize.Mobile}>
       <Box grow="Yes" gap="300">
@@ -212,7 +219,7 @@ export function RoomViewHeader() {
           <BackRouteHandler>
             {(onBack) => (
               <Box shrink="No" alignItems="Center">
-                <IconButton onClick={onBack}>
+                <IconButton onClick={onBack} radii="Pill">
                   <Icon src={Icons.ArrowLeft} />
                 </IconButton>
               </Box>
@@ -221,18 +228,22 @@ export function RoomViewHeader() {
         )}
         <Box grow="Yes" alignItems="Center" gap="300">
           {screenSize !== ScreenSize.Mobile && (
-            <Avatar size="300">
+            <Avatar size="300" radii="Pill">
               <RoomAvatar
                 roomId={room.roomId}
                 src={avatarUrl}
                 alt={name}
-                renderFallback={() => (
-                  <RoomIcon
-                    size="200"
-                    joinRule={room.getJoinRule() ?? JoinRule.Restricted}
-                    filled
-                  />
-                )}
+                renderFallback={() =>
+                  customClub?.roomIcon ? (
+                    <Icon size="200" src={customClub.roomIcon} filled />
+                  ) : (
+                    <RoomIcon
+                      size="200"
+                      joinRule={room.getJoinRule() ?? JoinRule.Restricted}
+                      filled
+                    />
+                  )
+                }
               />
             </Avatar>
           )}
@@ -285,13 +296,13 @@ export function RoomViewHeader() {
               position="Bottom"
               offset={4}
               tooltip={
-                <Tooltip>
+                <Tooltip radii="Pill">
                   <Text>Search</Text>
                 </Tooltip>
               }
             >
               {(triggerRef) => (
-                <IconButton ref={triggerRef} onClick={handleSearchClick}>
+                <IconButton ref={triggerRef} onClick={handleSearchClick} radii="Pill">
                   <Icon size="400" src={Icons.Search} />
                 </IconButton>
               )}
@@ -302,13 +313,17 @@ export function RoomViewHeader() {
               position="Bottom"
               offset={4}
               tooltip={
-                <Tooltip>
+                <Tooltip radii="Pill">
                   <Text>Members</Text>
                 </Tooltip>
               }
             >
               {(triggerRef) => (
-                <IconButton ref={triggerRef} onClick={() => setPeopleDrawer((drawer) => !drawer)}>
+                <IconButton
+                  ref={triggerRef}
+                  onClick={() => setPeopleDrawer((drawer) => !drawer)}
+                  radii="Pill"
+                >
                   <Icon size="400" src={Icons.User} />
                 </IconButton>
               )}
@@ -319,13 +334,18 @@ export function RoomViewHeader() {
             align="End"
             offset={4}
             tooltip={
-              <Tooltip>
+              <Tooltip radii="Pill">
                 <Text>More Options</Text>
               </Tooltip>
             }
           >
             {(triggerRef) => (
-              <IconButton onClick={handleOpenMenu} ref={triggerRef} aria-pressed={!!menuAnchor}>
+              <IconButton
+                onClick={handleOpenMenu}
+                ref={triggerRef}
+                aria-pressed={!!menuAnchor}
+                radii="Pill"
+              >
                 <Icon size="400" src={Icons.VerticalDots} filled={!!menuAnchor} />
               </IconButton>
             )}

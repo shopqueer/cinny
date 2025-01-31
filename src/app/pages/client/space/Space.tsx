@@ -41,7 +41,7 @@ import {
   useSpaceLobbySelected,
   useSpaceSearchSelected,
 } from '../../../hooks/router/useSelectedSpace';
-import { useSpace } from '../../../hooks/useSpace';
+import { useSpace, useSpaceOptionally } from '../../../hooks/useSpace';
 import { VirtualTile } from '../../../components/virtualizer';
 import { RoomNavCategoryButton, RoomNavItem } from '../../../features/room-nav';
 import { muteChangesAtom } from '../../../state/room-list/mutedRoomList';
@@ -66,7 +66,7 @@ import { useClosedNavCategoriesAtom } from '../../../state/hooks/closedNavCatego
 import { useStateEvent } from '../../../hooks/useStateEvent';
 import { StateEvent } from '../../../../types/matrix/room';
 import { stopPropagation } from '../../../utils/keyboard';
-import { getMatrixToRoom } from '../../../plugins/matrix-to';
+import { getMatrixToRoom, matrixToAllstora } from '../../../plugins/matrix-to';
 import { getViaServers } from '../../../plugins/via-servers';
 
 type SpaceMenuProps = {
@@ -79,6 +79,8 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
   const powerLevels = usePowerLevels(room);
   const { getPowerLevel, canDoAction } = usePowerLevelsAPI(powerLevels);
   const canInvite = canDoAction('invite', getPowerLevel(mx.getUserId() ?? ''));
+
+  const space = useSpaceOptionally();
 
   const allChild = useSpaceChildren(
     allRoomsAtom,
@@ -95,7 +97,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
   const handleCopyLink = () => {
     const roomIdOrAlias = getCanonicalAliasOrRoomId(mx, room.roomId);
     const viaServers = isRoomAlias(roomIdOrAlias) ? undefined : getViaServers(room);
-    copyToClipboard(getMatrixToRoom(roomIdOrAlias, viaServers));
+    copyToClipboard(matrixToAllstora(getMatrixToRoom(roomIdOrAlias, viaServers), space?.roomId));
     requestClose();
   };
 
@@ -116,7 +118,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
           onClick={handleMarkAsRead}
           size="300"
           after={<Icon size="100" src={Icons.CheckTwice} />}
-          radii="300"
+          radii="Pill"
           disabled={!unread}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -132,7 +134,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
           fill="None"
           size="300"
           after={<Icon size="100" src={Icons.UserPlus} />}
-          radii="300"
+          radii="Pill"
           disabled={!canInvite}
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -143,7 +145,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
           onClick={handleCopyLink}
           size="300"
           after={<Icon size="100" src={Icons.Link} />}
-          radii="300"
+          radii="Pill"
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
             Copy Link
@@ -153,7 +155,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
           onClick={handleRoomSettings}
           size="300"
           after={<Icon size="100" src={Icons.Setting} />}
-          radii="300"
+          radii="Pill"
         >
           <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
             Space Settings
@@ -171,7 +173,7 @@ const SpaceMenu = forwardRef<HTMLDivElement, SpaceMenuProps>(({ room, requestClo
                 fill="None"
                 size="300"
                 after={<Icon size="100" src={Icons.ArrowGoLeft} />}
-                radii="300"
+                radii="Pill"
                 aria-pressed={promptLeave}
               >
                 <Text style={{ flexGrow: 1 }} as="span" size="T300" truncate>
@@ -223,7 +225,7 @@ function SpaceHeader() {
             {joinRules?.join_rule !== JoinRule.Public && <Icon src={Icons.Lock} size="50" />}
           </Box>
           <Box>
-            <IconButton aria-pressed={!!menuAnchor} variant="Background" onClick={handleOpenMenu}>
+            <IconButton aria-pressed={!!menuAnchor} variant="Background" onClick={handleOpenMenu} radii="Pill">
               <Icon src={Icons.VerticalDots} size="200" />
             </IconButton>
           </Box>
@@ -325,11 +327,11 @@ export function Space() {
       <PageNavContent scrollRef={scrollRef}>
         <Box direction="Column" gap="300">
           <NavCategory>
-            <NavItem variant="Background" radii="400" aria-selected={lobbySelected}>
+            <NavItem variant="Background" radii="Pill" aria-selected={lobbySelected}>
               <NavLink to={getSpaceLobbyPath(getCanonicalAliasOrRoomId(mx, space.roomId))}>
                 <NavItemContent>
                   <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                    <Avatar size="200" radii="400">
+                    <Avatar size="200" radii="Pill">
                       <Icon src={Icons.Flag} size="100" filled={lobbySelected} />
                     </Avatar>
                     <Box as="span" grow="Yes">
@@ -341,11 +343,11 @@ export function Space() {
                 </NavItemContent>
               </NavLink>
             </NavItem>
-            <NavItem variant="Background" radii="400" aria-selected={searchSelected}>
+            <NavItem variant="Background" radii="Pill" aria-selected={searchSelected}>
               <NavLink to={getSpaceSearchPath(getCanonicalAliasOrRoomId(mx, space.roomId))}>
                 <NavItemContent>
                   <Box as="span" grow="Yes" alignItems="Center" gap="200">
-                    <Avatar size="200" radii="400">
+                    <Avatar size="200" radii="Pill">
                       <Icon src={Icons.Search} size="100" filled={searchSelected} />
                     </Avatar>
                     <Box as="span" grow="Yes">

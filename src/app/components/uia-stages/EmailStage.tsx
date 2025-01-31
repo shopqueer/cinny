@@ -46,17 +46,18 @@ function EmailErrorDialog({
             name="retryEmailInput"
             variant="Background"
             size="500"
+            radii="Pill"
             outlined
             defaultValue={defaultEmail}
             required
           />
         </Box>
-        <Button variant="Primary" type="submit">
+        <Button variant="Primary" type="submit" radii="Pill">
           <Text as="span" size="B400">
             Send Verification Email
           </Text>
         </Button>
-        <Button variant="Critical" fill="None" outlined type="button" onClick={onCancel}>
+        <Button variant="Critical" fill="None" outlined type="button" onClick={onCancel} radii="Pill">
           <Text as="span" size="B400">
             Cancel
           </Text>

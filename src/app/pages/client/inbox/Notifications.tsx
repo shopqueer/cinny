@@ -369,7 +369,7 @@ function RoomNotificationsGroupComp({
     <Box direction="Column" gap="200">
       <Header size="300">
         <Box gap="200" grow="Yes">
-          <Avatar size="200" radii="300">
+          <Avatar size="200" radii="Pill">
             <RoomAvatar
               roomId={room.roomId}
               src={getRoomAvatarUrl(mx, room, 96, useAuthentication)}
@@ -422,7 +422,7 @@ function RoomNotificationsGroupComp({
               <ModernLayout
                 before={
                   <AvatarBase>
-                    <Avatar size="300">
+                    <Avatar size="300" radii="Pill">
                       <UserAvatar
                         userId={event.sender}
                         src={
@@ -451,7 +451,7 @@ function RoomNotificationsGroupComp({
                       data-event-id={event.event_id}
                       onClick={handleOpenClick}
                       variant="Secondary"
-                      radii="400"
+                      radii="Pill"
                     >
                       <Text size="T200">Open</Text>
                     </Chip>
@@ -564,7 +564,7 @@ export function Notifications() {
             {screenSize === ScreenSize.Mobile && (
               <BackRouteHandler>
                 {(onBack) => (
-                  <IconButton onClick={onBack}>
+                  <IconButton onClick={onBack} radii="Pill">
                     <Icon src={Icons.ArrowLeft} />
                   </IconButton>
                 )}
@@ -595,6 +595,7 @@ export function Notifications() {
                       variant={!onlyHighlight ? 'Success' : 'Surface'}
                       aria-pressed={!onlyHighlight}
                       before={!onlyHighlight && <Icon size="100" src={Icons.Check} />}
+                      radii="Pill"
                       outlined
                     >
                       <Text size="T200">All Notifications</Text>
@@ -604,6 +605,7 @@ export function Notifications() {
                       variant={onlyHighlight ? 'Success' : 'Surface'}
                       aria-pressed={onlyHighlight}
                       before={onlyHighlight && <Icon size="100" src={Icons.Check} />}
+                      radii="Pill"
                       outlined
                     >
                       <Text size="T200">Highlighted</Text>

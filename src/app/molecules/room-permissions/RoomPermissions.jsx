@@ -257,6 +257,8 @@ function RoomPermissions({ roomId }) {
                               : null
                           }
                           iconSrc={canChangePermission ? ChevronBottomIC : null}
+                          rounded
+                          disabled={!canChangePermission}
                         >
                           <Text variant="b2">
                             {`${getPowerLabel(powerLevel) || 'Member'} - ${powerLevel}`}

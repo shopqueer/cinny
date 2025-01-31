@@ -266,6 +266,7 @@ export function PasswordRegisterForm({
             defaultValue={defaultUsername}
             name="usernameInput"
             size="500"
+            radii="Pill"
             outlined
             required
           />
@@ -292,6 +293,7 @@ export function PasswordRegisterForm({
                   name="passwordInput"
                   variant="Background"
                   size="500"
+                  radii="Pill"
                   outlined
                   required
                 />
@@ -322,6 +324,7 @@ export function PasswordRegisterForm({
                   name="confirmPasswordInput"
                   variant="Background"
                   size="500"
+                  radii="Pill"
                   style={{ color: match ? undefined : color.Critical.Main }}
                   outlined
                   required
@@ -342,6 +345,7 @@ export function PasswordRegisterForm({
               defaultValue={defaultRegisterToken}
               name="tokenInput"
               size="500"
+              radii="Pill"
               required={requiredStageInFlows(uiaFlows, AuthType.RegistrationToken)}
               outlined
             />
@@ -358,6 +362,7 @@ export function PasswordRegisterForm({
               name="emailInput"
               type="email"
               size="500"
+              radii="Pill"
               required={requiredStageInFlows(uiaFlows, AuthType.Email)}
               outlined
             />

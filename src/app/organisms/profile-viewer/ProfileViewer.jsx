@@ -71,13 +71,13 @@ function ModerationTools({ roomId, userId }) {
       {canIKick && (
         <form onSubmit={handleKick}>
           <Input label="Kick reason" name="kick-reason" />
-          <Button type="submit">Kick</Button>
+          <Button type="submit" rounded>Kick</Button>
         </form>
       )}
       {canIBan && (
         <form onSubmit={handleBan}>
           <Input label="Ban reason" name="ban-reason" />
-          <Button type="submit">Ban</Button>
+          <Button type="submit" rounded>Ban</Button>
         </form>
       )}
     </div>
@@ -246,16 +246,16 @@ function ProfileFooter({ roomId, userId, onRequestClose }) {
 
   return (
     <div className="profile-viewer__buttons">
-      <Button variant="primary" onClick={openDM} disabled={isCreatingDM}>
+      <Button variant="primary" onClick={openDM} disabled={isCreatingDM} rounded>
         {isCreatingDM ? 'Creating room...' : 'Message'}
       </Button>
       {isBanned && canIKick && (
-        <Button variant="positive" onClick={() => mx.unban(roomId, userId)}>
+        <Button variant="positive" onClick={() => mx.unban(roomId, userId)} rounded>
           Unban
         </Button>
       )}
       {(isInvited ? canIKick : room.canInvite(mx.getUserId())) && isInvitable && (
-        <Button onClick={toggleInvite} disabled={isInviting}>
+        <Button onClick={toggleInvite} disabled={isInviting} rounded>
           {isInvited
             ? `${isInviting ? 'Disinviting...' : 'Disinvite'}`
             : `${isInviting ? 'Inviting...' : 'Invite'}`}
@@ -265,6 +265,7 @@ function ProfileFooter({ roomId, userId, onRequestClose }) {
         variant={isUserIgnored ? 'positive' : 'danger'}
         onClick={toggleIgnore}
         disabled={isIgnoring}
+        rounded
       >
         {isUserIgnored
           ? `${isIgnoring ? 'Unignoring...' : 'Unignore'}`
@@ -402,6 +403,7 @@ function ProfileViewer() {
             <Button
               onClick={canChangeRole ? handlePowerSelector : null}
               iconSrc={canChangeRole ? ChevronBottomIC : null}
+              rounded
             >
               {`${getPowerLabel(powerLevel) || 'Member'} - ${powerLevel}`}
             </Button>

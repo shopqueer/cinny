@@ -116,10 +116,10 @@ function EmojiVerificationContent({ data, requestClose }) {
             renderWait()
           ) : (
             <>
-              <Button variant="primary" onClick={sasConfirm}>
+              <Button variant="primary" onClick={sasConfirm} rounded>
                 They match
               </Button>
-              <Button onClick={sasMismatch}>No match</Button>
+              <Button onClick={sasMismatch} rounded>No match</Button>
             </>
           )}
         </div>
@@ -143,7 +143,7 @@ function EmojiVerificationContent({ data, requestClose }) {
         {process ? (
           renderWait()
         ) : (
-          <Button variant="primary" onClick={beginVerification}>
+          <Button variant="primary" onClick={beginVerification} rounded>
             Accept
           </Button>
         )}

@@ -41,8 +41,8 @@ const promptDeviceName = async (deviceName) => new Promise((resolve) => {
       <form className="device-manage__rename" onSubmit={handleSubmit}>
         <Input value={deviceName} label="Session name" name="session" />
         <div className="device-manage__rename-btn">
-          <Button variant="primary" type="submit">Save</Button>
-          <Button onClick={() => onComplete(null)}>Cancel</Button>
+          <Button variant="primary" type="submit" rounded>Save</Button>
+          <Button onClick={() => onComplete(null)} rounded>Cancel</Button>
         </div>
       </form>
     );
@@ -172,7 +172,7 @@ function DeviceManage() {
             ? <Spinner size="small" />
             : (
               <>
-                {(isCSEnabled && canVerify) && <Button onClick={() => verify(deviceId, isCurrentDevice)} variant="positive">Verify</Button>}
+                {(isCSEnabled && canVerify) && <Button onClick={() => verify(deviceId, isCurrentDevice)} variant="positive" rounded>Verify</Button>}
                 <IconButton size="small" onClick={() => handleRename(device)} src={PencilIC} tooltip="Rename" />
                 <IconButton size="small" onClick={() => handleRemove(device)} src={BinIC} tooltip="Remove session" />
               </>
@@ -270,7 +270,7 @@ function DeviceManage() {
             : <Text className="device-manage__info">No verified sessions</Text>
         }
         { verified.length > TRUNCATED_COUNT && (
-          <Button className="device-manage__info" onClick={() => setTruncated(!truncated)}>
+          <Button className="device-manage__info" onClick={() => setTruncated(!truncated)} rounded>
             {truncated ? `View ${verified.length - 4} more` : 'View less'}
           </Button>
         )}

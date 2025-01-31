@@ -39,7 +39,7 @@ export function SidebarItemTooltip({
       delay={400}
       position="Right"
       tooltip={
-        <Tooltip style={{ maxWidth: toRem(280) }}>
+        <Tooltip style={{ maxWidth: toRem(280) }} radii="Pill">
           <Text size="H5">{tooltip}</Text>
         </Tooltip>
       }
@@ -53,7 +53,7 @@ export const SidebarAvatar = as<'div', css.SidebarAvatarVariants & ComponentProp
   ({ className, size, outlined, radii, ...props }, ref) => (
     <Avatar
       className={classNames(css.SidebarAvatar({ size, outlined }), className)}
-      radii={radii}
+      radii={radii ?? 'Pill'}
       {...props}
       ref={ref}
     />
