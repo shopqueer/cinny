@@ -1,15 +1,17 @@
 {
   "defaultHomeserver": 0,
-  "homeserverList": ["kiki-server.allstora.com"],
+  "homeserverList": [
+    "kiki-server-beta.allstora.com"
+  ],
   "allowCustomHomeservers": false,
-
   "featuredCommunities": {
     "openAsDefault": false,
     "spaces": [],
     "rooms": [],
-    "servers": ["kiki-server.allstora.com"]
+    "servers": [
+      "kiki-server-beta.allstora.com"
+    ]
   },
-
   "hashRouter": {
     "enabled": false,
     "basename": "/"
