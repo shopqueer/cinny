@@ -11,8 +11,21 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         run: |
+          # Map GitHub username to Slack user ID
+          GH_USER="${{ github.event.assignee.login }}"
+          case "$GH_USER" in
+            allstoradev)    SLACK_TAG="<@U0ACWGMD2MR>" ;;
+            emcc24444)      SLACK_TAG="<@U0A767896ET>" ;;
+            coyote-ochre)   SLACK_TAG="<@U097C0P8MT7>" ;;
+            shehryar-claude) SLACK_TAG="<@U0933BPKM4H>" ;;
+            gscheinman)     SLACK_TAG="<@U08D0SF6EF9>" ;;
+            Vishruth16)     SLACK_TAG="<@U0999BM38TZ>" ;;
+            chuckwnelson)   SLACK_TAG="<@U0AEUU93PR6>" ;;
+            *)              SLACK_TAG="$GH_USER" ;;
+          esac
+          
           TITLE=$(echo '${{ github.event.issue.title }}' | sed 's/"/\\"/g')
           curl -s -X POST -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
             -H "Content-Type: application/json" \
-            -d "{\"channel\": \"C0AMHGJ7BJT\", \"blocks\": [{\"type\": \"section\", \"text\": {\"type\": \"mrkdwn\", \"text\": \":clipboard: *Issue assigned* in \`${{ github.repository }}\`\n*<${{ github.event.issue.html_url }}|#${{ github.event.issue.number }}: ${TITLE}>*\nAssigned to: *${{ github.event.assignee.login }}*\"}}]}" \
+            -d "{\"channel\": \"C0AMHGJ7BJT\", \"blocks\": [{\"type\": \"section\", \"text\": {\"type\": \"mrkdwn\", \"text\": \":clipboard: *Issue assigned* in \`${{ github.repository }}\`\n*<${{ github.event.issue.html_url }}|#${{ github.event.issue.number }}: ${TITLE}>*\nAssigned to: ${SLACK_TAG}\"}}]}" \
             https://slack.com/api/chat.postMessage
