@@ -1,0 +1,18 @@
+name: Slack - Issue Assigned
+on:
+  issues:
+    types: [assigned]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to Slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: |
+          TITLE=$(echo '${{ github.event.issue.title }}' | sed 's/"/\\"/g')
+          curl -s -X POST -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"channel\": \"C0AMHGJ7BJT\", \"blocks\": [{\"type\": \"section\", \"text\": {\"type\": \"mrkdwn\", \"text\": \":clipboard: *Issue assigned* in \`${{ github.repository }}\`\n*<${{ github.event.issue.html_url }}|#${{ github.event.issue.number }}: ${TITLE}>*\nAssigned to: *${{ github.event.assignee.login }}*\"}}]}" \
+            https://slack.com/api/chat.postMessage
